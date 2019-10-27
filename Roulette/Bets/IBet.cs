@@ -10,9 +10,7 @@ namespace Roulette
     {
         string Name { get; set; }
         double Stake { get; set; }
-
         int Payout { get; }
-
         double GetReturnStake();
     }
 }

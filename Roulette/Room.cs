@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Roulette.Bets;
 
 namespace Roulette
 {
@@ -37,7 +38,7 @@ namespace Roulette
 
         public void StartRound()
         {
-
+            
         }
 
         public void AddUser(User user)
