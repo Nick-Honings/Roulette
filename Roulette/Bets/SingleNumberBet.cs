@@ -12,7 +12,7 @@ namespace Roulette.Bets
         public string Name { get; set; }
         public double Stake { get; set; }
         public int Payout { get; } = 35;
-
+        
 
         public double GetReturnStake()
         {
