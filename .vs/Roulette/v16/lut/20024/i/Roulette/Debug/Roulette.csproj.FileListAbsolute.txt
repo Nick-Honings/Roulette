@@ -1,0 +1,3 @@
+C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\.vs\Roulette\v16\lut\0\b\Roulette\bin\Debug\Roulette.dll
+C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\.vs\Roulette\v16\lut\0\i\Roulette\Debug\Roulette.csproj.CopyComplete
+C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\.vs\Roulette\v16\lut\0\i\Roulette\Debug\Roulette.dll

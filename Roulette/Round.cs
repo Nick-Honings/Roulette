@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Roulette.Users;
 
 namespace Roulette
 {
@@ -6,9 +7,8 @@ namespace Roulette
     {
         public int RoundId { get; private set; }
         public int ElapsedTime { get; set; }
-        public List<User> Winners { get; private set; }
-        public List<User> Losers { get; private set; }
         public Result Result { get; private set; }
+        public List<IBet> Bets { get; private set; }
 
         public Round(int id)
         {
@@ -20,6 +20,9 @@ namespace Roulette
             Result = result;
         }
 
-
+        public Result GetResult()
+        {
+            return Result;
+        }
     }
 }

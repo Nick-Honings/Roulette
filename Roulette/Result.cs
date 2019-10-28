@@ -10,7 +10,7 @@ namespace Roulette
     {
         public Color Color { get; set; }
         public int Number { get; set; }
-
+        public bool IsEven { get; set; }
         public Result(Color color, int number)
         {
             Color = color;

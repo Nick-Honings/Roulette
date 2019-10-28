@@ -8,8 +8,7 @@ namespace Roulette.Bets
 {
     public class SingleNumberBet : IBet
     {
-        public Color Color { get; set; }
-        public string Name { get; set; }
+        public int Number { get; set; }
         public double Stake { get; set; }
         public int Payout { get; } = 35;
         

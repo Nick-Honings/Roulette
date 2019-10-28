@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Roulette
+namespace Roulette.Users
 {
     public class UserContainer
     {

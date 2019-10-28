@@ -11,5 +11,9 @@ namespace Roulette.Users
         public string Name { get; set; }
         public string Password { get; set; }
 
+        public bool VerifyLogin()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

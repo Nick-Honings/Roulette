@@ -8,7 +8,6 @@ namespace Roulette
 {
     public interface IBet
     {
-        string Name { get; set; }
         double Stake { get; set; }
         int Payout { get; }
         double GetReturnStake();

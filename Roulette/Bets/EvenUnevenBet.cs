@@ -8,8 +8,7 @@ namespace Roulette.Bets
 {
     public class EvenUnevenBet : IBet
     {
-        public Color Color { get; set; }
-        public string Name { get; set; }
+        public bool IsEven { get; set; }
         public double Stake { get; set; }
         public int Payout { get; } = 2;
 
