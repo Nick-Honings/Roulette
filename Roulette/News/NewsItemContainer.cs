@@ -9,6 +9,7 @@ namespace Roulette.News
     public class NewsItemContainer
     {
         public List<NewsItem> NewsItems { get; private set; }
+        public int Index { get; private set; } = 0;
 
         public NewsItemContainer()
         {
@@ -32,9 +33,11 @@ namespace Roulette.News
             }
         }
 
-        public void ShowNextNewsItem()
+        public NewsItem GetNextNewsItem()
         {
-            throw new NotImplementedException();
+            NewsItem output = NewsItems[Index];
+            Index++;
+            return output;
         }
     }
 }
