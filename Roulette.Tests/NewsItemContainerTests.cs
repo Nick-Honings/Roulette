@@ -8,13 +8,13 @@ using Roulette.News;
 
 namespace Roulette.Tests
 {
-    public class NewsContainerTests
+    public class NewsItemContainerTests
     {
         NewsItemContainer container;
         NewsItem newsItem;
         NewsItem emptyNewItem;
 
-        public NewsContainerTests()
+        public NewsItemContainerTests()
         {
             container = new NewsItemContainer();
             newsItem = new NewsItem("Special deal");

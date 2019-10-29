@@ -8,11 +8,14 @@ namespace Roulette.Bets
 {
     public class ColorBet : IBet
     {
-        public Color Color { get; set; }
-        public string Name { get; set; }
+        public Color Color { get; private set; }
         public double Stake { get; set; }
         public int Payout { get; } = 2;
 
+        public ColorBet(Color color)
+        {
+            Color = color;
+        }
         public double GetReturnStake()
         {
             return Stake * Payout;
