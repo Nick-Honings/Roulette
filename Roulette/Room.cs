@@ -23,6 +23,8 @@ namespace Roulette
         public Room(string name)
         {
             Name = name;
+            Rounds = new List<Round>();
+            Players = new List<User>();
         }
 
         public void AddRound(Round round)

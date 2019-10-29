@@ -10,9 +10,8 @@ namespace Roulette.Users
     {
         public static User RegisterUser(string name, string password,string email, int age)
         {
-            return new User()
-            {
-                Name = name,
+            return new User(name)
+            {                
                 Password = password,
                 Email = email,
                 Age = age

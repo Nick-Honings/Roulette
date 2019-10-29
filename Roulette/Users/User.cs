@@ -10,9 +10,9 @@ namespace Roulette.Users
         public double Balance { get; set; } = 0;
         public IBet CurrentBet { get; private set; }
 
-        public User()
+        public User(string name)
         {
-
+            Name = name;
         }
 
         public void UpdateProfile()
@@ -20,10 +20,10 @@ namespace Roulette.Users
             throw new NotImplementedException();
         }
 
-        public void MakeBet(double stake)
+        public void MakeBet(IBet bet, double stake)
         {
-
+            bet.Stake = stake;
+            CurrentBet = bet;
         }
-
     }
 }

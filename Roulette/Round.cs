@@ -17,7 +17,10 @@ namespace Roulette
 
         public void AddResult(Result result)
         {
-            Result = result;
+            if (Result == null)
+            {
+                Result = result; 
+            }
         }
 
         public Result GetResult()

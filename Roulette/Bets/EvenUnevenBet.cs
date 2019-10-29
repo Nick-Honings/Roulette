@@ -12,6 +12,10 @@ namespace Roulette.Bets
         public double Stake { get; set; }
         public int Payout { get; } = 2;
 
+        public EvenUnevenBet(bool isEven)
+        {
+            IsEven = isEven;
+        }
 
         public double GetReturnStake()
         {

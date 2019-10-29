@@ -8,9 +8,14 @@ namespace Roulette.Bets
 {
     public class NeighbourBet : IBet
     {
-        public int[] Neighbours { get; set; }
+        public int[] Neighbours { get; private set; }
         public double Stake { get; set; }
         public int Payout { get; } = 2;
+
+        public NeighbourBet(int firstNumber, int secondNumber)
+        {
+            Neighbours = new int[] { firstNumber, secondNumber};
+        }
 
         public double GetReturnStake()
         {
