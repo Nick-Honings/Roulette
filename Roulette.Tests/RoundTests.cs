@@ -48,6 +48,7 @@ namespace Roulette.Tests
             // Arrange
             round.AddResult(expected);
 
+
             // Act
             Result result = round.GetResult();
 
