@@ -22,8 +22,11 @@ namespace Roulette.Users
 
         public void MakeBet(IBet bet, double stake)
         {
-            bet.Stake = stake;
-            CurrentBet = bet;
+            if (bet != null)
+            {
+                bet.Stake = stake;
+                CurrentBet = bet; 
+            }
         }
     }
 }

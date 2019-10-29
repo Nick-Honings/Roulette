@@ -65,6 +65,7 @@
     <Compile Include="RoundTests.cs" />
     <Compile Include="TestData\RoomTestsData.cs" />
     <Compile Include="UserContainerTests.cs" />
+    <Compile Include="UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="xunit.runner.json" />
