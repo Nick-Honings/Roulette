@@ -2,7 +2,7 @@
 
 namespace Roulette.Users
 {
-    public class User : BaseUser
+    public class User : BaseUser, IPlayer, IUser
     {
         public string Email { get; set; }
         public int Age { get; set; }
@@ -25,7 +25,7 @@ namespace Roulette.Users
             if (bet != null)
             {
                 bet.Stake = stake;
-                CurrentBet = bet; 
+                CurrentBet = bet;
             }
         }
     }

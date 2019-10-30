@@ -8,7 +8,7 @@ namespace Roulette.Users
 {
     public class BaseUser
     {
-        public string Name { get; set; }
+        public string Name { get; internal set; }
         public string Password { get; set; }
 
         public bool VerifyLogin()

@@ -12,13 +12,13 @@ namespace Roulette.Tests
     public class RoomTests
     {
         Room room;
-        User user;
+        IPlayer player;
         Round round;
 
         public RoomTests()
         {
             room = new Room("Speed roulette");
-            user = new User("test");
+            player = new User("test");
             round = new Round(1);
         }
 
@@ -61,12 +61,12 @@ namespace Roulette.Tests
             int expected = 1;
 
             // Act
-            room.AddUser(user);
+            room.AddUser(player);
             int result = room.Players.Count;
 
             // Assert
             Assert.Equal(expected, result);
-            Assert.Equal(user, room.Players[0]);
+            Assert.Equal(player, room.Players[0]);
         }
 
         [Fact]
@@ -74,10 +74,10 @@ namespace Roulette.Tests
         {
             // Arrange
             int expected = 0;
-            room.AddUser(user);
+            room.AddUser(player);
 
             // Act
-            room.RemoveUser(user);
+            room.RemoveUser(player);
             int result = room.Players.Count;
 
             // Assert
@@ -90,14 +90,14 @@ namespace Roulette.Tests
         public void UpdateUserBalance_ShouldUpdate(Result betResult, IBet bet, double expected)
         {
             // Arrange            
-            room.AddUser(user);
-            user.MakeBet(bet, 10);
+            room.AddUser(player);
+            player.MakeBet(bet, 10);
             room.AddRound(round);
             room.Rounds[0].AddResult(betResult);
 
             // Act
             room.UpdateUserBalance();
-            double result = user.Balance;
+            double result = player.Balance;
 
             // Assert
             Assert.Equal(expected, result);
@@ -108,14 +108,14 @@ namespace Roulette.Tests
         public void UpdateUserBalance_ShouldDoNothing(Result betResult, IBet bet, double expected)
         {
             // Arrange
-            room.AddUser(user);
-            user.MakeBet(bet, 10);
+            room.AddUser(player);
+            player.MakeBet(bet, 10);
             room.AddRound(round);
             room.Rounds[0].AddResult(betResult);
 
             // Act
             room.UpdateUserBalance();
-            double result = user.Balance;
+            double result = player.Balance;
 
             // Assert
             Assert.Equal(expected, result);

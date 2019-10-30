@@ -17,14 +17,14 @@ namespace Roulette
         public int RoundTime { get; set; } = 30;
 
         public List<Round> Rounds { get; private set; }
-        public List<IPlayer> Players { get; private set; }
+        public List<User> Players { get; private set; }
 
 
         public Room(string name)
         {
             Name = name;
             Rounds = new List<Round>();
-            Players = new List<IPlayer>();
+            Players = new List<User>();
         }
 
         public void AddRound(Round round)
@@ -39,49 +39,49 @@ namespace Roulette
             Rounds.Add(round);
         }
 
-        public void AddUser(IPlayer player)
+        public void AddUser(User user)
         {
-            Players.Add(player);
+            Players.Add(user);
         }
 
-        public void RemoveUser(IPlayer player)
+        public void RemoveUser(User user)
         {
-            Players.Remove(player);
+            Players.Remove(user);
         }
 
         public void UpdateUserBalance()
         {
             Result result = Rounds[Rounds.Count - 1].GetResult();
 
-            foreach ( IPlayer p in Players)
+            foreach ( User user in Players)
             {
-                IBet bet = p.CurrentBet;
+                IBet bet = user.CurrentBet;
                 if(bet is ColorBet cBet)
                 {
                     if(cBet.Color == result.Color)
                     {
-                        p.Balance += cBet.GetReturnStake();
+                        user.Balance += cBet.GetReturnStake();
                     }
                 }
                 if (bet is EvenUnevenBet eBet)
                 {
                     if (eBet.IsEven == result.IsEven)
                     {
-                        p.Balance += eBet.GetReturnStake();
+                        user.Balance += eBet.GetReturnStake();
                     }
                 }
                 if (bet is NeighbourBet nBet)
                 {
                     if (nBet.Neighbours[0] == result.Number | nBet.Neighbours[1] == result.Number)
                     {
-                        p.Balance += nBet.GetReturnStake();
+                        user.Balance += nBet.GetReturnStake();
                     }
                 }
                 if (bet is SingleNumberBet sBet)
                 {
                     if (sBet.Number == result.Number)
                     {
-                        p.Balance += sBet.GetReturnStake();
+                        user.Balance += sBet.GetReturnStake();
                     }
                 }
             }
