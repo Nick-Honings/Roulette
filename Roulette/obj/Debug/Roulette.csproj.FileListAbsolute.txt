@@ -3,3 +3,8 @@ C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individ
 C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette\obj\Debug\Roulette.csprojAssemblyReference.cache
 C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette\obj\Debug\Roulette.dll
 C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette\obj\Debug\Roulette.pdb
+C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\Roulette.dll
+C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\Roulette.pdb
+C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\obj\Debug\Roulette.csprojAssemblyReference.cache
+C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\obj\Debug\Roulette.dll
+C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\obj\Debug\Roulette.pdb

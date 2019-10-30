@@ -19,6 +19,8 @@ namespace Roulette
         public List<Round> Rounds { get; private set; }
         public List<IPlayer> Players { get; private set; }
 
+        private int numberOfRounds = 1;
+
 
         public Room(string name)
         {
@@ -36,7 +38,9 @@ namespace Roulette
                     return;
                 }
             }
+            round.RoundId = numberOfRounds;
             Rounds.Add(round);
+            numberOfRounds++;
         }
 
         public void AddUser(IPlayer player)

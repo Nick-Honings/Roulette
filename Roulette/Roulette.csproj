@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BattleStructure\Battle.cs" />
+    <Compile Include="BattleStructure\BattleContainer.cs" />
     <Compile Include="Bets\ColorBet.cs" />
     <Compile Include="Bets\EvenUnevenBet.cs" />
     <Compile Include="Bets\NeighbourBet.cs" />
@@ -54,16 +56,14 @@
     <Compile Include="Users\IPlayer.cs" />
     <Compile Include="Users\IUser.cs" />
     <Compile Include="Users\Register.cs" />
-    <Compile Include="Result.cs" />
-    <Compile Include="Room.cs" />
-    <Compile Include="RoomContainer.cs" />
-    <Compile Include="Round.cs" />
+    <Compile Include="RoomStructure\Result.cs" />
+    <Compile Include="RoomStructure\Room.cs" />
+    <Compile Include="RoomStructure\RoomContainer.cs" />
+    <Compile Include="RoomStructure\Round.cs" />
     <Compile Include="Users\BaseUser.cs" />
     <Compile Include="Users\User.cs" />
     <Compile Include="Users\UserContainer.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BattleStructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

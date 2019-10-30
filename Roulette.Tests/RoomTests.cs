@@ -19,7 +19,7 @@ namespace Roulette.Tests
         {
             room = new Room("Speed roulette");
             player = new User("test");
-            round = new Round(1);
+            round = new Round();
         }
 
 
@@ -39,19 +39,26 @@ namespace Roulette.Tests
         }
 
         [Fact]
-        public void AddRound_ShouldNotWorkWithDuplicateID()
+        public void AddRound_ShouldIncrementID()
         {
             // Arrange
-            int expected = 1;
+            int expected1 = 1;
+            int expected2 = 2;
+            int expected3 = 3;
+
             room.AddRound(round);
+            room.AddRound(new Round());
+            room.AddRound(new Round());
 
             // Act
-            room.AddRound(new Round(1));
-            int result = room.Rounds.Count;
+            int result1 = room.Rounds[0].RoundId;
+            int result2 = room.Rounds[1].RoundId;
+            int result3 = room.Rounds[2].RoundId;
 
             // Assert
-            Assert.Equal(expected, result);
-
+            Assert.Equal(expected1, result1);
+            Assert.Equal(expected2, result2);
+            Assert.Equal(expected3, result3);
         }
 
         [Fact]
