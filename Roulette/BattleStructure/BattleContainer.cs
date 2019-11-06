@@ -39,5 +39,10 @@ namespace Roulette.BattleStructure
             }
         }
 
+        public void UpdateUserBalance()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

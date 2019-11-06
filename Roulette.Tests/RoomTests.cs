@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using FluentAssertions;
+
 using Roulette.Tests.TestData;
 using Roulette.Users;
 
@@ -28,14 +30,16 @@ namespace Roulette.Tests
         {
             // Arrange
             int expected = 1;
+            round.RoundId = 1;
+            round.TimeLeft = 30;
 
             // Act
-            room.AddRound(round);
+            room.StartNewRound();
             int result = room.Rounds.Count;
 
             // Assert
             Assert.Equal(expected, result);
-            Assert.Equal(round, room.Rounds[0]);
+            round.Should().BeEquivalentTo(room.Rounds[0]);
         }
 
         [Fact]
@@ -46,9 +50,9 @@ namespace Roulette.Tests
             int expected2 = 2;
             int expected3 = 3;
 
-            room.AddRound(round);
-            room.AddRound(new Round());
-            room.AddRound(new Round());
+            room.StartNewRound();
+            room.StartNewRound();
+            room.StartNewRound();
 
             // Act
             int result1 = room.Rounds[0].RoundId;
@@ -99,7 +103,7 @@ namespace Roulette.Tests
             // Arrange            
             room.AddUser(player);
             player.MakeBet(bet, 10);
-            room.AddRound(round);
+            room.StartNewRound();
             room.Rounds[0].AddResult(betResult);
 
             // Act
@@ -117,7 +121,7 @@ namespace Roulette.Tests
             // Arrange
             room.AddUser(player);
             player.MakeBet(bet, 10);
-            room.AddRound(round);
+            room.StartNewRound();
             room.Rounds[0].AddResult(betResult);
 
             // Act
@@ -126,6 +130,13 @@ namespace Roulette.Tests
 
             // Assert
             Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void RoundTimer_ShouldRaiseEvent()
+        {
+            // Arrange
+            room.StartNewRound();
         }
     }
 }

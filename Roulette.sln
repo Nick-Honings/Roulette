@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roulette", "Roulette\Roulet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roulette.Tests", "Roulette.Tests\Roulette.Tests.csproj", "{DC2B98B8-C476-4B7D-9227-2EB089C26C0B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{BE23886D-0A3A-45F0-BCBD-D0E1B4E1F0AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Logic", "Business Logic", "{4621B521-2024-4F8A-B5BB-8382659DCAF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +28,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BFC02173-4778-4C07-BD5E-39A976F7236B} = {4621B521-2024-4F8A-B5BB-8382659DCAF6}
+		{DC2B98B8-C476-4B7D-9227-2EB089C26C0B} = {BE23886D-0A3A-45F0-BCBD-D0E1B4E1F0AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39184324-E0A0-4CAC-99DE-9186A725F4C4}
