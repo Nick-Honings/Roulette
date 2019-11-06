@@ -29,16 +29,13 @@ namespace Roulette
             Players = new List<IPlayer>();
         }
 
-        public void AddRound(Round round)
+        public void StartNewRound()
         {
-            foreach (Round r in Rounds)
+            Round round = new Round()
             {
-                if (r.RoundId == round.RoundId)
-                {
-                    return;
-                }
-            }
-            round.RoundId = numberOfRounds;
+                RoundId = numberOfRounds,
+                TimeLeft = RoundTime
+            };
             Rounds.Add(round);
             numberOfRounds++;
         }
