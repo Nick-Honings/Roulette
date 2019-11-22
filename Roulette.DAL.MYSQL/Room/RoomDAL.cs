@@ -47,9 +47,8 @@ namespace Roulette.DAL.MYSQL.Room
                 using (MySqlConnection conn = new MySqlConnection(ConnectionHelper.CnnVal("DemoDB")))
                 {
                     conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand("INSERT INTO room (Id, Name,Capacity, StakeUpLim,StakeLowLim,RoundTime) VALUES(@Id, @Name,@Capacity,@StakeUpLim,@StakeLowLim,@RoundTime)", conn))
+                    using (MySqlCommand cmd = new MySqlCommand("INSERT INTO room (Name,Capacity, StakeUpLim,StakeLowLim,RoundTime) VALUES(@Name,@Capacity,@StakeUpLim,@StakeLowLim,@RoundTime)", conn))
                     {
-                        cmd.Parameters.AddWithValue("@Id", dto.Id);
                         cmd.Parameters.AddWithValue("@Name", dto.Name);
                         cmd.Parameters.AddWithValue("@Capacity", dto.Capacity);
                         cmd.Parameters.AddWithValue("@StakeUpLim", dto.StakeUpLim);

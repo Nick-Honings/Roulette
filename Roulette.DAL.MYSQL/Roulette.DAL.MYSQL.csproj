@@ -61,6 +61,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Battle\BattleDAL.cs" />
+    <Compile Include="Battle\BattleDTO.cs" />
+    <Compile Include="Bet\BetDAL.cs" />
+    <Compile Include="Bet\BetDTO.cs" />
     <Compile Include="News\NewsItemDAL.cs" />
     <Compile Include="News\NewsItemDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

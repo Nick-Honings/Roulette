@@ -1,4 +1,5 @@
 ﻿using InterfaceLayerBD;
+using InterfaceLayerBD.Bet;
 using System;
 
 namespace Roulette.Users
@@ -14,6 +15,7 @@ namespace Roulette.Users
         public IBet CurrentBet { get; private set; }
 
         private IUserDAL userDAL;
+        
 
         public User(string name, IUserDAL dal)
         {
@@ -39,6 +41,7 @@ namespace Roulette.Users
             {
                 bet.Stake = stake;
                 CurrentBet = bet;
+                
             }
         }
     }
