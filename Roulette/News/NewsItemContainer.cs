@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterfaceLayerBD.News;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,26 +12,55 @@ namespace Roulette.News
         public List<NewsItem> NewsItems { get; private set; }
         public int Index { get; private set; } = 0;
 
-        public NewsItemContainer()
+        private INewsItemContainerDAL containerDAL;
+
+        public NewsItemContainer(INewsItemContainerDAL dAL)
         {
             NewsItems = new List<NewsItem>();
+            containerDAL = dAL;
         }
 
-        public void AddNewsItem(NewsItem news)
+        public bool AddNewsItem(NewsItem news)
         {
             if (news != null)
             {
                 NewsItems.Add(news);
+                INewsItemDTO dto = new NewsItem(news.Title, null)
+                {
+                    Description = news.Description,
+                    date = news.date
+                };
+                if(containerDAL.Save(dto))
+                {
+                    return true;
+                }                
             }
+            return false;
         }
 
 
-        public void RemoveNewsItem(NewsItem news)
+        public bool RemoveNewsItem(NewsItem news)
         {
             if (news != null)
             {
-                NewsItems.Remove(news); 
+                NewsItems.Remove(news);
+                if(containerDAL.Delete(news.Id))
+                {
+                    return true;
+                }                
             }
+            return false;
+        }
+
+        public List<NewsItem> GetAll()
+        {
+            List<NewsItem> newsItems = new List<NewsItem>();
+            var dtos = containerDAL.GetAllNewsItems();
+            foreach (var d in dtos)
+            {
+                newsItems.Add(ExtractNewsItem(d));
+            }
+            return newsItems;
         }
 
         public NewsItem GetNextNewsItem()
@@ -38,6 +68,15 @@ namespace Roulette.News
             NewsItem output = NewsItems[Index];
             Index++;
             return output;
+        }
+
+        private NewsItem ExtractNewsItem(INewsItemDTO dto)
+        {
+            return new NewsItem(dto.Title, null)
+            {
+                Description = dto.Description,
+                date = dto.date
+            };
         }
     }
 }

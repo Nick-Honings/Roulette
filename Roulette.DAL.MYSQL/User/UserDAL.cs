@@ -9,7 +9,7 @@ using InterfaceLayerBD;
 
 namespace Roulette.DAL.MYSQL
 {
-    public class UserContainerDAL : IUserContainerDAL, IUserDAL
+    public class UserDAL : IUserContainerDAL, IUserDAL
     {
         // Get all users
         // -get full user profile

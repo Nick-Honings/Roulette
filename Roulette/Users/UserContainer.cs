@@ -82,7 +82,5 @@ namespace Roulette.Users
                 Balance = dto.Balance
             };
         }
-
-
     }
 }

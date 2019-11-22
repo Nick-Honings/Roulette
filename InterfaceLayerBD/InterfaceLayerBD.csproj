@@ -41,9 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IUserContainerDAL.cs" />
-    <Compile Include="IUserDAL.cs" />
-    <Compile Include="IUserDTO.cs" />
+    <Compile Include="News\INewsItemDAL.cs" />
+    <Compile Include="News\INewsItemContainerDAL.cs" />
+    <Compile Include="News\INewsItemDTO.cs" />
+    <Compile Include="Room\IRoomContainerDAL.cs" />
+    <Compile Include="Room\IRoomDAL.cs" />
+    <Compile Include="Room\IRoomDTO.cs" />
+    <Compile Include="User\IUserContainerDAL.cs" />
+    <Compile Include="User\IUserDAL.cs" />
+    <Compile Include="User\IUserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

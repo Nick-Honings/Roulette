@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InterfaceLayerBD.Room;
 using Roulette.Bets;
 using Roulette.Users;
 
 namespace Roulette
 {
-    public class Room
+    public class Room : IRoomDTO
     {
+        public int Id { get; set; }
         public string Name { get; private set; }
         public int Capacity { get; set; } = 20;
         public double StakeUpLim { get; set; } = 2500;
@@ -20,13 +22,14 @@ namespace Roulette
         public List<IPlayer> Players { get; private set; }
 
         private int numberOfRounds = 1;
+        private IRoomDAL RoomDAL;
 
-
-        public Room(string name)
+        public Room(string name, IRoomDAL dAL)
         {
             Name = name;
             Rounds = new List<Round>();
             Players = new List<IPlayer>();
+            RoomDAL = dAL;
         }
 
         public void StartNewRound()
@@ -42,7 +45,11 @@ namespace Roulette
 
         public void AddUser(IPlayer player)
         {
-            Players.Add(player);
+            if (player != null)
+            {
+                Players.Add(player);
+
+            }        
         }
 
         public void RemoveUser(IPlayer player)
