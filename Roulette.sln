@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Logic", "Business Logic", "{4621B521-2024-4F8A-B5BB-8382659DCAF6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rouletette.DAL.MYSQL", "Rouletette.DAL.MYSQL", "{152C34A4-5167-4CC6-908E-7276CB164F38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roulette.DAL.MYSQL", "Roulette.DAL.MYSQL\Roulette.DAL.MYSQL.csproj", "{14A879EF-DF04-4967-A058-5B8C5981AA95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,10 @@ Global
 		{DC2B98B8-C476-4B7D-9227-2EB089C26C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC2B98B8-C476-4B7D-9227-2EB089C26C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC2B98B8-C476-4B7D-9227-2EB089C26C0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14A879EF-DF04-4967-A058-5B8C5981AA95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14A879EF-DF04-4967-A058-5B8C5981AA95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14A879EF-DF04-4967-A058-5B8C5981AA95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14A879EF-DF04-4967-A058-5B8C5981AA95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BFC02173-4778-4C07-BD5E-39A976F7236B} = {4621B521-2024-4F8A-B5BB-8382659DCAF6}
 		{DC2B98B8-C476-4B7D-9227-2EB089C26C0B} = {BE23886D-0A3A-45F0-BCBD-D0E1B4E1F0AF}
+		{14A879EF-DF04-4967-A058-5B8C5981AA95} = {152C34A4-5167-4CC6-908E-7276CB164F38}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39184324-E0A0-4CAC-99DE-9186A725F4C4}
