@@ -1,4 +1,5 @@
-﻿using InterfaceLayerBD;
+﻿using DataAccesFactory;
+using InterfaceLayerBD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace Roulette.Users
             if(user != null)
             {
                 Users.Add(user);
-                IUserDTO dto = new User(user.Name, null)
+                IUserDTO dto = new User(user.Name, Factory.CreateUserDAL())
                 {
                     Password = user.Password,
                     Email = user.Email,

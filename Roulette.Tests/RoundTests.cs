@@ -14,7 +14,7 @@ namespace Roulette.Tests
 
         public RoundTests()
         {
-            round = new Round();
+            round = new Round(30);
             expected = new Result(Color.Black, 10);
         }
 

@@ -33,9 +33,10 @@ namespace Roulette
         
         private Timer roundTimer;
 
-        public Round()
-        {            
-            roundTimer = new Timer(TimeLeft);
+        public Round(int roundTime)
+        {
+            TimeLeft = roundTime;
+            roundTimer = new Timer(roundTime);
             roundTimer.Elapsed += RoundTimer_Elapsed;
             roundTimer.Start();
         }

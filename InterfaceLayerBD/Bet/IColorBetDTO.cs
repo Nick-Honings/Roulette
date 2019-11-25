@@ -9,7 +9,7 @@ namespace InterfaceLayerBD.Bet
     public interface IColorBetDTO
     {
         // Color value, must be enum
-        int Color { get; set; }
+        int color { get; }
         double Stake { get; set; }
         int Payout { get; }
     }

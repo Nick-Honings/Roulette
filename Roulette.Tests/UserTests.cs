@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xunit;
 using Roulette.Users;
 using Roulette.Bets;
+using DataAccesFactory;
 
 namespace Roulette.Tests
 {
@@ -13,11 +14,12 @@ namespace Roulette.Tests
     {
         User user;
         IBet bet;
+        
 
         public UserTests()
         {
-            user = new User("test");
-            bet = new ColorBet(Color.Black);
+            user = new User("test", TestFactory.CreateTestUserDAL());
+            bet = new ColorBet(Color.Black, null);
         }
 
         [Fact]

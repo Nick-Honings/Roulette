@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace InterfaceLayerBD.Bet
 {
-    public interface IBetDAL<T> where T: IColorBetDTO
+    public interface IBetDAL
     {
         bool Save(IBetDTO dto);
-        void Insert(object[] param);
+        bool Insert<T>(object[] param);
     }
 }

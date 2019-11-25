@@ -22,25 +22,13 @@ namespace Roulette
         public bool AddRoom(Room room)
         {
             if (room != null)
-            {
-                foreach (Room r in Rooms)
+            {                                
+                IRoomDTO dto = room;
+                if(containerDAL.Save(dto))
                 {
-                    if (r.Name != room.Name)
-                    {
-                        Rooms.Add(room);
-                        IRoomDTO dTO = new Room(room.Name, null)
-                        {
-                            Capacity = room.Capacity,
-                            StakeUpLim = room.StakeUpLim,
-                            StakeLowLim = room.StakeLowLim,
-                            RoundTime = room.RoundTime
-                        };
-                        if(containerDAL.Save(dTO))
-                        {
-                            return true;
-                        }                        
-                    }
-                }                
+                    Rooms.Add(room);
+                    return true;
+                }                              
             }
             return false;
         }

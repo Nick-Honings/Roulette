@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceLayerBD", "Interfa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roulette.DAL.MYSQL.Tests", "Roulette.DAL.MYSQL.Tests\Roulette.DAL.MYSQL.Tests.csproj", "{BD1F526A-C656-40E0-BB29-77A335EBB0D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccesFactory", "DataAccesFactory\DataAccesFactory.csproj", "{318DECB7-90A4-4B8C-96C5-A8EBFE6D2E1F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{BD1F526A-C656-40E0-BB29-77A335EBB0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD1F526A-C656-40E0-BB29-77A335EBB0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD1F526A-C656-40E0-BB29-77A335EBB0D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{318DECB7-90A4-4B8C-96C5-A8EBFE6D2E1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{318DECB7-90A4-4B8C-96C5-A8EBFE6D2E1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{318DECB7-90A4-4B8C-96C5-A8EBFE6D2E1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{318DECB7-90A4-4B8C-96C5-A8EBFE6D2E1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

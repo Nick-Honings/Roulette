@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccesFactory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,8 @@ namespace Roulette.Tests
 
         public RoomContainerTests()
         {
-            container = new RoomContainer();
-            room = new Room("Speed Roulette");
+            container = new RoomContainer(TestFactory.CreateTestRoomContainerDAL());
+            room = new Room("Speed Roulette", TestFactory.CreateTestRoomDAL());
         }
 
         [Fact]
@@ -49,22 +50,6 @@ namespace Roulette.Tests
         }
 
         [Fact]
-        public void AddRoom_ShouldNotAddWithDuplicateName()
-        {
-            // Arrange
-            int expected = 1;
-            container.AddRoom(room);
-
-            // Act
-            container.AddRoom(new Room("Speed Roulette"));
-            int result = container.Rooms.Count;
-
-            // Assert
-            Assert.Equal(expected, result);
-            Assert.Equal(room, container.Rooms[0]);
-        }
-
-        [Fact]
         public void RemoveRoom_ShouldWorkWithOneEntry()
         {
             // Arrange
@@ -85,7 +70,7 @@ namespace Roulette.Tests
             // Arrange
             int expected = 1;
             container.AddRoom(room);
-            container.AddRoom(new Room("Live Roulette"));
+            container.AddRoom(new Room("Live Roulette", TestFactory.CreateTestRoomDAL()));
 
             // Act
             container.RemoveRoom(room);

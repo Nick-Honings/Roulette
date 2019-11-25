@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Roulette.DAL.MYSQL.Bet
 {
-    public class BetDAL<T>
+    public class BetDAL
     {
         
         public bool Save(IBetDTO dto)
@@ -43,11 +43,23 @@ namespace Roulette.DAL.MYSQL.Bet
             }
         }
 
-        private List<PropertyInfo> getUnderLyingProperties()
+        //private List<PropertyInfo> getUnderLyingProperties()
+        //{
+        //    List<PropertyInfo> properties = new List<PropertyInfo>();
+
+        //    if(typeof(T).Equals(typeof(IColorBetDTO)))
+        //    {
+        //        BetDTO dto = new BetDTO();
+        //        properties = dto.GetType().GetProperties().ToList();
+        //    }
+        //    return properties;
+        //}
+
+        private List<PropertyInfo> getUnderLyingProperties<T>()
         {
             List<PropertyInfo> properties = new List<PropertyInfo>();
 
-            if(typeof(T).Equals(typeof(IColorBetDTO)))
+            if (typeof(T).Equals(typeof(IColorBetDTO)))
             {
                 BetDTO dto = new BetDTO();
                 properties = dto.GetType().GetProperties().ToList();
@@ -67,10 +79,46 @@ namespace Roulette.DAL.MYSQL.Bet
             return properties;
         }
 
-        public void Insert(object[] param)
+        // Could work with an object passed as extra parameter
+        // object: IcolorbetDTO
+        //public void Insert(object[] param)
+        //{
+        //    string sql = "INSERT INTO bet (Stake,Odd,Color,Number,Even,FirstNumber,SecondNumber) VALUES(@Stake,@Odd,@Color,@Number,@Even,@FirstNumber,@SecondNumber)";
+        //    var properties = getUnderLyingProperties();
+        //    properties = RemoveUnusedProps(sql, properties);
+
+        //    try
+        //    {
+        //        using (MySqlConnection conn = new MySqlConnection(ConnectionHelper.CnnVal("DemoDB")))
+        //        {
+        //            conn.Open();
+        //            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+        //            {
+        //                for (int i = 0; i < properties.Count; i++)
+        //                {
+        //                    string propName = properties[i].Name;
+        //                    var parameter = cmd.CreateParameter();
+        //                    parameter.ParameterName = "@" + propName;
+        //                    parameter.Value = param[i];
+        //                    cmd.Parameters.Add(parameter);
+        //                }
+        //                cmd.ExecuteNonQuery();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message, ex);
+        //    }
+        //}
+
+
+
+        public bool Insert<T>(object[] param) where T: IColorBetDTO
         {
             string sql = "INSERT INTO bet (Stake,Odd,Color,Number,Even,FirstNumber,SecondNumber) VALUES(@Stake,@Odd,@Color,@Number,@Even,@FirstNumber,@SecondNumber)";
-            var properties = getUnderLyingProperties();
+            
+            var properties = getUnderLyingProperties<T>();
             properties = RemoveUnusedProps(sql, properties);
 
             try
@@ -88,14 +136,20 @@ namespace Roulette.DAL.MYSQL.Bet
                             parameter.Value = param[i];
                             cmd.Parameters.Add(parameter);
                         }
-                        cmd.ExecuteNonQuery();
+                        if(cmd.ExecuteNonQuery() > 0)
+                        {
+                            return true;
+                        }
+                        return false;
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message, ex);
+                throw new Exception(ex.Message, ex);                
             }
         }
     }
+
+
 }

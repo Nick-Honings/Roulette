@@ -66,6 +66,10 @@
     <Compile Include="Users\UserContainer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataAccesFactory\DataAccesFactory.csproj">
+      <Project>{318DECB7-90A4-4B8C-96C5-A8EBFE6D2E1F}</Project>
+      <Name>DataAccesFactory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InterfaceLayerBD\InterfaceLayerBD.csproj">
       <Project>{7F4EBF2F-53A3-451B-A571-9064255F7FF5}</Project>
       <Name>InterfaceLayerBD</Name>

@@ -34,10 +34,9 @@ namespace Roulette
 
         public void StartNewRound()
         {
-            Round round = new Round()
+            Round round = new Round(RoundTime)
             {
-                RoundId = numberOfRounds,
-                TimeLeft = RoundTime
+                RoundId = numberOfRounds,                
             };
             Rounds.Add(round);
             numberOfRounds++;

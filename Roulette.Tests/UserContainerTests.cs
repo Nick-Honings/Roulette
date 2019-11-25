@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using Roulette.Users;
+using DataAccesFactory;
 
 namespace Roulette.Tests
 {
@@ -14,10 +15,11 @@ namespace Roulette.Tests
         User user;
         User emptyUser;
 
+
         public UserContainerTests()
         {
-            container = new UserContainer();
-            user = new User("Test");
+            container = new UserContainer(TestFactory.CreateTestUserContainerDAL());
+            user = new User("Test", TestFactory.CreateTestUserDAL());
         }
 
         [Fact]

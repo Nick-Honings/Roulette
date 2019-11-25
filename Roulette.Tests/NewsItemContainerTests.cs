@@ -16,8 +16,8 @@ namespace Roulette.Tests
 
         public NewsItemContainerTests()
         {
-            container = new NewsItemContainer();
-            newsItem = new NewsItem("Special deal");
+            container = new NewsItemContainer(null);
+            newsItem = new NewsItem("Special deal", null);
         }
 
         [Fact]
@@ -57,7 +57,7 @@ namespace Roulette.Tests
             container.AddNewsItem(newsItem);
 
             // Act
-            container.AddNewsItem(new NewsItem("Special deal"));
+            container.AddNewsItem(new NewsItem("Special deal", null));
             int result = container.NewsItems.Count;
 
             // Assert
@@ -86,7 +86,7 @@ namespace Roulette.Tests
             // Arrange
             int expected = 1;
             container.AddNewsItem(newsItem);
-            container.AddNewsItem(new NewsItem("Live Roulette"));
+            container.AddNewsItem(new NewsItem("Live Roulette", null));
 
             // Act
             container.RemoveNewsItem(newsItem);

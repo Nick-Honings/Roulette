@@ -58,13 +58,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="xunit.runner.json" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Roulette.DAL.MYSQL\Roulette.DAL.MYSQL.csproj">
+      <Project>{14a879ef-df04-4967-a058-5b8c5981aa95}</Project>
+      <Name>Roulette.DAL.MYSQL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -14,7 +14,7 @@ namespace Roulette.Tests.TestData
         {
 
             Result r1 = new Result(Color.Black, 26);
-            IBet b1 = new ColorBet(Color.Black);
+            IBet b1 = new ColorBet(Color.Black, null);
             double e1 = 20;
 
             Result r2 = new Result(Color.Red, 12);
@@ -42,7 +42,7 @@ namespace Roulette.Tests.TestData
         public class NegativeBets : IEnumerable<object[]>
         {
             Result r1 = new Result(Color.Red, 12);
-            IBet b1 = new ColorBet(Color.Black);
+            IBet b1 = new ColorBet(Color.Black, null);
             double e1 = 0;
 
             Result r2 = new Result(Color.Red, 11);

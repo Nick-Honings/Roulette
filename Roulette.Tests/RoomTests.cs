@@ -8,6 +8,7 @@ using FluentAssertions;
 
 using Roulette.Tests.TestData;
 using Roulette.Users;
+using DataAccesFactory;
 
 namespace Roulette.Tests
 {
@@ -19,9 +20,9 @@ namespace Roulette.Tests
 
         public RoomTests()
         {
-            room = new Room("Speed roulette");
-            player = new User("test");
-            round = new Round();
+            room = new Room("Speed roulette", TestFactory.CreateTestRoomDAL());
+            player = new User("test", TestFactory.CreateTestUserDAL());
+            round = new Round(30);
         }
 
 
@@ -40,29 +41,6 @@ namespace Roulette.Tests
             // Assert
             Assert.Equal(expected, result);
             round.Should().BeEquivalentTo(room.Rounds[0]);
-        }
-
-        [Fact]
-        public void AddRound_ShouldIncrementID()
-        {
-            // Arrange
-            int expected1 = 1;
-            int expected2 = 2;
-            int expected3 = 3;
-
-            room.StartNewRound();
-            room.StartNewRound();
-            room.StartNewRound();
-
-            // Act
-            int result1 = room.Rounds[0].RoundId;
-            int result2 = room.Rounds[1].RoundId;
-            int result3 = room.Rounds[2].RoundId;
-
-            // Assert
-            Assert.Equal(expected1, result1);
-            Assert.Equal(expected2, result2);
-            Assert.Equal(expected3, result3);
         }
 
         [Fact]
@@ -130,13 +108,6 @@ namespace Roulette.Tests
 
             // Assert
             Assert.Equal(expected, result);
-        }
-
-        [Fact]
-        public void RoundTimer_ShouldRaiseEvent()
-        {
-            // Arrange
-            room.StartNewRound();
         }
     }
 }
