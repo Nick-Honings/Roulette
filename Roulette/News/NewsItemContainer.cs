@@ -23,15 +23,12 @@ namespace Roulette.News
         public bool AddNewsItem(NewsItem news)
         {
             if (news != null)
-            {
-                NewsItems.Add(news);
-                INewsItemDTO dto = new NewsItem(news.Title, null)
+            {                         
+                INewsItemDTO dTO = news;               
+
+                if(containerDAL.Save(dTO))
                 {
-                    Description = news.Description,
-                    date = news.date
-                };
-                if(containerDAL.Save(dto))
-                {
+                    NewsItems.Add(news);
                     return true;
                 }                
             }

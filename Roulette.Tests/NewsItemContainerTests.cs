@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using Roulette.News;
+using DataAccesFactory;
 
 namespace Roulette.Tests
 {
@@ -16,8 +17,8 @@ namespace Roulette.Tests
 
         public NewsItemContainerTests()
         {
-            container = new NewsItemContainer(null);
-            newsItem = new NewsItem("Special deal", null);
+            container = new NewsItemContainer(TestFactory.CreateTestNewsItemContainerDAL());
+            newsItem = new NewsItem("Special deal", TestFactory.CreateTestNewsItemDAL());
         }
 
         [Fact]

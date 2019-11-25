@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Roulette.DAL.MYSQL.Room
 {
-    public class RoomDAL
+    public class RoomDAL : IRoomContainerDAL, IRoomDAL
     {
         public bool Update(IRoomDTO dto)
         {

@@ -9,16 +9,17 @@ namespace Roulette.Bets
 {
     public class ColorBet : IBet, IColorBetDTO
     {
+        Color _color;
         public Color Color
         {
             get
             {
-                return this.Color;
+                return this._color;
             }
             set
             {
-                this.Color = value;
-                color = (int)this.Color;
+                _color = value;
+                color = (int)value;
             }
         }
         

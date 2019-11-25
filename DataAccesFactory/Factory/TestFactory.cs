@@ -1,5 +1,6 @@
 ﻿using DataAccesFactory.TestDAL;
 using InterfaceLayerBD;
+using InterfaceLayerBD.News;
 using InterfaceLayerBD.Room;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,16 @@ namespace DataAccesFactory
         public static IRoomContainerDAL CreateTestRoomContainerDAL()
         {
             return new TestRoomContainerDAL();
+        }
+
+        public static INewsItemContainerDAL CreateTestNewsItemContainerDAL()
+        {
+            return new TestNewsItemContainerDAL();
+        }
+
+        public static INewsItemDAL CreateTestNewsItemDAL()
+        {
+            return new TestNewsItemDAL();
         }
     }
 }
