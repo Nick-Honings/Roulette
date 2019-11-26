@@ -10,25 +10,72 @@ using System.Threading.Tasks;
 
 namespace Roulette.DAL.MYSQL.Bet
 {
-    public class BetDAL
+    public class BetDAL: IBetDAL
     {
-        
+
+        private List<string> RemoveUnusedProperties(string sql, List<string> properties)
+        {
+            for (int i = properties.Count -1; i >= 0; i--)
+            {
+                if (!sql.Contains(properties[i]))
+                {
+                    properties.RemoveAt(i);
+                }
+            }
+            return properties;
+        }
+
+        private string SQLStringBuilder(List<string> propNames)
+        {
+            string sql = "INSERT INTO bet (";
+            foreach (var p in propNames)
+            {
+                sql += p + ",";
+            }
+            sql = sql.Remove(sql.Length-1);
+            sql += ") VALUES(";
+            foreach (var p in propNames)
+            {
+                sql += $"@{p},"; 
+            }
+            sql = sql.Remove(sql.Length-1);
+            sql += ")";
+
+            return sql;
+        }
+
         public bool Save(IBetDTO dto)
         {
+            //string sql = "INSERT INTO bet (Stake,Odd,Color,Number,Even,FirstNumber,SecondNumber) VALUES(@Stake,@Odd,@Color,@Number,@Even,@FirstNumber,@SecondNumber)";
+            var values = dto.GetInfo();
+            List<string> propNames = new List<string>();
+            List<object> propValues = new List<object>();
+            foreach (var v in values)
+            {
+                propNames.Add(v.Key);
+                propValues.Add(v.Value);
+            }
+
+            string sql = SQLStringBuilder(propNames);
+            
+
+
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(ConnectionHelper.CnnVal("DemoDB")))
                 {
                     conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand("INSERT INTO bet (Stake, Odd, Color, Number,Even,FirstNumber,SecondNumber) VALUES(@Stake, @Odd, @Color, @Number,@Even,@FirstNumber,@SecondNumber)", conn))
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Stake", dto.Stake);
-                        cmd.Parameters.AddWithValue("@Odd", dto.Odd);
-                        cmd.Parameters.AddWithValue("@Color", dto.Color);
-                        cmd.Parameters.AddWithValue("@Number", dto.Number);
-                        cmd.Parameters.AddWithValue("@Even", dto.Even);
-                        cmd.Parameters.AddWithValue("@FirstNumber", dto.FirstNumber);
-                        cmd.Parameters.AddWithValue("@SecondNumber", dto.LastNumber);
+                        for (int i = 0; i < propNames.Count; i++)
+                        {
+                            string propName = propNames[i];
+                            var parameter = cmd.CreateParameter();
+                            parameter.ParameterName = "@" + propName;
+                            parameter.Value = propValues[i];
+                            cmd.Parameters.Add(parameter);
+                        }
+   
                         if (cmd.ExecuteNonQuery() > 0)
                         {
                             return true;
@@ -59,11 +106,11 @@ namespace Roulette.DAL.MYSQL.Bet
         {
             List<PropertyInfo> properties = new List<PropertyInfo>();
 
-            if (typeof(T).Equals(typeof(IColorBetDTO)))
-            {
-                BetDTO dto = new BetDTO();
-                properties = dto.GetType().GetProperties().ToList();
-            }
+            //if (typeof(T).Equals(typeof(IColorBetDTO)))
+            //{
+            //    BetDTO dto = new BetDTO();
+            //    properties = dto.GetType().GetProperties().ToList();
+            //}
             return properties;
         }
 
@@ -79,42 +126,7 @@ namespace Roulette.DAL.MYSQL.Bet
             return properties;
         }
 
-        // Could work with an object passed as extra parameter
-        // object: IcolorbetDTO
-        //public void Insert(object[] param)
-        //{
-        //    string sql = "INSERT INTO bet (Stake,Odd,Color,Number,Even,FirstNumber,SecondNumber) VALUES(@Stake,@Odd,@Color,@Number,@Even,@FirstNumber,@SecondNumber)";
-        //    var properties = getUnderLyingProperties();
-        //    properties = RemoveUnusedProps(sql, properties);
-
-        //    try
-        //    {
-        //        using (MySqlConnection conn = new MySqlConnection(ConnectionHelper.CnnVal("DemoDB")))
-        //        {
-        //            conn.Open();
-        //            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
-        //            {
-        //                for (int i = 0; i < properties.Count; i++)
-        //                {
-        //                    string propName = properties[i].Name;
-        //                    var parameter = cmd.CreateParameter();
-        //                    parameter.ParameterName = "@" + propName;
-        //                    parameter.Value = param[i];
-        //                    cmd.Parameters.Add(parameter);
-        //                }
-        //                cmd.ExecuteNonQuery();
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message, ex);
-        //    }
-        //}
-
-
-
-        public bool Insert<T>(object[] param) where T: IColorBetDTO
+        public bool Insert<T>(object[] param)
         {
             string sql = "INSERT INTO bet (Stake,Odd,Color,Number,Even,FirstNumber,SecondNumber) VALUES(@Stake,@Odd,@Color,@Number,@Even,@FirstNumber,@SecondNumber)";
             

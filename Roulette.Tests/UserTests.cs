@@ -7,6 +7,7 @@ using Xunit;
 using Roulette.Users;
 using Roulette.Bets;
 using DataAccesFactory;
+using Roulette.GameStructure;
 
 namespace Roulette.Tests
 {
@@ -19,7 +20,7 @@ namespace Roulette.Tests
         public UserTests()
         {
             user = new User("test", TestFactory.CreateTestUserDAL());
-            bet = new ColorBet(Color.Black, null);
+            bet = new ColorBet(PocketColor.Black, null);
         }
 
         [Fact]

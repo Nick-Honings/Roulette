@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InterfaceLayerBD.Bet
+namespace Roulette.GameStructure
 {
-    public interface IBetDTO
+    public interface IWheel
     {
-        Dictionary<string, object> GetInfo();
+        IPocket Spin();
     }
 }

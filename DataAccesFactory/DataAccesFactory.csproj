@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factory\Factory.cs" />
+    <Compile Include="TestDAL\TestBetDAL.cs" />
+    <Compile Include="TestDatabase\TestDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDAL\TestNewsItemContainerDAL.cs" />
     <Compile Include="TestDAL\TestNewsItemDAL.cs" />
@@ -61,6 +63,5 @@
       <Name>Roulette.DAL.MYSQL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

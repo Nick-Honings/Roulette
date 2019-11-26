@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InterfaceLayerBD.Bet
+namespace Roulette.GameStructure
 {
-    public interface IBetDTO
+    public enum PocketColor
     {
-        Dictionary<string, object> GetInfo();
+        Undefined,
+        Black,
+        Red,
+        Green
     }
 }

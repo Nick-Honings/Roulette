@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Roulette.GameStructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,10 +12,14 @@ namespace Roulette.Tests
     {
         Round round;
         Result expected;
+        IWheel wheel;
+        IGenerator generator;
 
         public RoundTests()
         {
-            round = new Round(30);
+            generator = new NumberGenerator();
+            wheel = new Wheel(generator);
+            round = new Round(wheel, 30);
             expected = new Result(Color.Black, 10);
         }
 

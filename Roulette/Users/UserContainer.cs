@@ -13,6 +13,8 @@ namespace Roulette.Users
         public List<User> Users { get; private set; }
 
         private IUserContainerDAL ContainerDAL;
+        //Alle dependecies injecteren via deze constructor.
+
         public UserContainer(IUserContainerDAL dAL)
         {
             Users = new List<User>();
@@ -70,13 +72,19 @@ namespace Roulette.Users
         {
             IUserDTO dto = ContainerDAL.GetUserById(id);
             User user = ExtractUser(dto);
-            return user;
+            if (user != null)
+            {
+                return user; 
+            }
+            return null;
         }
 
         private User ExtractUser(IUserDTO dto)
         {
             return new User(dto.Name, null)
             {
+                Id = dto.Id,
+                Password = dto.Password,
                 Email = dto.Email,
                 Age = dto.Age,
                 IsActive = dto.IsActive,

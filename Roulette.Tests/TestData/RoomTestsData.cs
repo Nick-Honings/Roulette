@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Roulette.Bets;
+using Roulette.GameStructure;
 
 namespace Roulette.Tests.TestData
 {
@@ -12,21 +13,20 @@ namespace Roulette.Tests.TestData
     {
         public class PositiveBets : IEnumerable<object[]>
         {
-
-            Result r1 = new Result(Color.Black, 26);
-            IBet b1 = new ColorBet(Color.Black, null);
+            IPocket r1 = new Pocket((PocketNumber)26);
+            IBet b1 = new ColorBet(PocketColor.Black, null);
             double e1 = 20;
 
-            Result r2 = new Result(Color.Red, 12);
+            IPocket r2 = new Pocket((PocketNumber)12);
             IBet b2 = new EvenUnevenBet(true);
             double e2 = 20;
 
-            Result r3 = new Result(Color.Black, 29);
-            IBet b3 = new NeighbourBet(29, 30);
+            IPocket r3 = new Pocket((PocketNumber)29);
+            IBet b3 = new NeighbourBet((PocketNumber)29, (PocketNumber)30);
             double e3 = 20;
 
-            Result r4 = new Result(Color.Black, 8);
-            IBet b4 = new SingleNumberBet(8);
+            IPocket r4 = new Pocket((PocketNumber)8);
+            IBet b4 = new SingleNumberBet((PocketNumber)8);
             double e4 = 350;
 
             public IEnumerator<object[]> GetEnumerator()
@@ -41,20 +41,20 @@ namespace Roulette.Tests.TestData
 
         public class NegativeBets : IEnumerable<object[]>
         {
-            Result r1 = new Result(Color.Red, 12);
-            IBet b1 = new ColorBet(Color.Black, null);
+            IPocket r1 = new Pocket((PocketNumber)12);
+            IBet b1 = new ColorBet(PocketColor.Black, null);
             double e1 = 0;
 
-            Result r2 = new Result(Color.Red, 11);
+            IPocket r2 = new Pocket((PocketNumber)11);
             IBet b2 = new EvenUnevenBet(true);
             double e2 = 0;
 
-            Result r3 = new Result(Color.Black, 29);
-            IBet b3 = new NeighbourBet(15, 16);
+            IPocket r3 = new Pocket((PocketNumber)29);
+            IBet b3 = new NeighbourBet((PocketNumber)15, (PocketNumber)16);
             double e3 = 0;
 
-            Result r4 = new Result(Color.Black, 8);
-            IBet b4 = new SingleNumberBet(15);
+            IPocket r4 = new Pocket((PocketNumber)8);
+            IBet b4 = new SingleNumberBet((PocketNumber)15);
             double e4 = 0;
 
             public IEnumerator<object[]> GetEnumerator()

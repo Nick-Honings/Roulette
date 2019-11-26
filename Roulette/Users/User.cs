@@ -1,5 +1,6 @@
 ﻿using InterfaceLayerBD;
 using InterfaceLayerBD.Bet;
+
 using System;
 
 namespace Roulette.Users
@@ -40,8 +41,8 @@ namespace Roulette.Users
             if (bet != null)
             {
                 bet.Stake = stake;
-                CurrentBet = bet;
-                
+                bet.ID = this.Id;
+                CurrentBet = bet;                
             }
         }
     }

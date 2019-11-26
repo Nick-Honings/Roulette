@@ -44,7 +44,6 @@
     <Compile Include="Bet\IBetDAL.cs" />
     <Compile Include="Bet\IBetDTO.cs" />
     <Compile Include="Bet\IColor.cs" />
-    <Compile Include="Bet\IColorBetDTO.cs" />
     <Compile Include="News\INewsItemDAL.cs" />
     <Compile Include="News\INewsItemContainerDAL.cs" />
     <Compile Include="News\INewsItemDTO.cs" />

@@ -9,6 +9,7 @@ using FluentAssertions;
 using Roulette.Tests.TestData;
 using Roulette.Users;
 using DataAccesFactory;
+using Roulette.GameStructure;
 
 namespace Roulette.Tests
 {
@@ -17,12 +18,16 @@ namespace Roulette.Tests
         Room room;
         IPlayer player;
         Round round;
+        IWheel wheel;
+        IGenerator generator;
 
         public RoomTests()
         {
+            generator = new NumberGenerator();
+            wheel = new Wheel(generator);
             room = new Room("Speed roulette", TestFactory.CreateTestRoomDAL());
             player = new User("test", TestFactory.CreateTestUserDAL());
-            round = new Round(30);
+            round = new Round(wheel, 30);
         }
 
 
@@ -31,6 +36,7 @@ namespace Roulette.Tests
         {
             // Arrange
             int expected = 1;
+
             round.RoundId = 1;
             round.TimeLeft = 30;
 
@@ -39,8 +45,7 @@ namespace Roulette.Tests
             int result = room.Rounds.Count;
 
             // Assert
-            Assert.Equal(expected, result);
-            round.Should().BeEquivalentTo(room.Rounds[0]);
+            Assert.Equal(expected, result);            
         }
 
         [Fact]
@@ -76,13 +81,13 @@ namespace Roulette.Tests
 
         [Theory]
         [ClassData(typeof(RoomTestsData.PositiveBets))]
-        public void UpdateUserBalance_ShouldUpdate(Result betResult, IBet bet, double expected)
+        public void UpdateUserBalance_ShouldUpdate(IPocket betResult, IBet bet, double expected)
         {
             // Arrange            
             room.AddUser(player);
             player.MakeBet(bet, 10);
             room.StartNewRound();
-            room.Rounds[0].AddResult(betResult);
+            room.Rounds[0].Pocket = betResult;
 
             // Act
             room.UpdateUserBalance();
@@ -94,13 +99,13 @@ namespace Roulette.Tests
 
         [Theory]
         [ClassData(typeof(RoomTestsData.NegativeBets))]
-        public void UpdateUserBalance_ShouldDoNothing(Result betResult, IBet bet, double expected)
+        public void UpdateUserBalance_ShouldDoNothing(IPocket betResult, IBet bet, double expected)
         {
             // Arrange
             room.AddUser(player);
             player.MakeBet(bet, 10);
             room.StartNewRound();
-            room.Rounds[0].AddResult(betResult);
+            room.Rounds[0].Pocket = betResult;
 
             // Act
             room.UpdateUserBalance();

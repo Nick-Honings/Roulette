@@ -9,8 +9,16 @@ namespace DataAccesFactory.TestDAL
 {
     public class TestNewsItemDAL : INewsItemDAL
     {
+        private List<INewsItemDTO> newsItems;        
+
+        public TestNewsItemDAL()
+        {            
+            newsItems = TestDB.ReturnNewsTable();
+        }
+
         public bool Update(INewsItemDTO dto)
         {
+            newsItems.Add(dto);
             return true;
         }
     }

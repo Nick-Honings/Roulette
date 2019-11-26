@@ -71,6 +71,7 @@ namespace Roulette.News
         {
             return new NewsItem(dto.Title, null)
             {
+                Id = dto.Id,
                 Description = dto.Description,
                 date = dto.date
             };

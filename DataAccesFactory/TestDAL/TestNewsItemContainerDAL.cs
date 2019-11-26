@@ -8,19 +8,34 @@ using System.Threading.Tasks;
 namespace DataAccesFactory.TestDAL
 {
     public class TestNewsItemContainerDAL : INewsItemContainerDAL
-    {
+    {       
+        private List<INewsItemDTO> news; 
+
+        public TestNewsItemContainerDAL()
+        {           
+            news = TestDB.ReturnNewsTable();
+        }
+
         public bool Delete(int id)
         {
-            return true;
+            var newsitem = news.Find(i => i.Id == id);
+
+            if(newsitem != null)
+            {
+                news.Remove(newsitem);
+                return true;
+            }
+            return false;
         }
 
         public List<INewsItemDTO> GetAllNewsItems()
         {
-            return null;
+            return news;
         }
 
         public bool Save(INewsItemDTO dto)
         {
+            news.Add(dto);
             return true;
         }
     }

@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="BetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserContainerTests.cs" />
     <Compile Include="UserDALTests.cs" />
   </ItemGroup>
   <ItemGroup>

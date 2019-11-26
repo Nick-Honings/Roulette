@@ -1,55 +1,46 @@
 ﻿using InterfaceLayerBD.Bet;
+using Roulette.GameStructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Roulette.Bets
 {
-    public class ColorBet : IBet, IColorBetDTO
+    public class ColorBet : IBet
     {
-        Color _color;
-        public Color Color
-        {
-            get
-            {
-                return this._color;
-            }
-            set
-            {
-                _color = value;
-                color = (int)value;
-            }
-        }
-        
-
-        public int color { get; set; }
+        // Use
+        public int ID { get; set; }
+        public PocketColor Color { get; private set; }     
         public double Stake { get; set; }
-        public int Payout { get; private set; } = 2;
+        public int Odd { get; private set; } = 2;
 
         private IBetDAL betDAL;
 
-        public ColorBet(Color color, IBetDAL dAL)
+        public ColorBet(PocketColor color, IBetDAL dAL)
         {
             Color = color;
             betDAL = dAL;
         }
         public double GetReturnStake()
         {
-            return Stake * Payout;
+            return Stake * Odd;
         }
 
-        public bool Update()
+
+        public Dictionary<string, object> GetInfo()
         {
-            object[] param = new object[] { this.color, this.Stake, this.Payout };
+            Dictionary<string, object> propValue = new Dictionary<string, object>();
+            var properties = this.GetType().GetProperties();
 
-            if(betDAL.Insert<IColorBetDTO>(param))
+            for (int i = 0; i < properties.Length; i++)
             {
-                return true;
+                PropertyInfo prop = properties[i];
+                propValue.Add(prop.Name, prop.GetValue(this, null));
             }
-
-            return false;
+            return propValue;
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Roulette.DAL.MYSQL.Tests
 
             //UserDAL dAL = new UserDAL();
             //dAL.Update(dto);
+            
         }
     }
 }

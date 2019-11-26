@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Roulette.GameStructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,18 +10,34 @@ namespace Roulette.Bets
 {
     public class SingleNumberBet : IBet
     {
-        public int Number { get; set; }
+        // Use
+        public int ID { get; set; }
+        public PocketNumber PocketNumber { get; private set; }
         public double Stake { get; set; }
-        public int Payout { get; } = 35;
+        public int Odd { get; } = 35;
 
-        public SingleNumberBet(int number)
+
+        public SingleNumberBet(PocketNumber number)
         {
-            Number = number;
+            PocketNumber = number;
         }
 
         public double GetReturnStake()
         {
-            return Stake * Payout;
+            return Stake * Odd;
+        }
+
+        public Dictionary<string, object> GetInfo()
+        {
+            Dictionary<string, object> propValue = new Dictionary<string, object>();
+            var properties = this.GetType().GetProperties();
+
+            for (int i = 0; i < properties.Length; i++)
+            {
+                PropertyInfo prop = properties[i];
+                propValue.Add(prop.Name, prop.GetValue(this, null));
+            }
+            return propValue;
         }
     }
 }

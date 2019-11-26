@@ -1,4 +1,7 @@
-﻿using Roulette.Bets;
+﻿using DataAccesFactory;
+using InterfaceLayerBD.Bet;
+using Roulette.Bets;
+using Roulette.GameStructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +14,19 @@ namespace Roulette.Tests
     public class BetTests
     {
         [Fact]
-        public void Update_ShouldMakeValidCall()
+        public void GetInfo_ShouldReturnPropNameAndValue()
         {
             // Arrange
-            bool validCall = false;
-            ColorBet colorBet = new ColorBet(Color.Black, null)
+            IBetDTO bet = new ColorBet(PocketColor.Black, null)
             {
+                ID = 2,
                 Stake = 20
             };
 
-            // Act
-            colorBet.Update();
-            validCall = true;
 
-            // Assert
-            Assert.True(validCall);
+            // Act
+            IBetDAL dal = Factory.CreateBetDAL();
+            bool x = dal.Save(bet);
         }
     }
 }

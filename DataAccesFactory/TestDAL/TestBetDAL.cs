@@ -1,6 +1,4 @@
-﻿using InterfaceLayerBD;
-using InterfaceLayerBD.Bet;
-
+﻿using InterfaceLayerBD.Bet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccesFactory.TestDAL
 {
-    public class TestUserDAL : IUserDAL
+    public class TestBetDAL : IBetDAL
     {
         public bool Insert<T>(object[] param)
         {
@@ -17,11 +15,6 @@ namespace DataAccesFactory.TestDAL
         }
 
         public bool Save(IBetDTO dto)
-        {
-            return true;
-        }
-
-        public bool Update(IUserDTO dto)
         {
             return true;
         }

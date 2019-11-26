@@ -50,9 +50,18 @@
     <Compile Include="Bets\SingleNumberBet.cs" />
     <Compile Include="Color.cs" />
     <Compile Include="Bets\IBet.cs" />
+    <Compile Include="GameStructure\IGenerator.cs" />
+    <Compile Include="GameStructure\IPocket.cs" />
+    <Compile Include="GameStructure\IWheel.cs" />
+    <Compile Include="GameStructure\NumberGenerator.cs" />
+    <Compile Include="GameStructure\Pocket.cs" />
+    <Compile Include="GameStructure\PocketColor.cs" />
+    <Compile Include="GameStructure\PocketNumber.cs" />
+    <Compile Include="GameStructure\Wheel.cs" />
     <Compile Include="News\NewsItem.cs" />
     <Compile Include="News\NewsItemContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomStructure\RoundEndedEventArgs.cs" />
     <Compile Include="Users\Admin.cs" />
     <Compile Include="Users\IPlayer.cs" />
     <Compile Include="Users\IUser.cs" />
@@ -75,8 +84,6 @@
       <Name>InterfaceLayerBD</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GameStructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
