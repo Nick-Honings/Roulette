@@ -12,7 +12,7 @@ namespace Roulette.Users
         public string Email { get; set; }
         public int Age { get; set; }
         public bool IsActive { get; set; } = true;
-        public double Balance { get; set; } = 0;
+        public decimal Balance { get; set; } = 0;
         public IBet CurrentBet { get; private set; }
 
         private IUserDAL userDAL;
@@ -36,7 +36,7 @@ namespace Roulette.Users
             userDAL.Update(dTO);
         }
 
-        public void MakeBet(IBet bet, double stake)
+        public void MakeBet(IBet bet, decimal stake)
         {
             if (bet != null)
             {

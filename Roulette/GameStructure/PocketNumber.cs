@@ -8,7 +8,7 @@ namespace Roulette.GameStructure
 {
     public enum PocketNumber
     {
-        Undefined,
+        Undefined =-1,
         Zero,
         One,
         Two,

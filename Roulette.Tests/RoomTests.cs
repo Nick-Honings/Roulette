@@ -37,7 +37,7 @@ namespace Roulette.Tests
             // Arrange
             int expected = 1;
 
-            round.RoundId = 1;
+            round.Id = 1;
             round.TimeLeft = 30;
 
             // Act
@@ -81,7 +81,7 @@ namespace Roulette.Tests
 
         [Theory]
         [ClassData(typeof(RoomTestsData.PositiveBets))]
-        public void UpdateUserBalance_ShouldUpdate(IPocket betResult, IBet bet, double expected)
+        public void UpdateUserBalance_ShouldUpdate(IPocket betResult, IBet bet, decimal expected)
         {
             // Arrange            
             room.AddUser(player);
@@ -91,7 +91,7 @@ namespace Roulette.Tests
 
             // Act
             room.UpdateUserBalance();
-            double result = player.Balance;
+            decimal result = player.Balance;
 
             // Assert
             Assert.Equal(expected, result);
@@ -99,7 +99,7 @@ namespace Roulette.Tests
 
         [Theory]
         [ClassData(typeof(RoomTestsData.NegativeBets))]
-        public void UpdateUserBalance_ShouldDoNothing(IPocket betResult, IBet bet, double expected)
+        public void UpdateUserBalance_ShouldDoNothing(IPocket betResult, IBet bet, decimal expected)
         {
             // Arrange
             room.AddUser(player);
@@ -109,7 +109,7 @@ namespace Roulette.Tests
 
             // Act
             room.UpdateUserBalance();
-            double result = player.Balance;
+            decimal result = player.Balance;
 
             // Assert
             Assert.Equal(expected, result);

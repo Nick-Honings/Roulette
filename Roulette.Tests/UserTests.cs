@@ -27,11 +27,11 @@ namespace Roulette.Tests
         public void MakeBet_ShouldWork()
         {
             // Arrange
-            double expected = 10;
+            decimal expected = 10;
 
             // Act
             user.MakeBet(bet, 10);
-            double result = user.CurrentBet.Stake;
+            decimal result = user.CurrentBet.Stake;
             
 
             // Assert

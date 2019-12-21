@@ -10,6 +10,6 @@ namespace Roulette.DAL.MYSQL
         public string Email { get; set; }
         public int Age { get; set; }
         public bool IsActive { get; set; }
-        public double Balance { get; set; }        
+        public decimal Balance { get; set; }        
     }
 }

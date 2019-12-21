@@ -10,11 +10,8 @@ namespace Roulette
     public interface IBet : IBetDTO
     {
         int ID { get; set; }
-        double Stake { get; set; }
-        int Odd { get; }
-        double GetReturnStake();
-        
-
-        //Function for returning bet info
+        decimal Stake { get; set; }
+        double Odd { get; }
+        decimal GetReturnStake();
     }
 }

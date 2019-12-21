@@ -124,7 +124,7 @@ namespace Roulette.DAL.MYSQL
                                     Email = reader.GetString(3),
                                     Age = reader.GetInt32(4),
                                     IsActive = reader.GetBoolean(5),
-                                    Balance = reader.GetDouble(6)
+                                    Balance = reader.GetDecimal(6)
 
                                 };
                                 dtos.Add(dto);
@@ -160,7 +160,7 @@ namespace Roulette.DAL.MYSQL
                                 dto.Email = reader.GetString(3);
                                 dto.Age = reader.GetInt32(4);
                                 dto.IsActive = reader.GetBoolean(5);
-                                dto.Balance = reader.GetDouble(6);
+                                dto.Balance = reader.GetDecimal(6);
                             }
                         }
                     }

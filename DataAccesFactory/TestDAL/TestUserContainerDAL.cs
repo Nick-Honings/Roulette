@@ -15,7 +15,7 @@ namespace DataAccesFactory.TestDAL
 
         public TestUserContainerDAL()
         {
-            users = TestDB.ReturnUserTable();
+            //users = TestDB.ReturnUserTable();
         }
 
         

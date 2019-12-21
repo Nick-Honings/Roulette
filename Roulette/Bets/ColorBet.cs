@@ -9,13 +9,11 @@ using System.Threading.Tasks;
 
 namespace Roulette.Bets
 {
-    public class ColorBet : IBet
+    public class ColorBet : Bet, IBet
     {
         // Use
-        public int ID { get; set; }
-        public PocketColor Color { get; private set; }     
-        public double Stake { get; set; }
-        public int Odd { get; private set; } = 2;
+        public PocketColor Color { get; private set; }
+
 
         private IBetDAL betDAL;
 
@@ -23,24 +21,7 @@ namespace Roulette.Bets
         {
             Color = color;
             betDAL = dAL;
-        }
-        public double GetReturnStake()
-        {
-            return Stake * Odd;
-        }
-
-
-        public Dictionary<string, object> GetInfo()
-        {
-            Dictionary<string, object> propValue = new Dictionary<string, object>();
-            var properties = this.GetType().GetProperties();
-
-            for (int i = 0; i < properties.Length; i++)
-            {
-                PropertyInfo prop = properties[i];
-                propValue.Add(prop.Name, prop.GetValue(this, null));
-            }
-            return propValue;
+            this.Odd = 2;
         }
     }
 }

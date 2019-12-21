@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterfaceLayerBD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,19 +7,25 @@ using System.Threading.Tasks;
 
 namespace Roulette.GameStructure
 {
-    public class Pocket : IPocket
+    public class Pocket : IPocket, IPocketDTO
     {
+        public int Id { get; set; }
+        public int RoundId { get; set; }
         public PocketNumber Number { get; }
         public PocketColor Color { get; }
         public bool Even { get; }
-
-
+        
+        // Might change this later, seems like repetition.
+        public int ToNumber { get; }
+        public int ToColorNumber { get; }
 
         public Pocket(PocketNumber number)
-        {
+        {            
             Number = number;
             Color = CheckColor(number);
             Even = IsNumberEven((int)number);
+            ToNumber = (int)Number;
+            ToColorNumber = (int)Color;
         }
 
         private PocketColor CheckColor(PocketNumber number)

@@ -23,7 +23,7 @@ namespace Roulette.Users
             user.IsActive = false;
         }
 
-        public void SetUserBalance(User user, double balance)
+        public void SetUserBalance(User user, decimal balance)
         {
             user.Balance = balance;
         }

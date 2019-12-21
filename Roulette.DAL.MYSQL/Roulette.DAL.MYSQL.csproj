@@ -68,8 +68,11 @@
     <Compile Include="News\NewsItemDAL.cs" />
     <Compile Include="News\NewsItemDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result\PocketDTO.cs" />
     <Compile Include="Room\RoomDAL.cs" />
     <Compile Include="Room\RoomDTO.cs" />
+    <Compile Include="Round\RoudDTO.cs" />
+    <Compile Include="Round\RoundDAL.cs" />
     <Compile Include="User\UserDAL.cs" />
     <Compile Include="User\UserDTO.cs" />
     <Compile Include="utils\ConnectionHelper.cs" />

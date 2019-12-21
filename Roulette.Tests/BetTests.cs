@@ -28,5 +28,20 @@ namespace Roulette.Tests
             IBetDAL dal = Factory.CreateBetDAL();
             bool x = dal.Save(bet);
         }
+
+        [Fact]
+        public void GetInfo_ShouldReturnPropNameAndValue2()
+        {
+            // Arrange
+            IBet bet = new ColorBet(PocketColor.Black, null)
+            {
+                ID = 1,
+                Stake = 20
+            };
+
+            // Act
+            var propsinfo = bet.GetInfo();
+
+        }
     }
 }

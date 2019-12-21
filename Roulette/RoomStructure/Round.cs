@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Timers;
+using InterfaceLayerBD.Round;
 using Roulette.GameStructure;
 using Roulette.Users;
 
 namespace Roulette
 {
-    public class Round
+    public class Round : IRoundDTO
     {
-        public int RoundId { get; set; }
-        public int TimeLeft { get; set; }        
-        public bool HasEnded { get; set; }
+        public int Id { get; set; }
+        public int TimeLeft { get; set; }
+        public bool HasEnded { get; set; } = false;
+        public int RoomId { get; set; }
 
         // Obsolete
         public Result Result { get; private set; }
 
         public IPocket Pocket { get; set; }
+        
 
         //public List<IBet> Bets { get; private set; }
 
@@ -55,6 +58,7 @@ namespace Roulette
             if(RoundEnded != null)
             {
                 RoundEnded(this, new RoundEndedEventArgs("Round has ended"));
+                // Update statement needs to be called here, after the round has ended.
             }
             
         }

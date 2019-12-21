@@ -4,7 +4,7 @@
     {
         string Name { get; }
         int Age { get; set; }
-        double Balance { get; set; }
+        decimal Balance { get; set; }
         string Email { get; set; }
         bool IsActive { get; set; }
 

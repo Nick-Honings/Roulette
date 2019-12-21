@@ -14,6 +14,6 @@ namespace InterfaceLayerBD
         string Email { get; set; }
         int Age { get; set; }
         bool IsActive { get; set; }
-        double Balance { get; set; }
+        decimal Balance { get; set; }
     }
 }

@@ -4,9 +4,9 @@
     {
         string Name { get; }
         IBet CurrentBet { get; }
-        double Balance { get; set; }
+        decimal Balance { get; set; }
 
 
-        void MakeBet(IBet bet, double stake);
+        void MakeBet(IBet bet, decimal stake);
     }
 }

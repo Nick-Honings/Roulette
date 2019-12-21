@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InterfaceLayerBD.Room;
+using InterfaceLayerBD.Round;
 using Roulette.Bets;
 using Roulette.GameStructure;
 using Roulette.Users;
@@ -23,23 +24,25 @@ namespace Roulette
         public List<IPlayer> Players { get; private set; }
 
         private int numberOfRounds = 1;
-        private IRoomDAL RoomDAL;
+        private IRoomRoundDAL roomDAL;
 
-        public Room(string name, IRoomDAL dAL)
+        public Room(string name, IRoomRoundDAL dAL)
         {
             Name = name;
             Rounds = new List<Round>();
             Players = new List<IPlayer>();
-            RoomDAL = dAL;
+            roomDAL = dAL;
         }
 
         public void StartNewRound()
         {
             Round round = new Round(new Wheel(new NumberGenerator()), RoundTime)
             {
-                RoundId = numberOfRounds,                
+                RoomId = this.Id                
             };
             Rounds.Add(round);
+            roomDAL.Save(round);
+            //Update statement needs to happen here.
             numberOfRounds++;
         }
 
@@ -56,46 +59,7 @@ namespace Roulette
         {
             Players.Remove(player);
         }
-        // Obsolete
-        //public void UpdateUserBalance()
-        //{
-        //    Result result = Rounds[Rounds.Count - 1].GetResult();
-
-        //    foreach ( IPlayer p in Players)
-        //    {
-        //        IBet bet = p.CurrentBet;
-        //        if(bet is ColorBet cBet)
-        //        {
-        //            if(cBet.Color == result.Color)
-        //            {
-        //                p.Balance += cBet.GetReturnStake();
-        //            }
-        //        }
-        //        if (bet is EvenUnevenBet eBet)
-        //        {
-        //            if (eBet.IsEven == result.IsEven)
-        //            {
-        //                p.Balance += eBet.GetReturnStake();
-        //            }
-        //        }
-        //        if (bet is NeighbourBet nBet)
-        //        {
-        //            if (nBet.Neighbours[0] == result.Number | nBet.Neighbours[1] == result.Number)
-        //            {
-        //                p.Balance += nBet.GetReturnStake();
-        //            }
-        //        }
-        //        if (bet is SingleNumberBet sBet)
-        //        {
-        //            if (sBet.Number == result.Number)
-        //            {
-        //                p.Balance += sBet.GetReturnStake();
-        //            }
-        //        }
-        //    }
-        //}
-
-        // Using
+        
         public void UpdateUserBalance()
         {
             IPocket pocket = Rounds[Rounds.Count - 1].Pocket;

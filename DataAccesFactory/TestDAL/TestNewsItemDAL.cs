@@ -13,7 +13,8 @@ namespace DataAccesFactory.TestDAL
 
         public TestNewsItemDAL()
         {            
-            newsItems = TestDB.ReturnNewsTable();
+
+            //newsItems = TestDB.ReturnNewsTable();
         }
 
         public bool Update(INewsItemDTO dto)

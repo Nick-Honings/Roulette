@@ -22,7 +22,7 @@ namespace DataAccesFactory
             return new TestUserContainerDAL();
         }
 
-        public static IRoomDAL CreateTestRoomDAL()
+        public static IRoomRoundDAL CreateTestRoomDAL()
         {
             return new TestRoomDAL();
         }

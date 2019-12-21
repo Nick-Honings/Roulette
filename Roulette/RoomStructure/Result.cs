@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Roulette
 {
+    // OBSOLETE
     public class Result
     {
         public Color Color { get; set; }

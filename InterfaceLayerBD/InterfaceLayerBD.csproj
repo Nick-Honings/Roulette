@@ -44,12 +44,17 @@
     <Compile Include="Bet\IBetDAL.cs" />
     <Compile Include="Bet\IBetDTO.cs" />
     <Compile Include="Bet\IColor.cs" />
+    <Compile Include="Pocket\IPocketDTO.cs" />
     <Compile Include="News\INewsItemDAL.cs" />
     <Compile Include="News\INewsItemContainerDAL.cs" />
     <Compile Include="News\INewsItemDTO.cs" />
     <Compile Include="Room\IRoomContainerDAL.cs" />
     <Compile Include="Room\IRoomDAL.cs" />
     <Compile Include="Room\IRoomDTO.cs" />
+    <Compile Include="Room\IRoomRoundDAL.cs" />
+    <Compile Include="Round\IRoundContainerDAL.cs" />
+    <Compile Include="Round\IRoundDAL.cs" />
+    <Compile Include="Round\IRoundDTO.cs" />
     <Compile Include="User\IUserContainerDAL.cs" />
     <Compile Include="User\IUserDAL.cs" />
     <Compile Include="User\IUserDTO.cs" />

@@ -44,6 +44,7 @@
     <Compile Include="BattleStructure\Battle.cs" />
     <Compile Include="BattleStructure\BattleContainer.cs" />
     <Compile Include="BattleStructure\IBattle.cs" />
+    <Compile Include="Bets\Bet.cs" />
     <Compile Include="Bets\ColorBet.cs" />
     <Compile Include="Bets\EvenUnevenBet.cs" />
     <Compile Include="Bets\NeighbourBet.cs" />

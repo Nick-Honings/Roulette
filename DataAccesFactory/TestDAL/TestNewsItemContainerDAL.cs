@@ -13,7 +13,7 @@ namespace DataAccesFactory.TestDAL
 
         public TestNewsItemContainerDAL()
         {           
-            news = TestDB.ReturnNewsTable();
+            //news = TestDBREAL.ReturnNewsTable();
         }
 
         public bool Delete(int id)
