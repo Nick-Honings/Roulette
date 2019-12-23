@@ -29,8 +29,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7. TestDatabase", "7. TestD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDatabase", "TestDatabase\TestDatabase.csproj", "{7AB52B22-708A-4A01-A431-822E080E8F9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEST", "TEST\TEST.csproj", "{0A48CE2B-15F5-4E73-B011-5B6E1964731A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. User Interface", "1. User Interface", "{D1CAEAE3-55DF-4E98-9FB2-A55999A272CC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TESTING", "TESTING", "{1FA63022-D665-453B-9A25-3857C8F87678}"
@@ -53,8 +51,6 @@ Global
 		{DC2B98B8-C476-4B7D-9227-2EB089C26C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC2B98B8-C476-4B7D-9227-2EB089C26C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC2B98B8-C476-4B7D-9227-2EB089C26C0B}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
-<<<<<<< HEAD
 		{14A879EF-DF04-4967-A058-5B8C5981AA95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14A879EF-DF04-4967-A058-5B8C5981AA95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14A879EF-DF04-4967-A058-5B8C5981AA95}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,22 +71,10 @@ Global
 		{7AB52B22-708A-4A01-A431-822E080E8F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AB52B22-708A-4A01-A431-822E080E8F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AB52B22-708A-4A01-A431-822E080E8F9A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A48CE2B-15F5-4E73-B011-5B6E1964731A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A48CE2B-15F5-4E73-B011-5B6E1964731A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A48CE2B-15F5-4E73-B011-5B6E1964731A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A48CE2B-15F5-4E73-B011-5B6E1964731A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{11CD1E18-A2AC-495E-9718-2D9AA76DA959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{11CD1E18-A2AC-495E-9718-2D9AA76DA959}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11CD1E18-A2AC-495E-9718-2D9AA76DA959}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11CD1E18-A2AC-495E-9718-2D9AA76DA959}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
-		{AE587039-EC3F-41AE-8E80-AD0DF230270B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AE587039-EC3F-41AE-8E80-AD0DF230270B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AE587039-EC3F-41AE-8E80-AD0DF230270B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AE587039-EC3F-41AE-8E80-AD0DF230270B}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> asp.net
-=======
->>>>>>> parent of 85ae538... Added asp.net project
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
