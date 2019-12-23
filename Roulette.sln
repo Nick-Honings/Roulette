@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Logic", "Business Logic", "{4621B521-2024-4F8A-B5BB-8382659DCAF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roulette.ASP", "Roulette.ASP\Roulette.ASP.csproj", "{AE587039-EC3F-41AE-8E80-AD0DF230270B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{DC2B98B8-C476-4B7D-9227-2EB089C26C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC2B98B8-C476-4B7D-9227-2EB089C26C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC2B98B8-C476-4B7D-9227-2EB089C26C0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE587039-EC3F-41AE-8E80-AD0DF230270B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE587039-EC3F-41AE-8E80-AD0DF230270B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE587039-EC3F-41AE-8E80-AD0DF230270B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE587039-EC3F-41AE-8E80-AD0DF230270B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
