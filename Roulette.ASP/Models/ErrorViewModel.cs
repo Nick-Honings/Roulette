@@ -8,4 +8,8 @@ namespace Roulette.ASP.Models
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> asp.net

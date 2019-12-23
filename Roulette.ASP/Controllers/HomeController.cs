@@ -4,13 +4,17 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+<<<<<<< HEAD
 using Microsoft.Extensions.Logging;
+=======
+>>>>>>> asp.net
 using Roulette.ASP.Models;
 
 namespace Roulette.ASP.Controllers
 {
     public class HomeController : Controller
     {
+<<<<<<< HEAD
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -20,6 +24,34 @@ namespace Roulette.ASP.Controllers
 
         public IActionResult Index()
         {
+=======
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        // Currently used for testing
+        public IActionResult About()
+        {
+            ViewData["Message"] = "Your application description page.";
+
+            return View();
+        }
+
+        //
+        [HttpPost]
+        public IActionResult About(BetViewModel model)
+        {
+            int amount = model.Amount;
+            int number = model.Number;
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            ViewData["Message"] = "Your contact page.";
+
+>>>>>>> asp.net
             return View();
         }
 

@@ -3,8 +3,13 @@
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
     "iisExpress": {
+<<<<<<< HEAD
       "applicationUrl": "http://localhost:2717",
       "sslPort": 44356
+=======
+      "applicationUrl": "http://localhost:46456",
+      "sslPort": 44300
+>>>>>>> asp.net
     }
   },
   "profiles": {
@@ -24,4 +29,8 @@
       }
     }
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> asp.net

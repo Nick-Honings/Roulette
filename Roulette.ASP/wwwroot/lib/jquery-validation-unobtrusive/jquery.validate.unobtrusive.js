@@ -1,7 +1,12 @@
 // Unobtrusive validation support library for jQuery and jQuery Validate
+<<<<<<< HEAD
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // @version v3.2.11
+=======
+// Copyright (C) Microsoft Corporation. All rights reserved.
+// @version v3.2.9
+>>>>>>> asp.net
 
 /*jslint white: true, browser: true, onevar: true, undef: true, nomen: true, eqeqeq: true, plusplus: true, bitwise: true, regexp: true, newcap: true, immed: true, strict: false */
 /*global document: false, jQuery: false */
@@ -9,7 +14,11 @@
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
+<<<<<<< HEAD
         define("jquery.validate.unobtrusive", ['jquery-validation'], factory);
+=======
+        define("jquery.validate.unobtrusive", ['jquery.validation'], factory);
+>>>>>>> asp.net
     } else if (typeof module === 'object' && module.exports) {
         // CommonJS-like environments that support module.exports     
         module.exports = factory(require('jquery-validation'));
@@ -118,7 +127,11 @@
             .removeClass("field-validation-error")
             .removeData("unobtrusiveContainer")
             .find(">*")  // If we were using valmsg-replace, get the underlying error
+<<<<<<< HEAD
             .removeData("unobtrusiveContainer");
+=======
+                .removeData("unobtrusiveContainer");
+>>>>>>> asp.net
     }
 
     function validationInfo(form) {
@@ -234,10 +247,17 @@
             // element with data-val=true
             var $selector = $(selector),
                 $forms = $selector.parents()
+<<<<<<< HEAD
                     .addBack()
                     .filter("form")
                     .add($selector.find("form"))
                     .has("[data-val=true]");
+=======
+                                  .addBack()
+                                  .filter("form")
+                                  .add($selector.find("form"))
+                                  .has("[data-val=true]");
+>>>>>>> asp.net
 
             $selector.find("[data-val=true]").each(function () {
                 $jQval.unobtrusive.parseElement(this, true);
@@ -429,4 +449,8 @@
     });
 
     return $jQval.unobtrusive;
+<<<<<<< HEAD
 }));
+=======
+}));
+>>>>>>> asp.net
