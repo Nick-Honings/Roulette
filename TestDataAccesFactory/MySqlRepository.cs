@@ -11,7 +11,6 @@ using Roulette.DAL.MYSQL.Bet;
 using Roulette.DAL.MYSQL.News;
 using Roulette.DAL.MYSQL.Room;
 using Roulette.DAL.MYSQL.Round;
-using System.Configuration;
 using TestDataAccesFactory.Interfaces;
 
 namespace TestDataAccesFactory
@@ -25,7 +24,7 @@ namespace TestDataAccesFactory
             this._connString = ConnectionHelper.CnnVal("TestDatabase");
         }
         public IUserDAL CreateUserDAL()
-        {
+        {            
             return new UserDAL(_connString);
         }
 

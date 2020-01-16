@@ -11,3 +11,13 @@ C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individ
 C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\InterfaceLayerBD.dll
 C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\InterfaceLayerBD.pdb
 C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\obj\Debug\Roulette.csproj.CopyComplete
+C:\Users\nickh\OneDrive\Desktop\Roulette2\Roulette\bin\Debug\Roulette.dll
+C:\Users\nickh\OneDrive\Desktop\Roulette2\Roulette\bin\Debug\Roulette.pdb
+C:\Users\nickh\OneDrive\Desktop\Roulette2\Roulette\bin\Debug\Roulette.dll.CodeAnalysisLog.xml
+C:\Users\nickh\OneDrive\Desktop\Roulette2\Roulette\bin\Debug\Roulette.dll.lastcodeanalysissucceeded
+C:\Users\nickh\OneDrive\Desktop\Roulette2\Roulette\bin\Debug\InterfaceLayerBD.dll
+C:\Users\nickh\OneDrive\Desktop\Roulette2\Roulette\bin\Debug\InterfaceLayerBD.pdb
+C:\Users\nickh\OneDrive\Desktop\Roulette2\Roulette\obj\Debug\Roulette.csprojAssemblyReference.cache
+C:\Users\nickh\OneDrive\Desktop\Roulette2\Roulette\obj\Debug\Roulette.csproj.CopyComplete
+C:\Users\nickh\OneDrive\Desktop\Roulette2\Roulette\obj\Debug\Roulette.dll
+C:\Users\nickh\OneDrive\Desktop\Roulette2\Roulette\obj\Debug\Roulette.pdb

@@ -94,9 +94,16 @@ namespace Roulette.Users
 
         public void ReceiveUserModificationNotification(object sender, UserModificationEventArgs e)
         {
-            var user = this.GetUserById(e.UserId);
-            int index = this.Users.FindIndex(i => i.Id == e.UserId);
-            this.Users[index] = user;
+            if (e != null)
+            {
+                var user = this.GetUserById(e.UserId);
+                int index = this.Users.FindIndex(i => i.Id == e.UserId);
+                this.Users[index] = user; 
+            }
+            else
+            {
+                throw new ArgumentNullException();
+            }
         }
 
         // Constructs a user class out of an dto object.
