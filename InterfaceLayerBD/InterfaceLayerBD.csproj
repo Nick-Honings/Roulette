@@ -41,17 +41,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\IAdminContainerDAL.cs" />
+    <Compile Include="Admin\IAdminDAL.cs" />
+    <Compile Include="Admin\IAdminDTO.cs" />
+    <Compile Include="Battle\IBattleContainerDAL.cs" />
+    <Compile Include="Battle\IBattleDAL.cs" />
+    <Compile Include="Battle\IBattleDTO.cs" />
     <Compile Include="Bet\IBetDAL.cs" />
     <Compile Include="Bet\IBetDTO.cs" />
-    <Compile Include="Bet\IColor.cs" />
+    <Compile Include="Bet\IPocketColor.cs" />
+    <Compile Include="Bet\IColorBet.cs" />
+    <Compile Include="Bet\IEvenUnEvenBet.cs" />
+    <Compile Include="Bet\INeighbourBet.cs" />
+    <Compile Include="Bet\IPocketNumber.cs" />
+    <Compile Include="Bet\ISingleNumberBet.cs" />
     <Compile Include="Pocket\IPocketDTO.cs" />
     <Compile Include="News\INewsItemDAL.cs" />
     <Compile Include="News\INewsItemContainerDAL.cs" />
     <Compile Include="News\INewsItemDTO.cs" />
+    <Compile Include="Pocket\PocketDAL.cs" />
     <Compile Include="Room\IRoomContainerDAL.cs" />
     <Compile Include="Room\IRoomDAL.cs" />
     <Compile Include="Room\IRoomDTO.cs" />
-    <Compile Include="Room\IRoomRoundDAL.cs" />
     <Compile Include="Round\IRoundContainerDAL.cs" />
     <Compile Include="Round\IRoundDAL.cs" />
     <Compile Include="Round\IRoundDTO.cs" />

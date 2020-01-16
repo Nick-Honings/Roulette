@@ -12,6 +12,12 @@ namespace Roulette.DAL.MYSQL.Bet
 {
     public class BetDAL: IBetDAL
     {
+        private readonly string _connection;
+
+        public BetDAL(string connection)
+        {
+            this._connection = connection;
+        }
 
         private List<string> RemoveUnusedProperties(string sql, List<string> properties)
         {
@@ -43,26 +49,28 @@ namespace Roulette.DAL.MYSQL.Bet
 
             return sql;
         }
-
+        
         public bool Save(IBetDTO dto)
         {
             //string sql = "INSERT INTO bet (Stake,Odd,Color,Number,Even,FirstNumber,SecondNumber) VALUES(@Stake,@Odd,@Color,@Number,@Even,@FirstNumber,@SecondNumber)";
-            var values = dto.GetInfo();
+            var values = dto.GetBetSpecificInfo();
             List<string> propNames = new List<string>();
             List<object> propValues = new List<object>();
             foreach (var v in values)
             {
-                propNames.Add(v.Key);
-                propValues.Add(v.Value);
+                if (v.Key != "Type")
+                {
+                    propNames.Add(v.Key);
+                    propValues.Add(v.Value);
+                }
             }
 
-            string sql = SQLStringBuilder(propNames);
-            
+            string sql = SQLStringBuilder(propNames);           
 
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(ConnectionHelper.CnnVal("DemoDB")))
+                using (MySqlConnection conn = new MySqlConnection(_connection))
                 {
                     conn.Open();
                     using (MySqlCommand cmd = new MySqlCommand(sql, conn))
@@ -135,7 +143,7 @@ namespace Roulette.DAL.MYSQL.Bet
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(ConnectionHelper.CnnVal("DemoDB")))
+                using (MySqlConnection conn = new MySqlConnection(_connection))
                 {
                     conn.Open();
                     using (MySqlCommand cmd = new MySqlCommand(sql, conn))

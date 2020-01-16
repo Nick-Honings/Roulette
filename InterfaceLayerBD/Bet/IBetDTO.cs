@@ -8,6 +8,11 @@ namespace InterfaceLayerBD.Bet
 {
     public interface IBetDTO
     {
-        Dictionary<string, object> GetInfo();
+        int Id { get; set; }
+        decimal Stake { get; set; }
+        double Odd { get; }
+        //This is the pocketcolor enum
+
+        Dictionary<string, object> GetBetSpecificInfo();
     }
 }

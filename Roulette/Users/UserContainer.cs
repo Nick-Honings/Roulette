@@ -1,5 +1,7 @@
-﻿using DataAccesFactory;
+﻿
 using InterfaceLayerBD;
+using InterfaceLayerBD.Bet;
+using Roulette.Users.Eventargs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,84 +14,110 @@ namespace Roulette.Users
     {
         public List<User> Users { get; private set; }
 
-        private IUserContainerDAL ContainerDAL;
+        private readonly IUserContainerDAL _containerDAL;
+        private readonly IUserDAL _userdal;
+        private readonly IBetDAL _betDAL;
+
         //Alle dependecies injecteren via deze constructor.
 
-        public UserContainer(IUserContainerDAL dAL)
+        public UserContainer(IUserContainerDAL dAL, IUserDAL userdal, IBetDAL betDAL)
         {
-            Users = new List<User>();
-            ContainerDAL = dAL;
+            this._containerDAL = dAL;
+            this._userdal = userdal;
+            this._betDAL = betDAL;
+            Users = this.GetAllUsers();
+            
         }
 
+        //Adds a user to the database.
         public bool AddUser(User user)
         {
             if(user != null)
             {
-                Users.Add(user);
-                IUserDTO dto = new User(user.Name, Factory.CreateUserDAL())
+                // Before we add the user, check if he already exists.
+                //if (user.VerifyLogin(_userdal))
+                //{
+                //    return true;
+                //}
+
+                if(_containerDAL.AddUser(user))
                 {
-                    Password = user.Password,
-                    Email = user.Email,
-                    Age = user.Age,
-                    IsActive = user.IsActive,
-                    Balance = user.Balance
-                };
-                if(ContainerDAL.Save(dto))
-                {
+                    Users.Add(user);
                     return true;
                 }
             }
             return false;
         }
 
+        //Removes a user from the database
         public bool RemoveUser(User user)
         {
             if (user != null)
-            {
-                Users.Remove(user);
-                if(ContainerDAL.Delete(user.Id))
+            {                
+                if(_containerDAL.DeleteUser(user.Id))
                 {
+                    Users.Remove(user);
                     return true;
                 }                
             }
             return false;
         }
 
+        //Gets all users from the database.
         public List<User> GetAllUsers()
         {
             List<User> users = new List<User>();
-            var dtos = ContainerDAL.GetAllUsers();
+            var dtos = _containerDAL.GetAllUsers();
             foreach (var d in dtos)
             {
                 User user = ExtractUser(d);
                 users.Add(user);
-            }
-            Users = users;
+            }            
             return users;
         }
 
+        // Gets a user by id.
         public User GetUserById(int id)
         {
-            IUserDTO dto = ContainerDAL.GetUserById(id);
+            IUserDTO dto = _containerDAL.GetUserById(id);
+
             User user = ExtractUser(dto);
-            if (user != null)
-            {
-                return user; 
-            }
-            return null;
+
+            return user;
         }
 
+        // Fires when a new user is added by a admin class.
+        public void ReceiveNewUserNotification(object sender, NewUserEventArgs e)
+        {
+            this.Users = this.GetAllUsers();
+        }
+
+        public void ReceiveUserModificationNotification(object sender, UserModificationEventArgs e)
+        {
+            var user = this.GetUserById(e.UserId);
+            int index = this.Users.FindIndex(i => i.Id == e.UserId);
+            this.Users[index] = user;
+        }
+
+        // Constructs a user class out of an dto object.
         private User ExtractUser(IUserDTO dto)
         {
-            return new User(dto.Name, null)
+            if (dto != null)
             {
-                Id = dto.Id,
-                Password = dto.Password,
-                Email = dto.Email,
-                Age = dto.Age,
-                IsActive = dto.IsActive,
-                Balance = dto.Balance
-            };
+                return new User(dto.Name, _userdal, _betDAL)
+                {
+                    Id = dto.Id,                    
+                    Email = dto.Email,
+                    Age = dto.Age,
+                    IsActive = dto.IsActive,
+                    Balance = dto.Balance,
+                    Permissions = dto.Permissions,
+                    UserRole = dto.UserRole,
+                    RoomId = dto.RoomId
+                    
+                }; 
+            }
+            return null;
         }
     }
 }

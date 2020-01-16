@@ -10,7 +10,7 @@ namespace InterfaceLayerBD
     {
         int Id { get; set; }
         int RoundId { get; set; }
-        int ToNumber { get; }
-        int ToColorNumber { get; }
+        int ToNumber { get; set; }
+        int ToColorNumber { get; set; }
     }
 }

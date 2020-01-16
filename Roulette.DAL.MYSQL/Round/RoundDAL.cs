@@ -1,6 +1,8 @@
 ﻿using InterfaceLayerBD;
 using InterfaceLayerBD.Round;
 using MySql.Data.MySqlClient;
+using Roulette.DAL.MYSQL.Result;
+using Roulette.DAL.MYSQL.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +13,20 @@ namespace Roulette.DAL.MYSQL.Round
 {
     public class RoundDAL: IRoundDAL, IRoundContainerDAL
     {
-        private string connString;
+        private readonly string _connection;
 
-        public RoundDAL(string conn)
+        public RoundDAL(string connection)
         {
-            connString = conn;
+            this._connection = connection;
         }
-
         public bool Update(IRoundDTO dto)
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connString))
+                using (MySqlConnection conn = new MySqlConnection(_connection))
                 {
                     conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand("Update round SET HasEnded = @HasEnded, RoomId=@RoomId WHERE Id = @Id"))
+                    using (MySqlCommand cmd = new MySqlCommand("Update round SET HasEnded = @HasEnded, RoomId=@RoomId WHERE Id = @Id", conn))
                     {
                         cmd.Parameters.AddWithValue("@HasEnded", dto.HasEnded);
                         cmd.Parameters.AddWithValue("@RoomId", dto.RoomId);
@@ -49,7 +50,7 @@ namespace Roulette.DAL.MYSQL.Round
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connString))
+                using (MySqlConnection conn = new MySqlConnection(_connection))
                 {
                     conn.Open();
                     using (MySqlCommand cmd = new MySqlCommand("INSERT INTO round (HasEnded, RoomId) VALUES(@HasEnded, @RoomId)", conn))
@@ -75,7 +76,7 @@ namespace Roulette.DAL.MYSQL.Round
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connString))
+                using (MySqlConnection conn = new MySqlConnection(_connection))
                 {
                     conn.Open();
                     using (MySqlCommand cmd = new MySqlCommand("INSERT INTO result (Id, RoundId, Number, Color) VALUES(@Id, @RoundId, @Number, @Color)", conn))
@@ -92,6 +93,37 @@ namespace Roulette.DAL.MYSQL.Round
 
                     }
                 }
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+        }
+
+        public IPocketDTO GetPocket(int id)
+        {
+            IPocketDTO dto = new PocketDTO();
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_connection))
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM result WHERE RoundId=@Id", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", id);
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        {
+                            while (reader.Read())
+                            {
+                                dto.Id = id;
+                                dto.ToColorNumber = reader.SafeGetInt(1);
+                                dto.ToNumber = reader.SafeGetInt(2);
+                                dto.RoundId = reader.SafeGetInt(3);
+                            }
+                        }
+                    }
+                }
+                return dto;
             }
             catch (MySqlException ex)
             {

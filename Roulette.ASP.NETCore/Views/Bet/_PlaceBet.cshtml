@@ -1,0 +1,88 @@
+﻿@model Roulette.ASP.NETCore.Models.BetModel
+
+<link rel="stylesheet" runat="server" href="~/css/placebet.css" />
+
+<h1>Place bet</h1>
+<p>Choose bet type:</p>
+
+@*<form id="betform">
+
+        <select id="bettype" asp-for="Type" asp-items="@Html.GetEnumSelectList<Roulette.Bets.BetType>()" onchange="valueChange()">
+        </select>
+
+        <hr />
+        <div class="output">
+            <div id="0" class="types color">
+                <input id="colorRed" class="input-radio" type="radio" asp-for="Color" name="color" value="Red" /> Red
+                <input id="colorBlack" class="input-radio" type="radio" asp-for="Color" name="color" value="Black" /> Black
+                <input id="colorGreen" class="input-radio" type="radio" asp-for="Color" name="color" value="Green" /> Green
+            </div>
+
+            <div id="1" class="types even" hidden="hidden">
+                <input id="isEven" class="input-radio" type="radio" asp-for="IsEven" name="type" value="Even" /> Even
+                <input id="isUneven" class="inputradio" type="radio" asp-for="IsEven" name="type" value="Uneven" /> Uneven
+            </div>
+
+            <div id="2" class="types neighbour" hidden="hidden">
+                <p>First number: </p>
+                <input id="firstNumber" type="number" min="0" max="36" />
+                <p>Second number: </p>
+                <input id="secondNumber" type="number" min="0" max="36" />
+            </div>
+
+            <div id="3" class="types single" hidden="hidden">
+                <p>Enter a number: </p>
+                <input id="singleNumber" type="number" min="0" max="36" />
+            </div>
+        </div>
+        <hr />
+
+        <p>Amount: </p>
+        <input id="stake" type="number" asp-for="Stake">
+        <p>Number: </p>
+            <input type="number" asp-for="Number">
+
+        <input id="createbet" type="button" class="btn" value="Place Bet"/>
+
+    </form>*@
+
+<select id="bettype" asp-for="Type" asp-items="@Html.GetEnumSelectList<Roulette.Bets.BetType>()" onchange="valueChange()">
+</select>
+
+<form id="0" class="types color">
+    <input id="colorRed" class="input-radio" type="radio" name="color" value="Red" /> Red
+    <input id="colorBlack" class="input-radio" type="radio" name="color" value="Black" /> Black
+    <input id="colorGreen" class="input-radio" type="radio" name="color" value="Green" /> Green
+
+    <p>Stake:</p>
+    <input type="number" />
+    <input id="createbet" type="button" class="btn" value="Place Bet" onclick="insertModel('0')" />
+</form>
+
+<form id="1" class="types even" hidden>
+    <input id="isEven" class="input-radio" type="radio" name="type" value="Even" /> Even
+    <input id="isUneven" class="inputradio" type="radio" name="type" value="Uneven" /> Uneven
+
+    <p>Stake:</p>
+    <input type="number" />
+    <input id="createbet" type="button" class="btn" value="Place Bet" onclick="insertModel('1')"/>
+</form>
+
+<form id="2" class="types neighbour" hidden>
+    <p>First number: </p>
+    <input id="firstNumber" type="number" min="0" max="36" />
+    <p>Second number: </p>
+    <input id="secondNumber" type="number" min="0" max="36" />
+
+    <p>Stake:</p>
+    <input type="number" />
+    <input id="createbet" type="button" class="btn" value="Place Bet" onclick="insertModel('2')" />
+</form>
+
+<form id="3" class="types single" hidden>
+    <p>Number:</p>
+    <input type="number" min="0" max="36" />
+
+    <p>Stake:</p>
+    <input type="number" /><input id="createbet" type="button" class="btn" value="Place Bet" onclick="insertModel('3')" />
+</form>

@@ -1,12 +1,15 @@
-﻿namespace Roulette.Users
+﻿using Roulette.Bets;
+
+namespace Roulette.Users
 {
     public interface IPlayer
     {
+        int Id { get; set; }
         string Name { get; }
         IBet CurrentBet { get; }
         decimal Balance { get; set; }
-
-
-        void MakeBet(IBet bet, decimal stake);
+        bool UpdateBalance(decimal balance);
+        bool MakeBet(IBet bet);
+        void StartBattle(int playerId);
     }
 }

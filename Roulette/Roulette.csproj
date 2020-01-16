@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,7 @@
     <Compile Include="BattleStructure\BattleContainer.cs" />
     <Compile Include="BattleStructure\IBattle.cs" />
     <Compile Include="Bets\Bet.cs" />
+    <Compile Include="Bets\BetType.cs" />
     <Compile Include="Bets\ColorBet.cs" />
     <Compile Include="Bets\EvenUnevenBet.cs" />
     <Compile Include="Bets\NeighbourBet.cs" />
@@ -64,22 +66,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomStructure\RoundEndedEventArgs.cs" />
     <Compile Include="Users\Admin.cs" />
+    <Compile Include="Users\AdminContainer.cs" />
+    <Compile Include="Users\Eventargs\UserModificationEventArgs.cs" />
     <Compile Include="Users\IPlayer.cs" />
     <Compile Include="Users\IUser.cs" />
-    <Compile Include="Users\Register.cs" />
-    <Compile Include="RoomStructure\Result.cs" />
+    <Compile Include="Users\Eventargs\NewUserEventArgs.cs" />
+    <Compile Include="Users\UserValidation.cs" />
     <Compile Include="RoomStructure\Room.cs" />
     <Compile Include="RoomStructure\RoomContainer.cs" />
     <Compile Include="RoomStructure\Round.cs" />
     <Compile Include="Users\BaseUser.cs" />
     <Compile Include="Users\User.cs" />
     <Compile Include="Users\UserContainer.cs" />
+    <Compile Include="Users\UserRole.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccesFactory\DataAccesFactory.csproj">
-      <Project>{318DECB7-90A4-4B8C-96C5-A8EBFE6D2E1F}</Project>
-      <Name>DataAccesFactory</Name>
-    </ProjectReference>
     <ProjectReference Include="..\InterfaceLayerBD\InterfaceLayerBD.csproj">
       <Project>{7F4EBF2F-53A3-451B-A571-9064255F7FF5}</Project>
       <Name>InterfaceLayerBD</Name>

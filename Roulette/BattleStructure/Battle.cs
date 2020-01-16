@@ -6,9 +6,9 @@ namespace Roulette.BattleStructure
     public class Battle : IBattle
     {
         public object Id { get; internal set; }
-        public IUser Player1 { get; private set; }
+        public int Player1Id { get; private set; }
         public double Player1Profit { get; set; }
-        public IUser Player2 { get; private set; }
+        public int Player2Id { get; private set; }
         public double Player2Profit { get; set; }
         public DateTime StartDate { get; private set; }
         //Raise event when accepted?

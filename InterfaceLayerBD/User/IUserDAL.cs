@@ -9,6 +9,8 @@ namespace InterfaceLayerBD
 {
     public interface IUserDAL
     {
-        bool Update(IUserDTO dto);
+        bool UpdateProfile(IUserDTO dto);
+        bool UpdateBalance(int id, decimal balance);
+        int VerifyLogin(string username, string password);
     }
 }

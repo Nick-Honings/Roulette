@@ -8,8 +8,8 @@ namespace Roulette
 {
     public enum Color
     {
-        Red,
-        Black,
-        Green
+        Red = 0,
+        Black = 1,
+        Green = 2
     }
 }

@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using Roulette.News;
-using DataAccesFactory;
+using TestDataAccesFactory;
+using TestDatabase.TestDatabase;
 
 namespace Roulette.Tests
 {
@@ -14,39 +15,42 @@ namespace Roulette.Tests
         NewsItemContainer container;
         NewsItem newsItem;
         NewsItem emptyNewItem;
+        InMemRepository repo;
 
         public NewsItemContainerTests()
         {
-            container = new NewsItemContainer(TestFactory.CreateTestNewsItemContainerDAL());
-            newsItem = new NewsItem("Special deal", TestFactory.CreateTestNewsItemDAL());
+            repo = new InMemRepository();
+            container = new NewsItemContainer(repo.CreateNewsItemContainerDAL(), repo.CreateNewsItemDAL());
+            newsItem = new NewsItem("Special deal", repo.CreateNewsItemDAL());
         }
 
         [Fact]
         public void AddNewsItem_ShouldWork()
         {
             // Arrange
-            int expected = 1;
-
+            int expected = TestDataBase.GetNewsTable().Count + 1;
+            
             // Act
-            container.AddNewsItem(newsItem);
+            bool validCall = container.AddNewsItem(newsItem);
             int result = container.NewsItems.Count;
 
             // Assert
-            Assert.Equal(expected, result);
-            Assert.Equal(newsItem, container.NewsItems[0]);
+            Assert.True(validCall);
+            Assert.Equal(expected, result);            
         }
 
         [Fact]
         public void AddNewsItem_ShouldNotAddEmptyClassToList()
         {
             // Arrange
-            int expected = 0;
+            int expected = TestDataBase.GetNewsTable().Count;
 
             // Act
-            container.AddNewsItem(emptyNewItem);
+            bool validCall = container.AddNewsItem(emptyNewItem);
             int result = container.NewsItems.Count;
 
             // Assert
+            Assert.False(validCall);
             Assert.Equal(expected, result);
         }
 
@@ -54,30 +58,32 @@ namespace Roulette.Tests
         public void AddNewsItem_ShouldAddWithDuplicateName()
         {
             // Arrange
-            int expected = 2;
+            int expected = TestDataBase.GetNewsTable().Count + 2;
             container.AddNewsItem(newsItem);
 
             // Act
-            container.AddNewsItem(new NewsItem("Special deal", null));
+            bool validCall = container.AddNewsItem(new NewsItem("Special deal", null));
             int result = container.NewsItems.Count;
 
             // Assert
-            Assert.Equal(expected, result);
-            Assert.Equal(newsItem, container.NewsItems[0]);
+            Assert.True(validCall);
+            Assert.Equal(expected, result);            
         }
 
         [Fact]
         public void RemoveNewsItem_ShouldWorkWithOneEntry()
         {
             // Arrange
-            int expected = 0;
-            container.AddNewsItem(newsItem);
+            var newsItems = TestDataBase.GetNewsTable();
+            int expected = newsItems.Count - 1;
+            var toRemove = (NewsItem)newsItems[0];
 
             // Act
-            container.RemoveNewsItem(newsItem);
+            bool validCall = container.RemoveNewsItem(toRemove);
             int result = container.NewsItems.Count;
 
             // Assert
+            Assert.True(validCall);
             Assert.Equal(expected, result);
         }
 
@@ -85,56 +91,55 @@ namespace Roulette.Tests
         public void RemoveNewsItem_ShouldWorkWithMultipleEntries()
         {
             // Arrange
-            int expected = 1;
+            int expected = TestDataBase.GetNewsTable().Count + 1;
             container.AddNewsItem(newsItem);
             container.AddNewsItem(new NewsItem("Live Roulette", null));
 
             // Act
-            container.RemoveNewsItem(newsItem);
+            bool validCall = container.RemoveNewsItem(newsItem);
             int result = container.NewsItems.Count;
 
             // Assert
+            Assert.True(validCall);
             Assert.Equal(expected, result);
-            Assert.Equal("Live Roulette", container.NewsItems[0].Title);
         }
 
         [Fact]
         public void RemoveNewsItem_ShouldDoNothingWithEmptyClass()
         {
             // Arrange
-            int expected = 1;
-            container.AddNewsItem(newsItem);
-
+            int expected = TestDataBase.GetNewsTable().Count;                   
 
             // Act
-            container.RemoveNewsItem(emptyNewItem);
+            bool validCall = container.RemoveNewsItem(emptyNewItem);
             int result = container.NewsItems.Count;
 
             // Assert
+            Assert.False(validCall);
             Assert.Equal(expected, result);
         }
 
         [Fact]
         public void GetAllNewsItems_ShouldWork()
         {
-            // Arrange            
-            //var expected = TestDB.ReturnNewsTable();
-            //int countExpected = expected.Count;
+            // Arrange
+            var expected = TestDataBase.GetNewsTable();
+            int expectedCount = expected.Count;
 
             // Act
-            //var result = container.GetAll();
-            //int countResult = result.Count;
+            var result = container.GetAllNewsItems();
+            int resultCount = result.Count;
 
             // Assert
-            //Assert.Equal(countExpected, countResult);
+            Assert.Equal(expectedCount, resultCount);
 
-            //for (int i = 0; i < expected.Count; i++)
-            //{
-            //    Assert.Equal(expected[i].Id, result[i].Id);
-            //    Assert.Equal(expected[i].Title, result[i].Title);
-            //    Assert.Equal(expected[i].Description, result[i].Description);
-            //    Assert.Equal(expected[i].date, result[i].date);
-            //}
+            for (int i = 0; i < expected.Count; i++)
+            {
+                Assert.Equal(expected[i].Id, result[i].Id);
+                Assert.Equal(expected[i].Title, result[i].Title);
+                Assert.Equal(expected[i].Description, result[i].Description);
+                Assert.Equal(expected[i].date, result[i].date);
+            }
         }
     }
 }

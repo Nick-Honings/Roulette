@@ -4,8 +4,8 @@ namespace Roulette.BattleStructure
 {
     public interface IBattle
     {
-        IUser Player1 { get; }
-        IUser Player2 { get; }
+        int Player1Id { get; }
+        int Player2Id { get; }
         double ProfitGoal { get; set; }
 
         void SetTimePeriod(int time);

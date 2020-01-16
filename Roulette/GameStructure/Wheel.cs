@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InterfaceLayerBD.Bet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace Roulette.GameStructure
         public IPocket Spin()
         {
             int number = generator.Generate(36);
-            return new Pocket((PocketNumber)number);
+            return new Pocket((IPocketNumber)number);
         }
     }
 }

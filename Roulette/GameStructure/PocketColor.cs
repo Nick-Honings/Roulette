@@ -9,8 +9,8 @@ namespace Roulette.GameStructure
     public enum PocketColor
     {
         Undefined,
-        Black,
         Red,
+        Black,
         Green
     }
 }

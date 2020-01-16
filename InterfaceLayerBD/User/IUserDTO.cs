@@ -15,5 +15,8 @@ namespace InterfaceLayerBD
         int Age { get; set; }
         bool IsActive { get; set; }
         decimal Balance { get; set; }
+        List<string> Permissions { get; }
+        int UserRole { get; }
+        int RoomId { get; set; }
     }
 }

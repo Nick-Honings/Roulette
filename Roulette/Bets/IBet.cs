@@ -1,4 +1,5 @@
 ﻿using InterfaceLayerBD.Bet;
+using Roulette.Bets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,14 @@ using System.Threading.Tasks;
 
 namespace Roulette
 {
-    public interface IBet : IBetDTO
+    public interface IBet
     {
-        int ID { get; set; }
+        int Id { get; set; }
         decimal Stake { get; set; }
         double Odd { get; }
+        BetType Type { get; set; }
         decimal GetReturnStake();
+        Dictionary<string, object> GetBetSpecificInfo();
+
     }
 }

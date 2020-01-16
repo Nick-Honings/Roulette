@@ -5,9 +5,9 @@ namespace InterfaceLayerBD
 {
     public interface IUserContainerDAL
     {
-        bool Delete(int id);
+        bool DeleteUser(int id);
         List<IUserDTO> GetAllUsers();
         IUserDTO GetUserById(int id);
-        bool Save(IUserDTO dto);
+        bool AddUser(IUserDTO dto);
     }
 }

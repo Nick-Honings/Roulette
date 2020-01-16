@@ -11,5 +11,6 @@ namespace InterfaceLayerBD.Round
         bool Update(IRoundDTO dto);
 
         bool SavePocket(IPocketDTO dto);
+        IPocketDTO GetPocket(int id);
     }
 }

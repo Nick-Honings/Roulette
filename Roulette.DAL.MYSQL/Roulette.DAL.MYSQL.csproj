@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AdminDAL.cs" />
+    <Compile Include="Admin\AdminDTO.cs" />
     <Compile Include="Battle\BattleDAL.cs" />
     <Compile Include="Battle\BattleDTO.cs" />
     <Compile Include="Bet\BetDAL.cs" />
@@ -75,7 +77,7 @@
     <Compile Include="Round\RoundDAL.cs" />
     <Compile Include="User\UserDAL.cs" />
     <Compile Include="User\UserDTO.cs" />
-    <Compile Include="utils\ConnectionHelper.cs" />
+    <Compile Include="utils\CheckForDBNull.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

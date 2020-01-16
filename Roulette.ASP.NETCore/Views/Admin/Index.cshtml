@@ -1,0 +1,57 @@
+﻿@model System.Data.DataSet
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Age</th>
+            <th>Active</th>
+            <th>Balance</th>
+            <th>Stake</th>
+            <th>Odd</th>
+            <th>Color</th>
+            <th>Number</th>
+            <th>Even</th>
+            <th>First Number</th>
+            <th>Last Number</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (System.Data.DataRow row in Model.Tables[0].Rows) {
+        <tr>
+            <td>@row["Id"]</td>
+            <td>@row["Name"]</td>
+            <td>@row["Email"]</td>
+            <td>@row["Password"]</td>
+            <td>@row["Age"]</td>
+            <td>@row["Active"]</td>
+            <td>@row["Balance"]</td>
+            <td>@row["Stake"]</td>
+            <td>@row["Odd"]</td>
+            <td>@row["Color"]</td>
+            <td>@row["Number"]</td>
+            <td>@row["Even"]</td>
+            <td>@row["FirstNumber"]</td>
+            <td>@row["SecondNumber"]</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -11,11 +11,17 @@ namespace Roulette.DAL.MYSQL.News
 {
     public class NewsItemDAL : INewsItemDAL, INewsItemContainerDAL
     {
+        private readonly string _connection;
+
+        public NewsItemDAL(string connection)
+        {
+            this._connection = connection;
+        }
         public bool Update(INewsItemDTO dto)
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(ConnectionHelper.CnnVal("DemoDB")))
+                using (MySqlConnection conn = new MySqlConnection(_connection))
                 {
                     conn.Open();
                     using (MySqlCommand cmd = new MySqlCommand("Update newsitem SET Title = @Title, Description=@Description, Date=@Date WHERE Id = @Id"))
@@ -43,7 +49,7 @@ namespace Roulette.DAL.MYSQL.News
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(ConnectionHelper.CnnVal("DemoDB")))
+                using (MySqlConnection conn = new MySqlConnection(_connection))
                 {
                     conn.Open();
                     using (MySqlCommand cmd = new MySqlCommand("INSERT INTO newsitem (Title, Description,Date) VALUES(@Title, @Description,@Date)", conn))
@@ -70,7 +76,7 @@ namespace Roulette.DAL.MYSQL.News
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(ConnectionHelper.CnnVal("DemoDB")))
+                using (MySqlConnection conn = new MySqlConnection(_connection))
                 {
                     conn.Open();
                     using (MySqlCommand cmd = new MySqlCommand("DELETE FROM newsitem WHERE Id=@Id"))
@@ -95,7 +101,7 @@ namespace Roulette.DAL.MYSQL.News
             List<INewsItemDTO> dtos = new List<INewsItemDTO>();
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(ConnectionHelper.CnnVal("DemoDB")))
+                using (MySqlConnection conn = new MySqlConnection(_connection))
                 {
                     conn.Open();
                     using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM User"))

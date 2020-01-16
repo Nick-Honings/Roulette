@@ -10,55 +10,7 @@ namespace Roulette.Tests
 {
     public class RoundTests
     {
-        Round round;
-        Result expected;
-        IWheel wheel;
-        IGenerator generator;
-
-        public RoundTests()
-        {
-            generator = new NumberGenerator();
-            wheel = new Wheel(generator);
-            round = new Round(wheel, 30);
-            expected = new Result(Color.Black, 10);
-        }
-
-        [Fact]
-        public void AddResult_ShouldWork()
-        {
-            // Act
-            round.AddResult(expected);
-            Result result = round.Result;
-
-            //Assert
-            Assert.Equal(expected, result);            
-        }
-
-        [Fact]
-        public void AddResult_ShouldNotOverwriteResultProperty()
-        {
-            // Arrange
-            round.AddResult(expected);
-
-            // Act
-            round.AddResult(new Result(Color.Red, 1));
-
-            // Assert
-            Assert.Equal(expected, round.Result);
-        }
-
-        [Fact]
-        public void GetResult_ShouldReturnSameValue()
-        {
-            // Arrange
-            round.AddResult(expected);
-
-
-            // Act
-            Result result = round.GetResult();
-
-            // Assert
-            Assert.Equal(expected, result);
-        }
+        
+        
     }
 }

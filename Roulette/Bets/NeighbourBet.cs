@@ -1,4 +1,5 @@
-﻿using Roulette.GameStructure;
+﻿using InterfaceLayerBD.Bet;
+using Roulette.GameStructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +9,20 @@ using System.Threading.Tasks;
 
 namespace Roulette.Bets
 {
-    public class NeighbourBet : Bet, IBet
+    public class NeighbourBet : Bet, IBet, IBetDTO
     {
         // Use
-        public PocketNumber FirstNumber { get;  private set; }
-        public PocketNumber SecondNumber { get; private set; }
+        public IPocketNumber FirstNumber { get;  private set; }
+        public IPocketNumber SecondNumber { get; private set; }
 
-        public NeighbourBet(PocketNumber firstNumber, PocketNumber secondNumber)
+        
+
+        public NeighbourBet(IPocketNumber firstNumber, IPocketNumber secondNumber)
         {
             FirstNumber = firstNumber;
             SecondNumber = secondNumber;
-            this.Odd = 0.054;
+            this.Odd = 2;
+            Type = BetType.Neighbour;
         }
     }
 }

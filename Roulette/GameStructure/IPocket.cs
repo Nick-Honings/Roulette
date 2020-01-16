@@ -1,9 +1,11 @@
-﻿namespace Roulette.GameStructure
+﻿using InterfaceLayerBD.Bet;
+
+namespace Roulette.GameStructure
 {
     public interface IPocket
     {
-        PocketColor Color { get; }
+        IPocketColor Color { get; }
         bool Even { get; }
-        PocketNumber Number { get; }
+        IPocketNumber Number { get; }
     }
 }

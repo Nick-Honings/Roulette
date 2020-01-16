@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using Xunit;
 using Roulette.Users;
 using Roulette.Bets;
-using DataAccesFactory;
 using Roulette.GameStructure;
+using TestDataAccesFactory;
+using InterfaceLayerBD.Bet;
 
 namespace Roulette.Tests
 {
@@ -15,12 +16,14 @@ namespace Roulette.Tests
     {
         User user;
         IBet bet;
-        
+        InMemRepository repo;
 
         public UserTests()
         {
-            user = new User("test", TestFactory.CreateTestUserDAL());
-            bet = new ColorBet(PocketColor.Black, null);
+            repo = new InMemRepository();
+            user = new User("test", repo.CreateUserDAL(), repo.CreateBetDAL());
+            bet = new ColorBet(IPocketColor.Black);
+            
         }
 
         [Fact]
@@ -30,7 +33,8 @@ namespace Roulette.Tests
             decimal expected = 10;
 
             // Act
-            user.MakeBet(bet, 10);
+            bet.Stake = 10;
+            user.MakeBet(bet);
             decimal result = user.CurrentBet.Stake;
             
 

@@ -11,15 +11,3 @@ C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individ
 C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\InterfaceLayerBD.dll
 C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\InterfaceLayerBD.pdb
 C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\obj\Debug\Roulette.csproj.CopyComplete
-C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\DataAccesFactory.dll
-C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\Roulette.DAL.MYSQL.dll
-C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\MySql.Data.dll
-C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\Google.Protobuf.dll
-C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\BouncyCastle.Crypto.dll
-C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\Renci.SshNet.dll
-C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\DataAccesFactory.pdb
-C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\Roulette.DAL.MYSQL.pdb
-C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\Roulette.DAL.MYSQL.dll.config
-C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\MySql.Data.xml
-C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\Google.Protobuf.xml
-C:\Users\nickh\OneDrive\Documents\FontysICT\Jaar 1(2018-2019)\Semester 2\Individueel project\Project\Roulette\Roulette2\Roulette\bin\Debug\Renci.SshNet.xml

@@ -8,8 +8,8 @@ namespace InterfaceLayerBD.Room
 {
     public interface IRoomContainerDAL
     {
-        bool Save(IRoomDTO dto);
-        bool Delete(int id);
+        bool AddRoom(IRoomDTO dto);
+        bool DeleteRoom(int id);
         List<IRoomDTO> GetAllRooms();
     }
 }

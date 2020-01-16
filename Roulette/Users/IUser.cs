@@ -8,6 +8,6 @@
         string Email { get; set; }
         bool IsActive { get; set; }
 
-        void UpdateProfile();
+        bool UpdateProfile();
     }
 }

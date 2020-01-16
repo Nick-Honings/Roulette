@@ -1,4 +1,5 @@
 ﻿using InterfaceLayerBD;
+using System.Collections.Generic;
 
 namespace Roulette.DAL.MYSQL
 {
@@ -10,6 +11,11 @@ namespace Roulette.DAL.MYSQL
         public string Email { get; set; }
         public int Age { get; set; }
         public bool IsActive { get; set; }
-        public decimal Balance { get; set; }        
+        public decimal Balance { get; set; }
+
+        public List<string> Permissions { get; set; }
+
+        public int UserRole { get; set; }
+        public int RoomId { get; set; }
     }
 }

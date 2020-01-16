@@ -9,19 +9,16 @@ using System.Threading.Tasks;
 
 namespace Roulette.Bets
 {
-    public class ColorBet : Bet, IBet
+    public class ColorBet : Bet, IBet, IBetDTO
     {
         // Use
-        public PocketColor Color { get; private set; }
+        public IPocketColor Color { get; private set; }        
 
-
-        private IBetDAL betDAL;
-
-        public ColorBet(PocketColor color, IBetDAL dAL)
+        public ColorBet(IPocketColor color)
         {
             Color = color;
-            betDAL = dAL;
-            this.Odd = 2;
+            this.Type = BetType.Color;            
+            this.Odd = 2;            
         }
     }
 }
