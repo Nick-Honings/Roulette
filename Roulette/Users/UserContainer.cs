@@ -34,11 +34,6 @@ namespace Roulette.Users
         {
             if(user != null)
             {
-                // Before we add the user, check if he already exists.
-                //if (user.VerifyLogin(_userdal))
-                //{
-                //    return true;
-                //}
 
                 if(_containerDAL.AddUser(user))
                 {

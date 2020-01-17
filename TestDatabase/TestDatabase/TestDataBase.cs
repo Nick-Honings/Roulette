@@ -130,19 +130,19 @@ namespace TestDatabase.TestDatabase
             {
                 Id = 1,
                 Description = "New betting modes are available in this room",
-                date = DateTime.Today
+                PostDate = DateTime.Today
             },
             new NewsItem("Double Reward Weekend", null)
             {
                 Id = 2,
                 Description = "There are new rewards available",
-                date = DateTime.Today
+                PostDate = DateTime.Today
             },
             new NewsItem("New game modes", null)
             {
                 Id = 3,
                 Description = "New game modes are available",
-                date = DateTime.Today
+                PostDate = DateTime.Today
             },
         };
 

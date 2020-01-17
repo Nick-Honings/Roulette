@@ -14,14 +14,14 @@ namespace Roulette.News
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime date { get; set; }
+        public DateTime PostDate { get; set; }
         
 
         public NewsItem(string title, INewsItemDAL newsitemDAL)
         {
             this.Title = title;
             this._newItemDAL = newsitemDAL;
-            this.date = DateTime.Now.ToLocalTime();
+            this.PostDate = DateTime.Now.ToLocalTime();
         }
 
         public void SetDescription(string description)

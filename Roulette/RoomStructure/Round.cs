@@ -24,12 +24,12 @@ namespace Roulette
         public IPocket Pocket { get; private set; }
         
 
-        //public List<IBet> Bets { get; private set; }
+
 
         public event EventHandler<RoundEndedEventArgs> RoundEnded;
 
         
-        private Timer roundTimer;
+        private Timer _roundTimer;
         private int counter = 0;
 
 
@@ -38,8 +38,8 @@ namespace Roulette
             this.Id = id;
             this._roundDAL = roundDAL;
             this._wheel = wheel;
-            roundTimer = new Timer(1000);
-            roundTimer.Elapsed += RoundTimer_Elapsed;
+            _roundTimer = new Timer(1000);
+            _roundTimer.Elapsed += RoundTimer_Elapsed;
 
             this.Pocket = ExtractPocket(_roundDAL.GetPocket(this.Id));
         }
@@ -64,7 +64,7 @@ namespace Roulette
         {
             HasEnded = true;
             Pocket = _wheel.Spin();
-            this.roundTimer.Stop();
+            this._roundTimer.Stop();
             if (RoundEnded != null)
             {
                 RoundEnded(this, new RoundEndedEventArgs("Round has ended"));                
@@ -76,7 +76,7 @@ namespace Roulette
         internal void Start()
         {
             // Start the timer that holds track of how long into the round we are.
-            this.roundTimer.Start();
+            this._roundTimer.Start();
         }
    
         private IPocket ExtractPocket(IPocketDTO dto)

@@ -28,7 +28,7 @@ namespace Roulette.DAL.MYSQL.News
                     {
                         cmd.Parameters.AddWithValue("@Name", dto.Title);
                         cmd.Parameters.AddWithValue("@Email", dto.Description);
-                        cmd.Parameters.AddWithValue("@Age", dto.date);
+                        cmd.Parameters.AddWithValue("@Age", dto.PostDate);
                         cmd.Parameters.AddWithValue("@Id", dto.Id);
   
                         if (cmd.ExecuteNonQuery() > 0)
@@ -56,7 +56,7 @@ namespace Roulette.DAL.MYSQL.News
                     {
                         cmd.Parameters.AddWithValue("@Title", dto.Title);
                         cmd.Parameters.AddWithValue("@Description", dto.Description);
-                        cmd.Parameters.AddWithValue("@Date", dto.date);
+                        cmd.Parameters.AddWithValue("@Date", dto.PostDate);
                         if (cmd.ExecuteNonQuery() > 0)
                         {
                             return true;
@@ -115,7 +115,7 @@ namespace Roulette.DAL.MYSQL.News
                                     Id = reader.GetInt32(0),
                                     Title = reader.GetString(1),
                                     Description = reader.GetString(3),
-                                    date = reader.GetDateTime(4),
+                                    PostDate = reader.GetDateTime(4),
                                 };
                                 dtos.Add(dto);
                             }

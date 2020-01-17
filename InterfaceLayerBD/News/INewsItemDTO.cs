@@ -11,6 +11,6 @@ namespace InterfaceLayerBD.News
         int Id { get; set; }
         string Title { get; set; }
         string Description { get; set; }
-        DateTime date { get; set; }
+        DateTime PostDate { get; set; }
     }
 }

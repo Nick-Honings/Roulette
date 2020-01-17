@@ -76,7 +76,7 @@ namespace Roulette.News
             {
                 Id = dto.Id,
                 Description = dto.Description,
-                date = dto.date
+                PostDate = dto.PostDate
             };
         }
     }

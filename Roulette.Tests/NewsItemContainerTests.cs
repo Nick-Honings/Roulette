@@ -138,7 +138,7 @@ namespace Roulette.Tests
                 Assert.Equal(expected[i].Id, result[i].Id);
                 Assert.Equal(expected[i].Title, result[i].Title);
                 Assert.Equal(expected[i].Description, result[i].Description);
-                Assert.Equal(expected[i].date, result[i].date);
+                Assert.Equal(expected[i].PostDate, result[i].PostDate);
             }
         }
     }
