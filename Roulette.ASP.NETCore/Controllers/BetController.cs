@@ -16,10 +16,13 @@ namespace Roulette.ASP.NETCore.Controllers
     public class BetController : Controller
     {
         private static BetViewModel context = new BetViewModel();
+        private readonly IUserContainerRepository _userRepo;
         private readonly IBetRepository _betRepository;
+        private static List<SingleNumberBetModel> models = new List<SingleNumberBetModel>();
 
-        public BetController(IBetRepository betRepository)
+        public BetController(IUserContainerRepository userRepo, IBetRepository betRepository)
         {
+            this._userRepo = userRepo;
             //context = new BetViewModel();
             this._betRepository = betRepository;
         }
@@ -46,7 +49,7 @@ namespace Roulette.ASP.NETCore.Controllers
         [Route("getbetlistpartial")]
         public IActionResult GetBetListPartial()
         {
-            return PartialView("~/Views/Bet/_ListBets.cshtml", context);
+            return PartialView("~/Views/Bet/_ListBets.cshtml", models);
         }
 
         // GET: Bet/Create
@@ -57,17 +60,34 @@ namespace Roulette.ASP.NETCore.Controllers
 
         // POST: Bet/Create
         [HttpPost]
-        public JsonResult Create(TestModel model)
+        public IActionResult Create(SingleNumberBetModel model)
         { 
             if (!ModelState.IsValid)
             {
                 return new JsonResult("Not Ok");
-            }                     
+            }
 
             //context.BetModels.Add(model);
 
             return new JsonResult("Ok");
             
+        }
+
+        public ActionResult PlaceBet()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PlaceBet(SingleNumberBetModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            models.Add(model);
+
+            return RedirectToAction("Index", "Room");
         }
 
         // GET: Bet/Edit/5
@@ -79,7 +99,7 @@ namespace Roulette.ASP.NETCore.Controllers
         [HttpGet]        
         public IActionResult GetBetList()
         {
-            return PartialView(context.BetModels);
+            return PartialView(models);
         }
 
         // POST: Bet/Edit/5

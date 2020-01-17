@@ -1,4 +1,4 @@
-﻿@model Roulette.ASP.NETCore.Models.BetModel
+﻿@model Roulette.ASP.NETCore.Models.SingleNumberBetModel
 
 <link rel="stylesheet" runat="server" href="~/css/placebet.css" />
 
@@ -44,7 +44,7 @@
 
         <input id="createbet" type="button" class="btn" value="Place Bet"/>
 
-    </form>*@
+    </form>
 
 <select id="bettype" asp-for="Type" asp-items="@Html.GetEnumSelectList<Roulette.Bets.BetType>()" onchange="valueChange()">
 </select>
@@ -85,4 +85,43 @@
 
     <p>Stake:</p>
     <input type="number" /><input id="createbet" type="button" class="btn" value="Place Bet" onclick="insertModel('3')" />
-</form>
+</form>*@
+
+<div>
+    @using (Html.BeginForm("Create", "Bet", FormMethod.Post, new { id = "testForm" }))
+    {
+        @Html.LabelFor(x => Model.Stake);
+        @Html.EditorFor(x => Model.Stake);
+        @Html.LabelFor(x => Model.Number);
+        @Html.EditorFor(x => Model.Number);
+    }
+
+    <input id="btnSubmit" type="submit" value="Post" />
+</div>
+<div id="divResult"></div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $(function () {
+        $("#btnSubmit").click(function () {
+            $("#divResult").html("");
+            var data = [];
+            data.push({ Stake: $("input[name='Stake']").val(), Number: $("input[name='Number']").val() })
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("Create", "Bet")",
+                data: JSON.stringify(data),
+                contentType: "application/json",
+                succes: function (result) {
+                    $("#divResult").html(result);
+                },
+                error: function () {
+                    alert("Failed")
+                }
+            })
+        })
+
+    })
+
+</script>

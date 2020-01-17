@@ -14,10 +14,10 @@
         data.Age = 20;
 
         var testModel = { Name: 'Nick', Age: 10 };
-        $("#createbet").click(function () {
+        $("#showBets").click(function () {
 
-            console.log("data: " + data);
-            postBet(testModel);
+            //console.log("data: " + data);
+            //postBet(testModel);
             GetPartial();
                           
             
@@ -56,6 +56,26 @@
             });
         }
 
+    </script>
+
+    <script>
+
+        function checkNumber() {
+            $(document).ready(() => {
+                var result = $("#result-number").html();
+                console.log(result);
+
+                var betnumber = $("#number").html();
+                console.log(betnumber);
+
+                if (result == betnumber) {
+                    alert("You win!")
+                }
+                else {
+                    alert("You lost, try again!");
+                }
+            });
+        }
     </script>
 }
 
@@ -107,8 +127,8 @@
             <div class="data-inner">
                 <div class="mask"></div>
                 <div class="result">
-                    <div class="result-number">00</div>
-                    <div class="result-color">red</div>
+                    <div id="result-number" class="result-number">00</div>
+                    <div id="result-color" class="result-color">red</div>
                 </div>
             </div>
         </div>
@@ -122,7 +142,11 @@
 
 
 <div id="createBet">
-    @{await Html.RenderPartialAsync("~/Views/Bet/_PlaceBet.cshtml");};
+    <input type="button" value="Create" id="createBet" onclick="location.href='@Url.Action("PlaceBet", "Bet")'"/>
+
+    @*@{await Html.RenderPartialAsync("~/Views/Bet/_PlaceBet.cshtml");};*@
+    <button id="showBets">Show Current Bets</button>
+    <button onclick="checkNumber()">Receive payout</button>
 </div>
 
 <span id="result"></span>
