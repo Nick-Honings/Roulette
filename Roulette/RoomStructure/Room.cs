@@ -144,33 +144,53 @@ namespace Roulette
             foreach (IPlayer p in Players)
             {
                 IBet bet = p.CurrentBet;
-                if (bet is ColorBet cBet)
+                IfColorBetUpdateBalance(pocket, p, bet);
+                IfEvenBetUpdateBalance(pocket, p, bet);
+                ifNeighbourUpdateBalance(pocket, p, bet);
+                IfSingleUpdateBalance(pocket, p, bet);
+            }
+        }
+
+        private static void IfSingleUpdateBalance(IPocket pocket, IPlayer p, IBet bet)
+        {
+            if (bet is SingleNumberBet sBet)
+            {
+                if (sBet.Number == pocket.Number)
                 {
-                    if (cBet.Color == pocket.Color)
-                    {
-                        p.UpdateBalance(cBet.GetReturnStake());
-                    }
+                    p.UpdateBalance(sBet.GetReturnStake());
                 }
-                if (bet is EvenUnevenBet eBet)
+            }
+        }
+
+        private static void ifNeighbourUpdateBalance(IPocket pocket, IPlayer p, IBet bet)
+        {
+            if (bet is NeighbourBet nBet)
+            {
+                if (nBet.FirstNumber == pocket.Number | nBet.SecondNumber == pocket.Number)
                 {
-                    if (eBet.IsEven == pocket.Even)
-                    {
-                        p.UpdateBalance(eBet.GetReturnStake());
-                    }
+                    p.UpdateBalance(nBet.GetReturnStake());
                 }
-                if (bet is NeighbourBet nBet)
+            }
+        }
+
+        private static void IfEvenBetUpdateBalance(IPocket pocket, IPlayer p, IBet bet)
+        {
+            if (bet is EvenUnevenBet eBet)
+            {
+                if (eBet.IsEven == pocket.Even)
                 {
-                    if (nBet.FirstNumber == pocket.Number | nBet.SecondNumber == pocket.Number)
-                    {
-                        p.UpdateBalance(nBet.GetReturnStake());
-                    }
+                    p.UpdateBalance(eBet.GetReturnStake());
                 }
-                if (bet is SingleNumberBet sBet)
+            }
+        }
+
+        private static void IfColorBetUpdateBalance(IPocket pocket, IPlayer p, IBet bet)
+        {
+            if (bet is ColorBet cBet)
+            {
+                if (cBet.Color == pocket.Color)
                 {
-                    if (sBet.Number == pocket.Number)
-                    {
-                        p.UpdateBalance(sBet.GetReturnStake());
-                    }
+                    p.UpdateBalance(cBet.GetReturnStake());
                 }
             }
         }

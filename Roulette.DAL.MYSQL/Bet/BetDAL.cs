@@ -84,5 +84,5 @@ namespace Roulette.DAL.MYSQL.Bet
                 throw new Exception(ex.Message, ex);
             }
         }
-
     }
+}

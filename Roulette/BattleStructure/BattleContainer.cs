@@ -1,5 +1,4 @@
-﻿using InterfaceLayerBD.Battle;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,17 +8,17 @@ namespace Roulette.BattleStructure
 {
     public class BattleContainer
     {
-        private readonly IBattleContainerDAL _containerDAL;
-        private readonly IBattleDAL _battleDAL;
+        //private readonly IBattleContainerDAL _containerDAL;
+        //private readonly IBattleDAL _battleDAL;
 
         public List<Battle> Battles { get; private set; }
 
-        public BattleContainer(IBattleContainerDAL containerDAL, IBattleDAL battleDAL)
-        {
-            Battles = new List<Battle>();
-            this._containerDAL = containerDAL;
-            this._battleDAL = battleDAL;
-        }
+        //public BattleContainer(IBattleContainerDAL containerDAL, IBattleDAL battleDAL)
+        //{
+        //    Battles = new List<Battle>();
+        //    this._containerDAL = containerDAL;
+        //    this._battleDAL = battleDAL;
+        //}
 
 
         public void AddBattle(Battle battle)
