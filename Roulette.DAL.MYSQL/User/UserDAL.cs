@@ -32,12 +32,12 @@ namespace Roulette.DAL.MYSQL
                 using (MySqlConnection conn = new MySqlConnection(_connstring))
                 {
                     conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand("Update User SET Name = @Name, Email=@Email, Age=@Age, Active=@IsActive, Balance=@Balance WHERE Id = @Id"))
+                    using (MySqlCommand cmd = new MySqlCommand("Update User SET Name = @Name, Email=@Email, Age=@Age, Active=@Active, Balance=@Balance WHERE Id = @Id", conn))
                     {
                         cmd.Parameters.AddWithValue("@Name", dto.Name);
                         cmd.Parameters.AddWithValue("@Email", dto.Email);
                         cmd.Parameters.AddWithValue("@Age", dto.Age);
-                        cmd.Parameters.AddWithValue("@IsActive", dto.IsActive);
+                        cmd.Parameters.AddWithValue("@Active", dto.IsActive);
                         cmd.Parameters.AddWithValue("@Balance", dto.Balance);
                         cmd.Parameters.AddWithValue("@Id", dto.Id);
                         if (cmd.ExecuteNonQuery() > 0)
@@ -63,13 +63,13 @@ namespace Roulette.DAL.MYSQL
                 using (MySqlConnection conn = new MySqlConnection(_connstring))
                 {
                     conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand("INSERT INTO User (Name, Password,Email, Age,IsActive,Balance) VALUES(@Name, @Password,@Email,@Age,@IsActive,@Balance)", conn))
+                    using (MySqlCommand cmd = new MySqlCommand("INSERT INTO User (Name, Password,Email, Age,Active,Balance) VALUES(@Name, @Password,@Email,@Age,@Active,@Balance)", conn))
                     {
                         cmd.Parameters.AddWithValue("@Name", dto.Name);
                         cmd.Parameters.AddWithValue("@Password", dto.Password);
-                        cmd.Parameters.AddWithValue("@Emai", dto.Email);
+                        cmd.Parameters.AddWithValue("@Email", dto.Email);
                         cmd.Parameters.AddWithValue("@Age", dto.Age);
-                        cmd.Parameters.AddWithValue("@IsActive", dto.IsActive);
+                        cmd.Parameters.AddWithValue("@Active", dto.IsActive);
                         cmd.Parameters.AddWithValue("@Balance", dto.Balance);
                         if (cmd.ExecuteNonQuery() > 0)
                         {
@@ -95,7 +95,7 @@ namespace Roulette.DAL.MYSQL
                 using (MySqlConnection conn = new MySqlConnection(_connstring))
                 {
                     conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand("DELETE FROM User WHERE Id=@Id"))
+                    using (MySqlCommand cmd = new MySqlCommand("DELETE FROM User WHERE Id=@Id", conn))
                     {
                         cmd.Parameters.AddWithValue("@Id", id);
                         if (cmd.ExecuteNonQuery() > 0)
@@ -158,21 +158,21 @@ namespace Roulette.DAL.MYSQL
                 using (MySqlConnection conn = new MySqlConnection(_connstring))
                 {
                     conn.Open();
-                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM User WHERE Id=@Id"))
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM User WHERE Id=@Id", conn))
                     {
                         cmd.Parameters.AddWithValue("@Id", id);
                         MySqlDataReader reader = cmd.ExecuteReader();
+                        
+                        while (reader.Read())
                         {
-                            while (reader.Read())
-                            {
-                                dto.Id = id;
-                                dto.Name = reader.GetString(1);
-                                dto.Email = reader.GetString(3);
-                                dto.Age = reader.GetInt32(4);
-                                dto.IsActive = reader.GetBoolean(5);
-                                dto.Balance = reader.GetDecimal(6);
-                            }
+                            dto.Id = id;
+                            dto.Name = reader.GetString(1);
+                            dto.Email = reader.GetString(3);
+                            dto.Age = reader.GetInt32(4);
+                            dto.IsActive = reader.GetBoolean(5);
+                            dto.Balance = reader.GetDecimal(6);
                         }
+                        
                     }
                 }
                 return dto;

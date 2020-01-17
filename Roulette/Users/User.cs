@@ -32,6 +32,7 @@ namespace Roulette.Users
 
         public bool UpdateProfile()
         {
+            //User user = CreateUser();
             if (_userDAL.UpdateProfile(this))
             {
                 return true;
@@ -39,6 +40,21 @@ namespace Roulette.Users
             return false;
         }
 
+
+        private User CreateUser()
+        {
+            return new User(this.Name, null, null)
+            {
+                Id = this.Id,
+                Name = this.Name,
+                Password = this.Password,
+                Email = this.Email,
+                Age = this.Age, 
+                IsActive = this.IsActive,
+                Balance = this.Balance,
+                RoomId = this.RoomId
+            };
+        }
         public bool UpdateBalance(decimal balance)
         {           
             if(_userDAL.UpdateBalance(this.Id, balance))
@@ -62,14 +78,6 @@ namespace Roulette.Users
             }
             return false;
         }
-
-        // Raise an event 
-        public void StartBattle(int playerId)
-        {
-            
-        }
-
-
 
 
         /// <summary>
@@ -138,6 +146,9 @@ namespace Roulette.Users
             return output;
         }
 
-
+        public void StartBattle(int playerId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

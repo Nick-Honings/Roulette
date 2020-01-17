@@ -45,16 +45,16 @@ namespace Roulette.Users
         }
 
         //Removes a user from the database
-        public bool RemoveUser(User user)
+        public bool RemoveUser(int id)
         {
-            if (user != null)
-            {                
-                if(_containerDAL.DeleteUser(user.Id))
-                {
-                    Users.Remove(user);
-                    return true;
-                }                
-            }
+                
+            if(_containerDAL.DeleteUser(id))
+            {
+                var toRemove = Users.Find(i => i.Id == id);
+                Users.Remove(toRemove);
+                return true;
+            }                
+            
             return false;
         }
 
