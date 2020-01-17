@@ -25,7 +25,7 @@ namespace Roulette.Tests
         public void GetAllAdmins_ShouldWork()
         {
             // Arrange
-            int expected = TestDataBase.GetAdminTable().Count;
+            int expected = TestDB.GetAdminTable().Count;
 
             // Act
             var result = container.GetAllAdmins();
@@ -40,7 +40,7 @@ namespace Roulette.Tests
         {
             // Arrange
             AdminContainer adminContainer = new AdminContainer(repo.CreateAdminContainerDAL(), repo.CreateAdminDAL());
-            int expected = TestDataBase.GetAdminTable().Count;
+            int expected = TestDB.GetAdminTable().Count;
 
             // Act
             int result = adminContainer.Admins.Count;

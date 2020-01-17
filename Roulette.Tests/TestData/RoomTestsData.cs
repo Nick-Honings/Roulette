@@ -10,7 +10,7 @@ using Roulette.GameStructure;
 
 namespace Roulette.Tests.TestData
 {
-    public class RoomTestsData 
+    public static class RoomTestsData 
     {
         public class PositiveBets : IEnumerable<object[]>
         {

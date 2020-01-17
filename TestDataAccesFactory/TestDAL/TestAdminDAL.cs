@@ -17,7 +17,7 @@ namespace TestDataAccesFactory.TestDAL
 
         public TestAdminDAL()
         {
-            users = TestDataBase.GetUserTable();
+            users = TestDB.GetUserTable();
         }
 
         public bool AddUser(IUserDTO dto)

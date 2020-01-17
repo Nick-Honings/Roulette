@@ -51,9 +51,6 @@
     <Compile Include="Admin\IAdminContainerDAL.cs" />
     <Compile Include="Admin\IAdminDAL.cs" />
     <Compile Include="Admin\IAdminDTO.cs" />
-    <Compile Include="Battle\IBattleContainerDAL.cs" />
-    <Compile Include="Battle\IBattleDAL.cs" />
-    <Compile Include="Battle\IBattleDTO.cs" />
     <Compile Include="Bet\IBetDAL.cs" />
     <Compile Include="Bet\IBetDTO.cs" />
     <Compile Include="Bet\IPocketColor.cs" />

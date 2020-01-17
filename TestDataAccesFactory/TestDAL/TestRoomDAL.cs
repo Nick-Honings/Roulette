@@ -20,9 +20,9 @@ namespace TestDataAccesFactory.TestDAL
 
         public TestRoomDAL()
         {            
-            rounds = TestDataBase.GetRoundsTable();
-            rooms = TestDataBase.GetRoomsTable();
-            users = TestDataBase.GetUserTable();
+            rounds = TestDB.GetRoundsTable();
+            rooms = TestDB.GetRoomsTable();
+            users = TestDB.GetUserTable();
         }
 
 

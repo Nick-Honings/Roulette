@@ -16,7 +16,7 @@ namespace TestDataAccesFactory
 
         public TestUserDAL()
         {
-            users = TestDataBase.GetUserTable();
+            users = TestDB.GetUserTable();
         }
 
         public bool UpdateBalance(int id, decimal balance)

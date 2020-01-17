@@ -42,7 +42,7 @@ namespace Roulette.Tests
         {
             // Arrange
             
-            int expected = TestDataBase.GetRoundsTable().Where(i=> i.Id == 1).Count() + 1;
+            int expected = TestDB.GetRoundsTable().Where(i=> i.Id == 1).Count() + 1;
             
             // Act
             room.StartNewRound();

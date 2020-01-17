@@ -19,18 +19,6 @@ namespace Roulette.DAL.MYSQL.Bet
             this._connection = connection;
         }
 
-        private List<string> RemoveUnusedProperties(string sql, List<string> properties)
-        {
-            for (int i = properties.Count -1; i >= 0; i--)
-            {
-                if (!sql.Contains(properties[i]))
-                {
-                    properties.RemoveAt(i);
-                }
-            }
-            return properties;
-        }
-
         private string SQLStringBuilder(List<string> propNames)
         {
             string sql = "INSERT INTO bet (";

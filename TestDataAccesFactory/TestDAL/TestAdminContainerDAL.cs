@@ -14,7 +14,7 @@ namespace TestDataAccesFactory.TestDAL
 
         public TestAdminContainerDAL()
         {
-            admins = TestDataBase.GetAdminTable();
+            admins = TestDB.GetAdminTable();
         }
         public List<IAdminDTO> GetAllAdmins()
         {            

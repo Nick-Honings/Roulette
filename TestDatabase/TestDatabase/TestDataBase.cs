@@ -17,7 +17,7 @@ using InterfaceLayerBD.Admin;
 
 namespace TestDatabase.TestDatabase
 {
-    public static class TestDataBase
+    public static class TestDB
     {
         private static List<IRoomDTO> rooms = new List<IRoomDTO>()
         {

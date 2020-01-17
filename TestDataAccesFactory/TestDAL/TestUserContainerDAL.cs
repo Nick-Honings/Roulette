@@ -15,7 +15,7 @@ namespace TestDataAccesFactory
 
         public TestUserContainerDAL()
         {
-            users = TestDataBase.GetUserTable();
+            users = TestDB.GetUserTable();
         }
 
         public bool DeleteUser(int id)

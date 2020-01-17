@@ -16,7 +16,7 @@ namespace TestDataAccesFactory.TestDAL
 
         public TestRoomContainerDAL()
         {
-            rooms = TestDataBase.GetRoomsTable();
+            rooms = TestDB.GetRoomsTable();
         }
 
         public bool DeleteRoom(int id)

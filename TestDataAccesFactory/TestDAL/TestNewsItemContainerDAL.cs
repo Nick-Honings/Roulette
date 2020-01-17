@@ -14,7 +14,7 @@ namespace TestDataAccesFactory.TestDAL
 
         public TestNewsItemContainerDAL()
         {           
-            news = TestDataBase.GetNewsTable();
+            news = TestDB.GetNewsTable();
         }
 
         public bool Delete(int id)

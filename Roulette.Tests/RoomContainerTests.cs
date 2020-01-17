@@ -40,7 +40,7 @@ namespace Roulette.Tests
         public void AddRoom_ShouldWork()
         {
             // Arrange
-            int expected = TestDataBase.GetRoomsTable().Count + 1;
+            int expected = TestDB.GetRoomsTable().Count + 1;
 
             // Act
             bool validCall = container.AddRoom(room);
@@ -55,7 +55,7 @@ namespace Roulette.Tests
         public void AddRoom_ShouldNotAddEmptyClassToList()
         {
             // Arrange
-            int expected = TestDataBase.GetRoomsTable().Count;
+            int expected = TestDB.GetRoomsTable().Count;
 
             // Act
             bool validCall = container.AddRoom(emptyRoom);
@@ -70,7 +70,7 @@ namespace Roulette.Tests
         public void RemoveRoom_ShouldWorkWithOne()
         {
             // Arrange
-            var rooms = TestDataBase.GetRoomsTable();
+            var rooms = TestDB.GetRoomsTable();
             Room toRemove = (Room)rooms[0];
             int expected = rooms.Count - 1;
 
@@ -87,7 +87,7 @@ namespace Roulette.Tests
         public void RemoveRoom_ShouldWorkWithMultipleEntries()
         {
             // Arrange
-            var rooms = TestDataBase.GetRoomsTable();
+            var rooms = TestDB.GetRoomsTable();
             Room toRemove = (Room)rooms[0];
             int expected = rooms.Count - 1;
 
@@ -104,7 +104,7 @@ namespace Roulette.Tests
         public void RemoveRoom_ShouldDoNothingWithEmptyClass()
         {
             // Arrange
-            int expected = TestDataBase.GetRoomsTable().Count + 1;
+            int expected = TestDB.GetRoomsTable().Count + 1;
             container.AddRoom(room);
 
 
@@ -121,7 +121,7 @@ namespace Roulette.Tests
         public void GetAllRooms_ShouldWorkAfterInitialisation()
         {
             // Arrange
-            var roomsExpected = TestDataBase.GetRoomsTable();
+            var roomsExpected = TestDB.GetRoomsTable();
             int expected = roomsExpected.Count;
 
             // Act
@@ -138,10 +138,10 @@ namespace Roulette.Tests
         public void GetAllINTEGRATION_ShouldGetCalledAfterInitialisation()
         {
             // Arrange 
-            var roomsExpected = TestDataBase.GetRoomsTable();
-            var roundsExpected = TestDataBase.GetRoundsTable();
-            var pocketsExpected = TestDataBase.GetPocketTable();
-            var usersExpected = TestDataBase.GetUserTable();
+            var roomsExpected = TestDB.GetRoomsTable();
+            var roundsExpected = TestDB.GetRoundsTable();
+            var pocketsExpected = TestDB.GetPocketTable();
+            var usersExpected = TestDB.GetUserTable();
 
             int roomsCountExpected = roomsExpected.Count;
             int roundsCountExpected = roundsExpected.Count;

@@ -16,8 +16,8 @@ namespace TestDataAccesFactory.TestDAL
 
         public TestRoundDAL()
         {
-            rounds = TestDataBase.GetRoundsTable();
-            pockets = TestDataBase.GetPocketTable();
+            rounds = TestDB.GetRoundsTable();
+            pockets = TestDB.GetPocketTable();
         }
 
         public IPocketDTO GetPocket(int id)

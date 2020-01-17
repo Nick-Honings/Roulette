@@ -28,7 +28,7 @@ namespace Roulette.Tests
         public void AddUser_ShouldWork()
         {
             // Arrange
-            int expected = TestDataBase.GetUserTable().Count + 1;           
+            int expected = TestDB.GetUserTable().Count + 1;           
 
             // Act
             bool validCall = container.AddUser(user);
@@ -43,7 +43,7 @@ namespace Roulette.Tests
         public void AddUser_ShouldNotAddEmptyClass()
         {
             // Arrange
-            int expected = TestDataBase.GetUserTable().Count;
+            int expected = TestDB.GetUserTable().Count;
 
             // Act
             bool validCall = container.AddUser(emptyUser);
@@ -59,7 +59,7 @@ namespace Roulette.Tests
         public void GetAllUsers_ShouldWork()
         {
             // Arrange
-            int expected = TestDataBase.GetUserTable().Count;
+            int expected = TestDB.GetUserTable().Count;
 
             // Act
             var result = container.GetAllUsers();
@@ -74,7 +74,7 @@ namespace Roulette.Tests
         public void GetUserById_ShouldWork()
         {
             // Arrange
-            var users = TestDataBase.GetUserTable();
+            var users = TestDB.GetUserTable();
             var expected = users.Where(i => i.Id == 1);
 
             // Act
@@ -108,7 +108,7 @@ namespace Roulette.Tests
         public void RemoveUser_ShouldWork()
         {
             // Arrange
-            int expected = TestDataBase.GetUserTable().Where(i => i.UserRole == 2).Count();
+            int expected = TestDB.GetUserTable().Where(i => i.UserRole == 2).Count();
             container.AddUser(user);
 
             // Act
@@ -124,7 +124,7 @@ namespace Roulette.Tests
         public void RemoveUser_ShouldNotAttemptRemoveEmptyClass()
         {
             // Arrange
-            int expected = TestDataBase.GetUserTable().Where(i => i.UserRole == 2).Count() + 1;
+            int expected = TestDB.GetUserTable().Where(i => i.UserRole == 2).Count() + 1;
             container.AddUser(user);
             user = null;
 

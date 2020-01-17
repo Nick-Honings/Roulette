@@ -70,8 +70,6 @@
   <ItemGroup>
     <Compile Include="Admin\AdminDAL.cs" />
     <Compile Include="Admin\AdminDTO.cs" />
-    <Compile Include="Battle\BattleDAL.cs" />
-    <Compile Include="Battle\BattleDTO.cs" />
     <Compile Include="Bet\BetDAL.cs" />
     <Compile Include="Bet\BetDTO.cs" />
     <Compile Include="News\NewsItemDAL.cs" />

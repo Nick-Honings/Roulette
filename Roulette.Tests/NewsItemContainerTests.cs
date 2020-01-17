@@ -28,7 +28,7 @@ namespace Roulette.Tests
         public void AddNewsItem_ShouldWork()
         {
             // Arrange
-            int expected = TestDataBase.GetNewsTable().Count + 1;
+            int expected = TestDB.GetNewsTable().Count + 1;
             
             // Act
             bool validCall = container.AddNewsItem(newsItem);
@@ -43,7 +43,7 @@ namespace Roulette.Tests
         public void AddNewsItem_ShouldNotAddEmptyClassToList()
         {
             // Arrange
-            int expected = TestDataBase.GetNewsTable().Count;
+            int expected = TestDB.GetNewsTable().Count;
 
             // Act
             bool validCall = container.AddNewsItem(emptyNewItem);
@@ -58,7 +58,7 @@ namespace Roulette.Tests
         public void AddNewsItem_ShouldAddWithDuplicateName()
         {
             // Arrange
-            int expected = TestDataBase.GetNewsTable().Count + 2;
+            int expected = TestDB.GetNewsTable().Count + 2;
             container.AddNewsItem(newsItem);
 
             // Act
@@ -74,7 +74,7 @@ namespace Roulette.Tests
         public void RemoveNewsItem_ShouldWorkWithOneEntry()
         {
             // Arrange
-            var newsItems = TestDataBase.GetNewsTable();
+            var newsItems = TestDB.GetNewsTable();
             int expected = newsItems.Count - 1;
             var toRemove = (NewsItem)newsItems[0];
 
@@ -91,7 +91,7 @@ namespace Roulette.Tests
         public void RemoveNewsItem_ShouldWorkWithMultipleEntries()
         {
             // Arrange
-            int expected = TestDataBase.GetNewsTable().Count + 1;
+            int expected = TestDB.GetNewsTable().Count + 1;
             container.AddNewsItem(newsItem);
             container.AddNewsItem(new NewsItem("Live Roulette", null));
 
@@ -108,7 +108,7 @@ namespace Roulette.Tests
         public void RemoveNewsItem_ShouldDoNothingWithEmptyClass()
         {
             // Arrange
-            int expected = TestDataBase.GetNewsTable().Count;                   
+            int expected = TestDB.GetNewsTable().Count;                   
 
             // Act
             bool validCall = container.RemoveNewsItem(emptyNewItem);
@@ -123,7 +123,7 @@ namespace Roulette.Tests
         public void GetAllNewsItems_ShouldWork()
         {
             // Arrange
-            var expected = TestDataBase.GetNewsTable();
+            var expected = TestDB.GetNewsTable();
             int expectedCount = expected.Count;
 
             // Act

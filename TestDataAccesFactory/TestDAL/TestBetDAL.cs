@@ -17,7 +17,7 @@ namespace TestDataAccesFactory.TestDAL
 
         public TestBetDAL()
         {
-            bets = TestDataBase.GetBetsTable();
+            bets = TestDB.GetBetsTable();
         }
 
         public bool Insert<T>(object[] param)

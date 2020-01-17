@@ -49,7 +49,7 @@ namespace Roulette.Tests
         {
             // Arrange
             User emptyUser = null;
-            int expected = TestDataBase.GetUserTable().Count;
+            int expected = TestDB.GetUserTable().Count;
 
             // Act
             bool validCall = admin.AddUser(emptyUser);
@@ -64,7 +64,7 @@ namespace Roulette.Tests
         public void RemoveUser_ShouldWork()
         {
             // Arrange
-            var users = TestDataBase.GetUserTable();
+            var users = TestDB.GetUserTable();
             User toRemove = (User)users[0];
             int expected = users.Count - 1;
 
@@ -81,7 +81,7 @@ namespace Roulette.Tests
         public void RemoveUser_ShouldReturnFalse()
         {
             // Arrange            
-            int expected = TestDataBase.GetUserTable().Count;
+            int expected = TestDB.GetUserTable().Count;
 
             // Act
             bool validCall = admin.RemoveUser(expected + 100);
@@ -96,7 +96,7 @@ namespace Roulette.Tests
         public void EnableUser_ShouldWork()
         {
             // Arrange
-            User toEnable = (User)TestDataBase.GetUserTable()[0];
+            User toEnable = (User)TestDB.GetUserTable()[0];
 
             // Act
             bool validCall = admin.DisableUser(toEnable.Id);
@@ -112,7 +112,7 @@ namespace Roulette.Tests
         public void EnableUser_ShouldReturnFalse()
         {
             // Arrange
-            int userCount = TestDataBase.GetUserTable().Count;
+            int userCount = TestDB.GetUserTable().Count;
 
             // Act
             bool validCall = admin.DisableUser(userCount + 100);
@@ -125,7 +125,7 @@ namespace Roulette.Tests
         public void DisableUser_ShouldWork()
         {
             // Arrange
-            User toDisable = (User)TestDataBase.GetUserTable()[0];
+            User toDisable = (User)TestDB.GetUserTable()[0];
 
             // Act
             bool validCall = admin.DisableUser(toDisable.Id);
@@ -141,7 +141,7 @@ namespace Roulette.Tests
         public void DisableUser_ShouldReturnFalse()
         {
             // Arrange
-            int userCount = TestDataBase.GetUserTable().Count;
+            int userCount = TestDB.GetUserTable().Count;
 
             // Act
             bool validCall = admin.DisableUser(userCount + 100);
@@ -155,7 +155,7 @@ namespace Roulette.Tests
         {
             // Arrange
             decimal expected = 2500;
-            User toEditBalance = (User)TestDataBase.GetUserTable()[0];
+            User toEditBalance = (User)TestDB.GetUserTable()[0];
 
             // Act
             bool validCall = admin.SetUserBalance(toEditBalance.Id, expected);
@@ -169,7 +169,7 @@ namespace Roulette.Tests
         [Fact]
         public void SetUserBalance_ShouldReturnFalse()
         {
-            int userCount = TestDataBase.GetUserTable().Count;
+            int userCount = TestDB.GetUserTable().Count;
 
             // Act
             bool validCall = admin.SetUserBalance(userCount + 100, 2500);
