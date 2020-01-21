@@ -9,9 +9,6 @@ namespace Roulette.ASP.NETCore.Models
 {
     public class BetModel
     {
-        public int Id { get; set; }
-        public int PlayerId { get; set; }
-        public int Odd { get; set; }
         public decimal Stake { get; set; }
         public BetType Type { get; set; }
         
@@ -21,7 +18,7 @@ namespace Roulette.ASP.NETCore.Models
         public Color Color { get; set; }
 
         [Display(Name = "Even/ uneven")]
-        public bool IsEven { get; set; }
+        public bool? IsEven { get; set; }
 
         [Range(0, 36, ErrorMessage = "Please enter a valid number")]
         public int? FirstNumber  { get; set; }

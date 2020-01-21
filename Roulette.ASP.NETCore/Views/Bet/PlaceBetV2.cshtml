@@ -1,0 +1,61 @@
+﻿@model Roulette.ASP.NETCore.Models.BetModel
+
+@{
+    ViewData["Title"] = "PlaceBetV2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PlaceBetV2</h2>
+
+<h4>BetModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="PlaceBetV2">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Stake" class="control-label"></label>
+                <input asp-for="Stake" class="form-control" />
+                <span asp-validation-for="Stake" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Number" class="control-label"></label>
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsEven" class="control-label"></label>
+                <input asp-for="IsEven" class="form-control" />
+                <span asp-validation-for="IsEven" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstNumber" class="control-label"></label>
+                <input asp-for="FirstNumber" class="form-control" />
+                <span asp-validation-for="FirstNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondNumber" class="control-label"></label>
+                <input asp-for="SecondNumber" class="form-control" />
+                <span asp-validation-for="SecondNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

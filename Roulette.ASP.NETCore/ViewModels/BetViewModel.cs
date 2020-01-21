@@ -17,19 +17,16 @@ namespace Roulette.ASP.NETCore.ViewModels
                 new BetModel
                 {
                     Type = Bets.BetType.Color,
-                    Odd = 2,
                     Stake = 100
                 },
                 new BetModel
                 {
                     Type = Bets.BetType.EvenUneven,
-                    Odd = 2,
                     Stake = 1030
                 },
                 new BetModel
                 {
                     Type = Bets.BetType.Single,
-                    Odd = 36,
                     Stake = 10
                 }
             };
