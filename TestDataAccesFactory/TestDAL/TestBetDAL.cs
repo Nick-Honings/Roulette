@@ -20,6 +20,11 @@ namespace TestDataAccesFactory.TestDAL
             bets = TestDB.GetBetsTable();
         }
 
+        public IBetDTO GetCurrentBet(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Insert<T>(object[] param)
         {
             return true;

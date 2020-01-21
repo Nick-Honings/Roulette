@@ -28,11 +28,11 @@ namespace Roulette.Users
             this._betDal = betdal;
             this.UserRole = 2;
             this.Permissions = new List<string>();
+            this.CurrentBet = MakeBetObject(betdal.GetCurrentBet(this.Id));
         }
 
         public bool UpdateProfile()
         {
-            //User user = CreateUser();
             if (_userDAL.UpdateProfile(this))
             {
                 return true;
@@ -40,21 +40,6 @@ namespace Roulette.Users
             return false;
         }
 
-
-        private User CreateUser()
-        {
-            return new User(this.Name, null, null)
-            {
-                Id = this.Id,
-                Name = this.Name,
-                Password = this.Password,
-                Email = this.Email,
-                Age = this.Age, 
-                IsActive = this.IsActive,
-                Balance = this.Balance,
-                RoomId = this.RoomId
-            };
-        }
         public bool UpdateBalance(decimal balance)
         {           
             if(_userDAL.UpdateBalance(this.Id, balance))
@@ -66,7 +51,7 @@ namespace Roulette.Users
 
         public bool MakeBet(IBet bet)
         {
-            if (bet != null)
+            if (bet != null && Id != 0)
             {
                 bet.Id = this.Id;
                 CurrentBet = bet;
@@ -132,19 +117,79 @@ namespace Roulette.Users
             }
             else if (bet.Type == BetType.Single)
             {
-                object temp;
-                if (info.TryGetValue("Number", out temp))
+                if (info.TryGetValue("Number", out object temp))
                 {
                     int number = (int)temp;
                     output = new SingleNumberBet((IPocketNumber)number)
                     {
                         Id = bet.Id,
                         Stake = bet.Stake,
-                    };                    
+                    };
                 }
             }
             return output;
         }
+
+
+        private IBet MakeBetObject(IBetDTO dto)
+        {
+            var info = dto.GetBetSpecificInfo();
+            IBet output = null;
+
+            if (info.TryGetValue("Color", out object temp))
+            {
+                if (temp != null)
+                {
+                    int color = (int)temp;
+                    output = new ColorBet((IPocketColor)color)
+                    {
+                        Id = dto.Id,
+                        Stake = dto.Stake,
+                    }; 
+                }
+            }
+            else if (info.TryGetValue("FirstNumber", out object temp3) && info.TryGetValue("SecondNumber", out object temp4))
+            {
+                if (temp3 != null && temp4 != null)
+                {
+                    int firstNumber = (int)temp3;
+                    int secondNumber = (int)temp4;
+                    output = new NeighbourBet((IPocketNumber)firstNumber, (IPocketNumber)secondNumber)
+                    {
+                        Id = dto.Id,
+                        Stake = dto.Stake,
+                    }; 
+                }
+            }
+            else if (info.TryGetValue("Number", out object temp5))
+            {
+                if (temp5 != null)
+                {
+                    int number = (int)temp;
+                    output = new SingleNumberBet((IPocketNumber)number)
+                    {
+                        Id = dto.Id,
+                        Stake = dto.Stake,
+                    }; 
+                }
+            }
+            else if (info.TryGetValue("IsEven", out object temp2))
+            {
+                if (temp2 != null)
+                {
+                    bool isEven = (bool)temp;
+                    output = new EvenUnevenBet(isEven)
+                    {
+                        Id = dto.Id,
+                        Stake = dto.Stake,
+                    };
+                }
+            }
+
+            return output;
+        }
+
+
 
         public void StartBattle(int playerId)
         {

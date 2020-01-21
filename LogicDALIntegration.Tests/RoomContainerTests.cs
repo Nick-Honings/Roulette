@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using TestDataAccesFactory;
 using Xunit;
 
@@ -14,10 +15,12 @@ namespace LogicDALIntegration.Tests
     {
         RoomContainer container;
         MySqlRepository repo;
+        
 
         public RoomContainerTests()
         {
             repo = new MySqlRepository();
+
         }
 
 
@@ -31,47 +34,48 @@ namespace LogicDALIntegration.Tests
             int pocketsCountExpected = 4;
 
             // Act
-            container = new RoomContainer(
-                                            repo.CreateRoomContainerDAL(),
-                                            repo.CreateRoomDAL(),
-                                            repo.CreateRoundDAL(), 
-                                            repo.CreateUserDAL(),
-                                            repo.CreateBetDAL(), 
-                                            new Wheel(new NumberGenerator()));
-
-            int roomsCountResult = 0;
-            int roundsCountResult = 0;
-            int playerCountResult = 0;
-            int pocketsCountResult = 0;
-
-
-            foreach (var room in container.Rooms)
+            using (TransactionScope scope = new TransactionScope())
             {
-                roomsCountResult++;
-                
-                foreach (var round in room.Rounds)
-                {
-                    roundsCountResult++;                    
+                container = new RoomContainer(
+                                        repo.CreateRoomContainerDAL(),
+                                        repo.CreateRoomDAL(),
+                                        repo.CreateRoundDAL(),
+                                        repo.CreateUserDAL(),
+                                        repo.CreateBetDAL(),
+                                        new Wheel(new NumberGenerator()));
 
-                    if (round.Pocket != null)
+
+                int roomsCountResult = 0;
+                int roundsCountResult = 0;
+                int playerCountResult = 0;
+                int pocketsCountResult = 0;
+
+
+                foreach (var room in container.Rooms)
+                {
+                    roomsCountResult++;
+
+                    foreach (var round in room.Rounds)
                     {
-                        pocketsCountResult++;
+                        roundsCountResult++;
+
+                        if (round.Pocket != null)
+                        {
+                            pocketsCountResult++;
+                        }
+                    }
+                    foreach (var player in room.Players)
+                    {
+                        playerCountResult++;
                     }
                 }
-                foreach (var player in room.Players)
-                {
-                    playerCountResult++;
-                }
+
+                // Assert
+                Assert.Equal(roomsCountExpected, roomsCountResult);
+                Assert.Equal(roundsCountExpected, roundsCountResult);
+                Assert.Equal(playerCountExpected, playerCountResult);
+                Assert.Equal(pocketsCountExpected, pocketsCountResult);                
             }
-
-            // Assert
-            Assert.Equal(roomsCountExpected, roomsCountResult);
-            Assert.Equal(roundsCountExpected, roundsCountResult);
-            Assert.Equal(playerCountExpected, playerCountResult);
-            Assert.Equal(pocketsCountExpected, pocketsCountResult);
-        }
-
-
-        
+        }        
     }
 }

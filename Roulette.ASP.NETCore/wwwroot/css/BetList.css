@@ -1,3 +1,14 @@
-﻿p{
+﻿
+
+p{
     color: white;
+}
+
+h1{
+    color: white;
+}
+
+.value-display{
+    color: white;
+    font-size: medium;
 }

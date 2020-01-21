@@ -4,9 +4,6 @@ using InterfaceLayerBD.Bet;
 using Roulette.Users.Eventargs;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Roulette.Users
 {
@@ -32,14 +29,10 @@ namespace Roulette.Users
         //Adds a user to the database.
         public bool AddUser(User user)
         {
-            if(user != null)
+            if(user != null && _containerDAL.AddUser(user))
             {
-
-                if(_containerDAL.AddUser(user))
-                {
-                    Users.Add(user);
-                    return true;
-                }
+                Users.Add(user);
+                return true;                
             }
             return false;
         }
@@ -77,6 +70,7 @@ namespace Roulette.Users
             IUserDTO dto = _containerDAL.GetUserById(id);
 
             User user = ExtractUser(dto);
+
 
             return user;
         }

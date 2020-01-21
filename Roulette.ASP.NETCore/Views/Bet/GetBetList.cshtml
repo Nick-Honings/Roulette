@@ -6,26 +6,34 @@
 <div class="row">
 
     @{
-        foreach (var bet in Model)
+        if (Model.Count() != 0)
         {
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => bet.Stake)                  
-                </dt>
-                <dd class="col-sm-2">
-                    <div id="stake">
-                        @Html.DisplayFor(model => bet.Stake)
-                    </div>
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => bet.Number)
-                </dt>
-                <dd class="col-sm-10">
-                     <div id="number">
-                        @Html.DisplayFor(model => bet.Number)
-                    </div>                    
-                </dd>
-            </dl>
-        };
+            foreach (var bet in Model)
+            {
+                <dl class="row">
+                    <dt class="value-display">
+                        @Html.DisplayNameFor(model => bet.Stake)
+                    </dt>
+                    <dd class="value-display">
+                        <div id="stake" class="value-display">
+                            @Html.DisplayFor(model => bet.Stake)
+                        </div>
+                    </dd>
+                    <dt class="value-display">
+                        @Html.DisplayNameFor(model => bet.Number)
+                    </dt>
+                    <dd class="value-display">
+                        <div id="number" class="value-display">
+                            @Html.DisplayFor(model => bet.Number)
+                        </div>
+                    </dd>
+                </dl>
+            };
+        }
+        else
+        {
+            <p>No bets are placed!</p>
+        }
+
     }
 </div>

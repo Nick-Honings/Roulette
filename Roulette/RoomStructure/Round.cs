@@ -41,6 +41,8 @@ namespace Roulette
             _roundTimer = new Timer(1000);
             _roundTimer.Elapsed += RoundTimer_Elapsed;
 
+            
+
             this.Pocket = ExtractPocket(_roundDAL.GetPocket(this.Id));
         }
 
@@ -81,8 +83,11 @@ namespace Roulette
    
         private IPocket ExtractPocket(IPocketDTO dto)
         {
-            return new Pocket((IPocketNumber)dto.ToNumber);  
-        }
-    
+            if (dto != null)
+            {
+                return new Pocket((IPocketNumber)dto.ToNumber);
+            }
+            return null;
+        }    
     }
 }

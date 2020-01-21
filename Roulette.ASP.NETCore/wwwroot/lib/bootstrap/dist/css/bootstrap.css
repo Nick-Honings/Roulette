@@ -1365,7 +1365,7 @@ a.text-warning:focus {
   color: #66512c;
 }
 .text-danger {
-  color: #a94442;
+  color: white;
 }
 a.text-danger:hover,
 a.text-danger:focus {
@@ -1609,7 +1609,7 @@ pre code {
 }
 .row {
   margin-right: -15px;
-  margin-left: -15px;
+  margin-left: 0px;
 }
 .row-no-gutters {
   margin-right: 0;
@@ -1671,6 +1671,7 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+  color: white;
 }
 .col-xs-1,
 .col-xs-2,
@@ -1886,6 +1887,7 @@ pre code {
   }
   .col-sm-2 {
     width: 16.66666667%;
+    color: white;
   }
   .col-sm-1 {
     width: 8.33333333%;
@@ -3093,12 +3095,14 @@ select[multiple].input-lg {
   .form-horizontal .form-group-lg .control-label {
     padding-top: 11px;
     font-size: 18px;
+    color: white;
   }
 }
 @media (min-width: 768px) {
   .form-horizontal .form-group-sm .control-label {
     padding-top: 6px;
     font-size: 12px;
+    color: white;
   }
 }
 .btn {

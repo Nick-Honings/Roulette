@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roulette", "Roulette\Roulet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roulette.Tests", "Roulette.Tests\Roulette.Tests.csproj", "{DC2B98B8-C476-4B7D-9227-2EB089C26C0B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Unit Tests", "6. Unit Tests", "{BE23886D-0A3A-45F0-BCBD-D0E1B4E1F0AF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Tests", "6. Tests", "{BE23886D-0A3A-45F0-BCBD-D0E1B4E1F0AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Business Logic", "2. Business Logic", "{4621B521-2024-4F8A-B5BB-8382659DCAF6}"
 EndProject
@@ -35,7 +35,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "TestDataAccesFactory\Repository.csproj", "{64E7F31C-B64C-4225-9A84-5BC239E212EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roulette.ASP.NETCore", "Roulette.ASP.NETCore\Roulette.ASP.NETCore.csproj", "{CA99F6A0-21F7-4868-9BF6-047ACB4D57E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roulette.ASP.NET", "Roulette.ASP.NETCore\Roulette.ASP.NET.csproj", "{CA99F6A0-21F7-4868-9BF6-047ACB4D57E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicDALIntegration.Tests", "LogicDALIntegration.Tests\LogicDALIntegration.Tests.csproj", "{D373A9A7-8841-4B87-94E9-9F0A908932A4}"
 EndProject

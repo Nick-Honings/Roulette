@@ -8,6 +8,7 @@ namespace InterfaceLayerBD.Bet
 {
     public interface IBetDAL
     {
-        bool Save(IBetDTO dto);        
+        bool Save(IBetDTO dto);
+        IBetDTO GetCurrentBet(int id);
     }
 }

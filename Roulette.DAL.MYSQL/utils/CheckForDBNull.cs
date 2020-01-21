@@ -29,5 +29,12 @@ namespace Roulette.DAL.MYSQL.utils
                 return reader.GetDecimal(colIndex);
             return -1;
         }
+
+        public static bool SafeGetBoolean(this MySqlDataReader reader, int colIndex)
+        {
+            if (!reader.IsDBNull(colIndex))
+                return reader.GetBoolean(colIndex);
+            return false;
+        }
     }
 }

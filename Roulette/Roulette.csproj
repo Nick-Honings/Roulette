@@ -75,6 +75,7 @@
     <Compile Include="RoomStructure\RoundEndedEventArgs.cs" />
     <Compile Include="Users\Admin.cs" />
     <Compile Include="Users\AdminContainer.cs" />
+    <Compile Include="Users\DictionaryHelper.cs" />
     <Compile Include="Users\Eventargs\UserModificationEventArgs.cs" />
     <Compile Include="Users\IPlayer.cs" />
     <Compile Include="Users\IUser.cs" />

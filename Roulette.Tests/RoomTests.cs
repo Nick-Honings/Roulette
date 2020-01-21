@@ -32,7 +32,10 @@ namespace Roulette.Tests
             room = new Room(1, repo.CreateRoomDAL(), repo.CreateRoundDAL(), repo.CreateUserDAL(), repo.CreateBetDAL(), wheel);
 
 
-            player = new User("test", repo.CreateUserDAL(), repo.CreateBetDAL());
+            player = new User("test", repo.CreateUserDAL(), repo.CreateBetDAL())
+            {
+                Id = 1
+            };
             round = new Round(8, repo.CreateRoundDAL(), wheel);
         }
 
@@ -40,9 +43,8 @@ namespace Roulette.Tests
         [Fact]
         public void AddRound_ShouldWork()
         {
-            // Arrange
-            
-            int expected = TestDB.GetRoundsTable().Where(i=> i.Id == 1).Count() + 1;
+            // Arrange               
+            int expected = TestDB.GetRoundsTable().Count(i => i.RoomId == 1) + 1;
             
             // Act
             room.StartNewRound();
@@ -58,7 +60,7 @@ namespace Roulette.Tests
         public void RemoveUser_ShouldWork()
         {
             // Arrange
-            int expected = 0;
+            int expected = 1;
             room.AddUser(player);
 
             // Act
@@ -68,43 +70,5 @@ namespace Roulette.Tests
             // Assert
             Assert.Equal(expected, result);
         }
-
-        //[Theory]
-        //[ClassData(typeof(RoomTestsData.PositiveBets))]
-        //public void UpdateUserBalance_ShouldUpdate(IPocket betResult, IBet bet, decimal expected)
-        //{
-        //    // Arrange            
-        //    room.AddUser(player);
-        //    bet.Stake = 10;
-        //    player.MakeBet(bet);
-        //    room.StartNewRound();
-        //    room.Rounds[0].Pocket = betResult;
-
-        //    // Act
-        //    room.UpdateUserBalance();
-        //    decimal result = player.Balance;
-
-        //    // Assert
-        //    Assert.Equal(expected, result);
-        //}
-
-        //[Theory]
-        //[ClassData(typeof(RoomTestsData.NegativeBets))]
-        //public void UpdateUserBalance_ShouldDoNothing(IPocket betResult, IBet bet, decimal expected)
-        //{
-        //    // Arrange
-        //    room.AddUser(player);
-        //    bet.Stake = 10;
-        //    player.MakeBet(bet);
-        //    room.StartNewRound();
-        //    room.Rounds[0].Pocket = betResult;
-
-        //    // Act
-        //    room.UpdateUserBalance();
-        //    decimal result = player.Balance;
-
-        //    // Assert
-        //    Assert.Equal(expected, result);
-        //}
     }
 }

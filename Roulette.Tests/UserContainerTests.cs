@@ -21,7 +21,10 @@ namespace Roulette.Tests
         {
             repo = new InMemRepository();
             container = new UserContainer(repo.CreateUserContainerDAL(), repo.CreateUserDAL(), repo.CreateBetDAL());
-            user = new User("Test", repo.CreateUserDAL(), repo.CreateBetDAL());
+            user = new User("Test", repo.CreateUserDAL(), repo.CreateBetDAL())
+            {
+                Id = 15
+            };
         }
 
         [Fact]
@@ -108,11 +111,11 @@ namespace Roulette.Tests
         public void RemoveUser_ShouldWork()
         {
             // Arrange
-            int expected = TestDB.GetUserTable().Where(i => i.UserRole == 2).Count();
+            int expected = TestDB.GetUserTable().Count(i => i.UserRole == 2);
             container.AddUser(user);
 
             // Act
-            bool validCall = container.RemoveUser(user);
+            bool validCall = container.RemoveUser(user.Id);
             int result = container.Users.Count;
 
             // Assert
@@ -121,22 +124,19 @@ namespace Roulette.Tests
         }
 
         [Fact]
-        public void RemoveUser_ShouldNotAttemptRemoveEmptyClass()
+        public void RemoveUser_ShouldNotAttemptRemoveInvalidId()
         {
             // Arrange
-            int expected = TestDB.GetUserTable().Where(i => i.UserRole == 2).Count() + 1;
-            container.AddUser(user);
-            user = null;
+            int expected = TestDB.GetUserTable().Count(i => i.UserRole == 2);
+            
 
             // Act
-            bool validCall = container.RemoveUser(user);
+            bool validCall = container.RemoveUser(123654);
             int result = container.Users.Count;
 
             // Assert
             Assert.False(validCall);
             Assert.Equal(expected, result);
         }
-
-
     }
 }
