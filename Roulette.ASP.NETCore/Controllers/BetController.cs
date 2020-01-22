@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using InterfaceLayerBD.Bet;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Roulette.ASP.NET.Models;
 using Roulette.ASP.NETCore.Models;
 using Roulette.ASP.NETCore.ViewModels;
 using Roulette.Bets;
@@ -90,27 +91,81 @@ namespace Roulette.ASP.NETCore.Controllers
             {
                 return View();
             }
-            models.Add(model);
-
-
-
+            context.SingleBets.Add(model);
             
 
             return RedirectToAction("Index", "Room");
         }
 
+        public ActionResult PlaceColorBet()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PlaceColorBet(ColorBetModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            context.ColorBets.Add(model);
+            return RedirectToAction("Index", "Room");
+        }
+
+        public ActionResult PlaceNeighboursBet()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PlaceNeighboursBet(NeighboursBetModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            context.NeighboursBets.Add(model);
+            return RedirectToAction("Index", "Room");
+        }
+
+        public ActionResult PlaceEvenUnevenBet()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PlaceEvenUnevenBet(EvenUnevenBetModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            context.EvenUnevenBets.Add(model);
+            return RedirectToAction("Index", "Room");
+        }
+
+
+
         [HttpGet]        
         public IActionResult GetBetList()
         {
-            return PartialView(models);
+            return PartialView(context);
         }
 
-
-        [HttpPost]
-        public IActionResult UpdateViewResult()
+        [HttpGet]
+        public IActionResult ClearBetList()
         {
-            //this.context.BetModels.Add(model);
-            return PartialView("_Index", context.BetModels);
+            context.ColorBets.Clear();
+            context.EvenUnevenBets.Clear();
+            context.NeighboursBets.Clear();
+            context.SingleBets.Clear();
+            return Json("Ok");
         }
+
+
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Roulette.ASP.NETCore.Models.SingleNumberBetModel>
+﻿@model Roulette.ASP.NETCore.ViewModels.BetViewModel
 
 <link rel="stylesheet" runat="server" href="~/css/BetList.css"/>
 
@@ -6,34 +6,149 @@
 <div class="row">
 
     @{
-        if (Model.Count() != 0)
+        if (Model.ColorBets.Count != 0)
         {
-            foreach (var bet in Model)
+            foreach (var bet in Model.ColorBets)
             {
-                <dl class="row">
-                    <dt class="value-display">
-                        @Html.DisplayNameFor(model => bet.Stake)
-                    </dt>
-                    <dd class="value-display">
-                        <div id="stake" class="value-display">
-                            @Html.DisplayFor(model => bet.Stake)
-                        </div>
-                    </dd>
-                    <dt class="value-display">
-                        @Html.DisplayNameFor(model => bet.Number)
-                    </dt>
-                    <dd class="value-display">
-                        <div id="number" class="value-display">
-                            @Html.DisplayFor(model => bet.Number)
-                        </div>
-                    </dd>
-                </dl>
-            };
+                <div id="colorbet">    
+                    <dl class="row">
+                        <dt class="value-display">
+                            @Html.DisplayNameFor(model => bet.Stake)
+                        </dt>
+                        <dd class="value-display">
+                            <div id="stake" class="value-display">
+                                @Html.DisplayFor(model => bet.Stake)
+                            </div>
+                        </dd>
+                        <dt class="value-display">
+                            @Html.DisplayNameFor(model => bet.Color)
+                        </dt>
+                        <dd class="value-display">
+                            <div id="color" class="value-display">
+                                @Html.DisplayFor(model => bet.Color)
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            }
         }
-        else
+             if (Model.SingleBets.Count != 0)
         {
-            <p>No bets are placed!</p>
+            foreach (var bet in Model.SingleBets)
+            {
+                <div id="singlenumberbet">
+                    <dl class="row">
+                        <dt class="value-display">
+                            @Html.DisplayNameFor(model => bet.Stake)
+                        </dt>
+                        <dd class="value-display">
+                            <div id="stake" class="value-display">
+                                @Html.DisplayFor(model => bet.Stake)
+                            </div>
+                        </dd>
+                        <dt class="value-display">
+                            @Html.DisplayNameFor(model => bet.Number)
+                        </dt>
+                        <dd class="value-display">
+                            <div id="number" class="value-display">
+                                @Html.DisplayFor(model => bet.Number)
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+
+            }
         }
+        if (Model.EvenUnevenBets.Count != 0)
+        {
+            foreach (var bet in Model.EvenUnevenBets)
+            {
+                <div id="evenunevenbets">
+                    <dl class="row">
+                        <dt class="value-display">
+                            @Html.DisplayNameFor(model => bet.Stake)
+                        </dt>
+                        <dd class="value-display">
+                            <div id="stake" class="value-display">
+                                @Html.DisplayFor(model => bet.Stake)
+                            </div>
+                        </dd>
+                        <dt class="value-display">
+                            @Html.DisplayNameFor(model => bet.IsEven)
+                        </dt>
+                        <dd class="value-display">
+                            <div id="iseven" class="value-display">
+                                @Html.DisplayFor(model => bet.IsEven)
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            }
+        }
+        if (Model.NeighboursBets.Count != 0)
+        {
+            foreach (var bet in Model.NeighboursBets)
+            {
+                <div id="neighbourbets">
+                    <dl class="row">
+                        <dt class="value-display">
+                            @Html.DisplayNameFor(model => bet.Stake)
+                        </dt>
+                        <dd class="value-display">
+                            <div id="stake" class="value-display">
+                                @Html.DisplayFor(model => bet.Stake)
+                            </div>
+                        </dd>
+                        <dt class="value-display">
+                            @Html.DisplayNameFor(model => bet.FirstNumber)
+                        </dt>
+                        <dd class="value-display">
+                            <div id="firstnumber" class="value-display">
+                                @Html.DisplayFor(model => bet.FirstNumber)
+                            </div>
+                        </dd>
+                        <dt class="value-display">
+                            @Html.DisplayNameFor(model => bet.SecondNumber)
+                        </dt>
+                        <dd class="value-display">
+                            <div id="secondnumber" class="value-display">
+                                @Html.DisplayFor(model => bet.SecondNumber)
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            }
+        }
+
+
+        @*if (Model.Count() != 0)
+            {
+                foreach (var bet in Model)
+                {
+                    <dl class="row">
+                        <dt class="value-display">
+                            @Html.DisplayNameFor(model => bet.Stake)
+                        </dt>
+                        <dd class="value-display">
+                            <div id="stake" class="value-display">
+                                @Html.DisplayFor(model => bet.Stake)
+                            </div>
+                        </dd>
+                        <dt class="value-display">
+                            @Html.DisplayNameFor(model => bet.Number)
+                        </dt>
+                        <dd class="value-display">
+                            <div id="number" class="value-display">
+                                @Html.DisplayFor(model => bet.Number)
+                            </div>
+                        </dd>
+                    </dl>
+                };
+            }*@
+            @*else
+            {
+                <p>No bets are placed!</p>
+            }*@
 
     }
 </div>

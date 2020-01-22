@@ -55,22 +55,88 @@
 
     <script>
 
+
+
         function checkNumber() {
             $(document).ready(() => {
-                var result = $("#result-number").html();
-                console.log(result);
 
-                var betnumber = $("#number").html();
-                console.log(betnumber);
+                if ($('#colorbet').length > 0) {
+                    var resultColor = $('#result-color').html();
+                    console.log(resultColor);
 
-                if (result == betnumber) {
-                    alert("You win!")
+                    var betColor = $('#color').html().trim();
+                    console.log(betColor.toLowerCase());
+
+                    if (resultColor == betColor.toLowerCase()) {
+                        alert("You win! Your bet: " + betColor);
+                    }
+                    else {
+                        alert("You lost, try again! Your bet: " + betColor);
+                    }
                 }
-                else {
-                    alert("You lost, try again!");
+                if ($('#singlenumberbet').length > 0) {
+                    var resultNumber = $('#result-number').html();
+                    console.log(resultNumber);
+
+                    var betnumber = $("#number").html();
+                    console.log(betnumber);
+
+                    if (resultNumber == betnumber) {
+                        alert("You win! Your bet: " + betnumber)
+                    }
+                    else {
+                        alert("You lost, try again! Your bet: " + betnumber);
+                    }
+                }
+                if ($('#evenunevenbets').length > 0) {
+                    var resultNumber = $('#result-number').html();
+                    console.log(resultNumber);
+
+                    var betiseven = $('#iseven').val();
+                    console.log(betiseven);
+
+                    if ($('#iseven').html().indexOf('checked') != -1 && betiseven % 2 == 0) {
+                        alert("You win! Your bet: Even" );
+                    }
+                    else if ($('#iseven').html().indexOf('disabled') != -1 && betiseven % 2 != 0) {
+                        alert("You win! Your bet: UnEven");
+                    }
+                    else {
+                        alert("You lost, try again!");
+                    }
+                }
+                if ($('#neighbourbets').length > 0) {
+                    var resultNumber = $('#result-number').html();
+                    console.log(resultNumber);
+
+                    var firstbetnumber = $('#firstnumber').html();
+                    var secondnumber = $('#secondnumber').html();
+
+                    if (firstbetnumber == resultNumber || secondnumber == resultNumber) {
+                        alert("You win! Your bet: First number: " + firstbetnumber + " Second number: " + secondnumber);
+                    }
+                    else {
+                        alert("You lost, try again! Your bet: First number: " + firstbetnumber + " Second number: " + secondnumber);
+                    }
+                }
+
+                ClearBetList();
+            });
+        }
+
+        function ClearBetList() {
+
+            $.ajax({        
+                type: 'GET',                   
+                url: '/Bet/ClearBetList',
+                success: function (result) {    
+                    alert('A new round has begun! Place your bets!'); 
                 }
             });
         }
+
+
+
     </script>
 
     @*<script>
@@ -161,7 +227,12 @@
 
 
         <div id="createBet">
-            <input class="btn" type="button" value="Create" id="createBet" onclick="location.href='@Url.Action("PlaceBet", "Bet")'" />
+            <input class="btn" type="button" value="Single number bet" id="createSingleNumberBet" onclick="location.href='@Url.Action("PlaceBet", "Bet")'" />
+            <input class="btn" type="button" value="Color bet" id="createColorBet" onclick="location.href='@Url.Action("PlaceColorBet", "Bet")'" />
+            <input class="btn" type="button" value="Neighbours bet" id="createNeighboursBet" onclick="location.href='@Url.Action("PlaceNeighboursBet", "Bet")'" />
+            <input class="btn" type="button" value="Even or Uneven bet" id="createEvenUnevenBet" onclick="location.href='@Url.Action("PlaceEvenUnevenBet", "Bet")'" />
+
+
 
             @*@{await Html.RenderPartialAsync("~/Views/Bet/_PlaceBet.cshtml");};*@
             <button id="showBets" class="btn">Show Current Bets</button>
