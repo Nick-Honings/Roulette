@@ -55,6 +55,12 @@
 
     <script>
 
+        function updateBalance(amount) {
+            var balance = parseFloat($('#balance').text().split('€')[1]);
+            var updatedbalance = parseFloat(balance + amount);
+            console.log(balance);
+            $('#balance').html('Your balance: €' + updatedbalance);
+        }
 
 
         function checkNumber() {
@@ -66,12 +72,16 @@
 
                     var betColor = $('#color').html().trim();
                     console.log(betColor.toLowerCase());
+                    var stake = $('#stakecolor').html();
 
                     if (resultColor == betColor.toLowerCase()) {
                         alert("You win! Your bet: " + betColor);
+                        
+                        updateBalance(stake * 2);
                     }
                     else {
                         alert("You lost, try again! Your bet: " + betColor);
+                        updateBalance(-stake);
                     }
                 }
                 if ($('#singlenumberbet').length > 0) {
@@ -80,12 +90,15 @@
 
                     var betnumber = $("#number").html();
                     console.log(betnumber);
+                    var stake = $('#stakesingle').html();
 
                     if (resultNumber == betnumber) {
-                        alert("You win! Your bet: " + betnumber)
+                        alert("You win! Your bet: " + betnumber);
+                        updateBalance(stake * 36);
                     }
                     else {
                         alert("You lost, try again! Your bet: " + betnumber);
+                        updateBalance(-stake);
                     }
                 }
                 if ($('#evenunevenbets').length > 0) {
@@ -94,15 +107,19 @@
 
                     var betiseven = $('#iseven').val();
                     console.log(betiseven);
+                    var stake = $('#stakeeven').html();
 
                     if ($('#iseven').html().indexOf('checked') != -1 && betiseven % 2 == 0) {
-                        alert("You win! Your bet: Even" );
+                        alert("You win! Your bet: Even");
+                        updateBalance(stake * 2);
                     }
                     else if ($('#iseven').html().indexOf('disabled') != -1 && betiseven % 2 != 0) {
                         alert("You win! Your bet: UnEven");
+                        updateBalance(stake * 2);
                     }
                     else {
                         alert("You lost, try again!");
+                        updateBalance(-stake);
                     }
                 }
                 if ($('#neighbourbets').length > 0) {
@@ -111,12 +128,15 @@
 
                     var firstbetnumber = $('#firstnumber').html();
                     var secondnumber = $('#secondnumber').html();
+                    var stake = $('#stakeneighbours').html();
 
                     if (firstbetnumber == resultNumber || secondnumber == resultNumber) {
                         alert("You win! Your bet: First number: " + firstbetnumber + " Second number: " + secondnumber);
+                        updateBalance(stake * 2);
                     }
                     else {
                         alert("You lost, try again! Your bet: First number: " + firstbetnumber + " Second number: " + secondnumber);
+                        updateBalance(-stake);
                     }
                 }
 
@@ -138,27 +158,7 @@
 
 
     </script>
-
-    @*<script>
-        var myVar = setInterval(myTimer, 1000);
-        var period = 30;
-        function myTimer() {         
-
-            document.getElementById("countdown").innerHTML = "Time left: " + period;
-            period--;
-
-            if (period == 0) {               
-                document.getElementById('spin').click();
-                setTimeout(document.getElementById('spin').click(), 6000);
-                period = 30;
-                
-            }
-        }
-
-    </script>*@
-
 }
-
 
 <body>
     <div id="container">
@@ -224,7 +224,7 @@
         </div>
 
         <div id="countdown" class="countdown-timer"></div>
-
+        <h4 id="balance">Your balance: €200,00</h4>
 
         <div id="createBet">
             <input class="btn" type="button" value="Single number bet" id="createSingleNumberBet" onclick="location.href='@Url.Action("PlaceBet", "Bet")'" />
@@ -232,9 +232,9 @@
             <input class="btn" type="button" value="Neighbours bet" id="createNeighboursBet" onclick="location.href='@Url.Action("PlaceNeighboursBet", "Bet")'" />
             <input class="btn" type="button" value="Even or Uneven bet" id="createEvenUnevenBet" onclick="location.href='@Url.Action("PlaceEvenUnevenBet", "Bet")'" />
 
+            
+            <hr />
 
-
-            @*@{await Html.RenderPartialAsync("~/Views/Bet/_PlaceBet.cshtml");};*@
             <button id="showBets" class="btn">Show Current Bets</button>
             <button class="btn" onclick="checkNumber()">Receive payout</button>
         </div>
