@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+    <link rel="stylesheet" runat="server" href="~/css/placebet.css" />
+
 <h2>Index</h2>
 
 <p>
@@ -14,25 +16,40 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                <p>
+                    @Html.DisplayNameFor(model => model.Id)
+                </p>
+                
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                <p>
+                    @Html.DisplayNameFor(model => model.Name)
+                </p>               
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                <p>
+                    @Html.DisplayNameFor(model => model.Email)
+                </p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Password)
+                <p>
+                    @Html.DisplayNameFor(model => model.Password)
+                </p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Age)
+                <p>
+                    @Html.DisplayNameFor(model => model.Age)
+                </p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsActive)
+                <p>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Balance)
+                <p>
+                    @Html.DisplayNameFor(model => model.Balance)
+                </p>
             </th>
             <th></th>
         </tr>
@@ -41,25 +58,39 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                <p>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                <p>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                <p>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Password)
+                <p>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Age)
+                <p>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
+                <p>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Balance)
+                <p>
+                    @Html.DisplayFor(modelItem => item.Balance)
+                </p>
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |

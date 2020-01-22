@@ -190,6 +190,7 @@ table {
 td,
 th {
   padding: 0;
+  color: white;
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
@@ -2370,6 +2371,8 @@ caption {
 }
 th {
   text-align: left;
+  background-color: transparent;
+  color: white;
 }
 .table {
   width: 100%;
@@ -2386,10 +2389,12 @@ th {
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #ddd;
+  color: white;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
+  color: white;
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
@@ -2506,7 +2511,7 @@ th {
 .table > thead > tr.warning > td,
 .table > tbody > tr.warning > td,
 .table > tfoot > tr.warning > td,
-.table > thead > tr.warning > th,
+.table > thead > tr.warning > th,   
 .table > tbody > tr.warning > th,
 .table > tfoot > tr.warning > th {
   background-color: #fcf8e3;
