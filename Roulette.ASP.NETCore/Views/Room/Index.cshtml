@@ -55,9 +55,16 @@
 
     <script>
 
+        function getBalance() {
+            var balance = localStorage.getItem("balanceValue");
+            console.log("This is the balance: " + balance);
+            $('#balance').html('Your balance: €' + balance);
+        }
+
         function updateBalance(amount) {
             var balance = parseFloat($('#balance').text().split('€')[1]);
             var updatedbalance = parseFloat(balance + amount);
+            localStorage.setItem("balanceValue", updatedbalance);
             console.log(balance);
             $('#balance').html('Your balance: €' + updatedbalance);
         }
@@ -160,7 +167,7 @@
     </script>
 }
 
-<body>
+<body onload="getBalance()">
     <div id="container">
 
         <div class="main">
