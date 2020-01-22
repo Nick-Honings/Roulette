@@ -71,7 +71,6 @@ namespace Roulette.Users
 
             User user = ExtractUser(dto);
 
-
             return user;
         }
 

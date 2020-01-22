@@ -40,7 +40,12 @@ namespace TestDataAccesFactory
 
         public IUserDTO GetUserById(int id)
         {
-            return users.Find(i => i.Id == id);
+            var user = users.Find(i => i.Id == id);
+            if (user != null)
+            {
+                return user; 
+            }
+            return null;
         }
 
         public bool AddUser(IUserDTO dto)

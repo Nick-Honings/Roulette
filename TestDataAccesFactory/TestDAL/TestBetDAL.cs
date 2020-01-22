@@ -22,7 +22,8 @@ namespace TestDataAccesFactory.TestDAL
 
         public IBetDTO GetCurrentBet(int id)
         {
-            throw new NotImplementedException();
+            // Needs a fix
+            return null;
         }
 
         public bool Insert<T>(object[] param)

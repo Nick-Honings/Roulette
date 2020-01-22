@@ -19,9 +19,9 @@ namespace TestDataAccesFactory.TestDAL
         private List<IUserDTO> users;
 
         public TestRoomDAL()
-        {            
-            rounds = TestDB.GetRoundsTable();
+        {
             rooms = TestDB.GetRoomsTable();
+            rounds = TestDB.GetRoundsTable();            
             users = TestDB.GetUserTable();
         }
 
@@ -45,22 +45,34 @@ namespace TestDataAccesFactory.TestDAL
         public bool Update(IRoomDTO dto)
         {
             int index = rooms.FindIndex(i => i.Id == dto.Id);
-            rooms[index] = dto;
-            return true;
+            if (index != -1)
+            {
+                rooms[index] = dto;
+                return true; 
+            }
+            return false;
         }
 
         public bool AddUser(int id, int roomid)
         {
             var user = users.Find(i => i.Id == id);
-            user.RoomId = roomid;           
-            return true;
+            if (user != null)
+            {
+                user.RoomId = roomid;
+                return true; 
+            }
+            return false;
         }
 
         public bool RemoveUser(int id, int roomid)
         {
             var userIndex = users.FindIndex(i => i.Id == id);
-            users[userIndex].RoomId = 0;
-            return true;
+            if (userIndex != -1)
+            {
+                users[userIndex].RoomId = 0;
+                return true; 
+            }
+            return false;
         }
     }
 }

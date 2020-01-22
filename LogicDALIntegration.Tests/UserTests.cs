@@ -89,7 +89,7 @@ namespace LogicDALIntegration.Tests
             int expected = 4;
             container = new UserContainer(repo.CreateUserContainerDal(), repo.CreateUserDAL(), repo.CreateBetDAL());
 
-            User toAdd = new User("Pablo", null, null)
+            User toAdd = new User("Pablo", repo.CreateUserDAL(), repo.CreateBetDAL())
             {
                 Id = 13,
             };

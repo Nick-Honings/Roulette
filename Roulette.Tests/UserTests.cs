@@ -21,7 +21,10 @@ namespace Roulette.Tests
         public UserTests()
         {
             repo = new InMemRepository();
-            user = new User("test", repo.CreateUserDAL(), repo.CreateBetDAL());
+            user = new User("test", repo.CreateUserDAL(), repo.CreateBetDAL())
+            {
+                Id = 100
+            };
             bet = new ColorBet(IPocketColor.Black);
             
         }

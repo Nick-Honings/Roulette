@@ -56,7 +56,7 @@
     <script>
 
         function getBalance() {
-            var balance = localStorage.getItem("balanceValue");
+            var balance = parseFloat(localStorage.getItem("balanceValue"));
             console.log("This is the balance: " + balance);
             $('#balance').html('Your balance: €' + balance);
         }
@@ -64,9 +64,17 @@
         function updateBalance(amount) {
             var balance = parseFloat($('#balance').text().split('€')[1]);
             var updatedbalance = parseFloat(balance + amount);
-            localStorage.setItem("balanceValue", updatedbalance);
-            console.log(balance);
-            $('#balance').html('Your balance: €' + updatedbalance);
+
+            if (updateBalance > 0) {
+                localStorage.setItem("balanceValue", updatedbalance);
+                console.log(balance);
+                $('#balance').html('Your balance: €' + updatedbalance);
+            }
+            else {
+                alert("You don't have any money left, but this time I will reset your balance")
+                localStorage.setItem("balanceValue", 500);
+                $('#balance').html('Your balance: €' + 500);
+            }
         }
 
 
@@ -169,6 +177,7 @@
 
 <body onload="getBalance()">
     <div id="container">
+        
 
         <div class="main">
             <button type="button" class="btn" id="spin"><span class="btn-label">Spin</span></button>
@@ -231,7 +240,7 @@
         </div>
 
         <div id="countdown" class="countdown-timer"></div>
-        <h4 id="balance" style="color:white">Your balance: €200,00</h4>
+        <h4 id="balance" style="color:white">Your balance: €500,00</h4>
 
         <div id="createBet">
             <input class="btn" type="button" value="Single number bet" id="createSingleNumberBet" onclick="location.href='@Url.Action("PlaceBet", "Bet")'" />

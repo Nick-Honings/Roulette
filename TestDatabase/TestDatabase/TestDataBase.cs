@@ -17,7 +17,7 @@ using InterfaceLayerBD.Admin;
 
 namespace TestDatabase.TestDatabase
 {
-    public static class TestDB
+    public class TestDB
     {
         private static List<IRoomDTO> rooms = new List<IRoomDTO>()
         {
@@ -49,9 +49,8 @@ namespace TestDatabase.TestDatabase
 
         private static List<IUserDTO> users = new List<IUserDTO>()
         {
-            new User("Nick", null, null)
-            {
-                Id = 1,
+            new User("Nick", 1)
+            {                
                 Password = "test",
                 Email = "nick.honings@gmail.com",
                 Age = 20,
@@ -61,9 +60,8 @@ namespace TestDatabase.TestDatabase
                 RoomId = 1
 
             },
-            new User("Peter", null, null)
+            new User("Peter", 2)
             {
-                Id = 2,
                 Password = "test",
                 Email = "Peter@gmail.com",
                 Age = 20,
@@ -73,9 +71,8 @@ namespace TestDatabase.TestDatabase
                 RoomId = 2
 
             },
-            new User("Henk", null, null)
+            new User("Henk", 3)
             {
-                Id = 3,
                 Password = "test",
                 Email = "henk@gmail.com",
                 Age = 20,
@@ -84,9 +81,8 @@ namespace TestDatabase.TestDatabase
                 UserRole = 2,
                 RoomId = 3
             },
-            new User("fda", null, null)
+            new User("fda", 4)
             {
-                Id = 4,
                 Password = "test",
                 Email = "fda@gmail.com",
                 Age = 20,
@@ -94,16 +90,15 @@ namespace TestDatabase.TestDatabase
                 Balance = 2000,
                 UserRole = 2
             },
-            new User("abc", null, null)
+            new User("abc", 5)
             {
-                Id = 5,
                 Password = "test",
                 Email = "abc@gmail.com",
                 Age = 20,
                 IsActive = true,
                 Balance = 2000,
                 UserRole = 2
-            },
+            }
         };
 
         private static List<IAdminDTO> admins = new List<IAdminDTO>()
@@ -121,7 +116,7 @@ namespace TestDatabase.TestDatabase
                 Name = "admin2",
                 Password = "admin2",
                 UserRole = 1
-            },
+            }
         };
 
         private static List<INewsItemDTO> news = new List<INewsItemDTO>() 
@@ -143,7 +138,7 @@ namespace TestDatabase.TestDatabase
                 Id = 3,
                 Description = "New game modes are available",
                 PostDate = DateTime.Today
-            },
+            }
         };
 
         private static List<IRoundDTO> rounds = new List<IRoundDTO>()

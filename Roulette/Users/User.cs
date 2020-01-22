@@ -28,7 +28,17 @@ namespace Roulette.Users
             this._betDal = betdal;
             this.UserRole = 2;
             this.Permissions = new List<string>();
-            this.CurrentBet = MakeBetObject(betdal.GetCurrentBet(this.Id));
+            if (betdal != null)
+            {
+                this.CurrentBet = MakeBetObject(betdal.GetCurrentBet(this.Id)); 
+            }
+        }
+
+        // For testing purposes
+        public User(string name, int id)
+        {
+            this.Name = name;
+            this.Id = id;
         }
 
         public bool UpdateProfile()
@@ -133,6 +143,10 @@ namespace Roulette.Users
 
         private IBet MakeBetObject(IBetDTO dto)
         {
+            if (dto == null)
+                return null;
+
+
             var info = dto.GetBetSpecificInfo();
             IBet output = null;
 

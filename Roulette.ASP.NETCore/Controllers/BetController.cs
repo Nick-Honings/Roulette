@@ -17,9 +17,9 @@ namespace Roulette.ASP.NETCore.Controllers
     public class BetController : Controller
     {
         private static BetViewModel context = new BetViewModel();
+        private static int balance = 500;
         private readonly IUserContainerRepository _userRepo;
         private readonly IBetRepository _betRepository;
-        private static List<SingleNumberBetModel> models = new List<SingleNumberBetModel>();
         private User user;
 
         public BetController(IUserContainerRepository userRepo, IBetRepository betRepository)
@@ -52,11 +52,6 @@ namespace Roulette.ASP.NETCore.Controllers
             return new JsonResult("This works");
         }
 
-        [Route("getbetlistpartial")]
-        public IActionResult GetBetListPartial()
-        {
-            return PartialView("~/Views/Bet/_ListBets.cshtml", models);
-        }
 
         // GET: Bet/Create
         public ActionResult Create()

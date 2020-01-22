@@ -16,6 +16,7 @@ namespace TestDataAccesFactory.TestDAL
 
         public TestRoomContainerDAL()
         {
+            rooms = new List<IRoomDTO>();
             rooms = TestDB.GetRoomsTable();
         }
 
