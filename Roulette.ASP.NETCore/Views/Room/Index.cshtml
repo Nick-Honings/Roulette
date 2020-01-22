@@ -57,8 +57,10 @@
 
         function getBalance() {
             var balance = parseFloat(localStorage.getItem("balanceValue"));
-            console.log("This is the balance: " + balance);
-            $('#balance').html('Your balance: €' + balance);
+            if (balance != null) {
+                 console.log("This is the balance: " + balance);
+                 $('#balance').html('Your balance: €' + balance);
+            }
         }
 
         function updateBalance(amount) {
