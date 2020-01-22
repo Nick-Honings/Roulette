@@ -56,9 +56,11 @@
     <Compile Include="Interfaces\IRoomContainerRepository.cs" />
     <Compile Include="Interfaces\IUserContainerRepository.cs" />
     <Compile Include="IRepositoryFactory.cs" />
+    <Compile Include="IRoomDependencies.cs" />
     <Compile Include="MySqlRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryFactory.cs" />
+    <Compile Include="RoomDependencies.cs" />
     <Compile Include="TestDAL\TestAdminContainerDAL.cs" />
     <Compile Include="TestDAL\TestAdminDAL.cs" />
     <Compile Include="TestDAL\TestBetDAL.cs" />

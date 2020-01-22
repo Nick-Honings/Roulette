@@ -18,7 +18,7 @@ namespace LogicDALIntegration.Tests
 
         public BetTests()
         {
-            repo = new MySqlRepository();
+            repo = new MySqlRepository("TestDatabase");
         }
 
 

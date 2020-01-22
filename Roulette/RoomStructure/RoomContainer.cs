@@ -23,6 +23,7 @@ namespace Roulette
 
         public List<Room> Rooms { get; private set; }
         
+        //This gets messy, so we could define a container that holds all the dependencies needed.
 
         public RoomContainer(
             IRoomContainerDAL containerdAL, 
@@ -37,6 +38,19 @@ namespace Roulette
             this._roundDAL = roundDAL;
             this._userDAL = userDAL;
             this._betDAL = betDAL;
+            this._wheel = wheel;
+
+            this.Rooms = this.GetAllRooms();
+        }
+
+        // Fixed the messy dependency injection.
+        public RoomContainer(IRoomDependencies depencendies, IWheel wheel)
+        {
+            this._containerDAL = depencendies.RoomContainerDAL;
+            this._roomDAL = depencendies.RoomDAL;
+            this._roundDAL = depencendies.RoundDAL;
+            this._userDAL = depencendies.UserDAL;
+            this._betDAL = depencendies.BetDAL;
             this._wheel = wheel;
 
             this.Rooms = this.GetAllRooms();

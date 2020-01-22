@@ -52,10 +52,14 @@ namespace Roulette.ASP.NETCore
             //services.RegisterAssemblyPublicNonGenericClasses(assembly)
             //     .Where(x => x.Name.EndsWith("Repository"))
             //         .AsPublicImplementedInterfaces();
+            services.AddScoped<IAdminRepository>(s => new MySqlRepository("DemoDB"));
+            services.AddScoped<IUserContainerRepository>(s => new MySqlRepository("DemoDB"));
+            services.AddScoped<IBetRepository>(s => new MySqlRepository("DemoDB"));
 
-            services.AddScoped<IAdminRepository, MySqlRepository>();
-            services.AddScoped<IUserContainerRepository, MySqlRepository>();
-            services.AddScoped<IBetRepository, MySqlRepository>();
+
+            //services.AddScoped<IAdminRepository, MySqlRepository>();
+            //services.AddScoped<IUserContainerRepository, MySqlRepository>();
+            //services.AddScoped<IBetRepository, MySqlRepository>();
             //services.AddScoped<IRepository>(RepositoryFactory.Create("inmem")>();
         }
 

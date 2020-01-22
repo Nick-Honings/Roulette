@@ -39,4 +39,8 @@
     <ProjectReference Include="..\TestDataAccesFactory\Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+
 </Project>

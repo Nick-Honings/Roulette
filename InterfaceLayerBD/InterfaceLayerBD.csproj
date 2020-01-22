@@ -66,6 +66,7 @@
     <Compile Include="Pocket\PocketDAL.cs" />
     <Compile Include="Room\IRoomContainerDAL.cs" />
     <Compile Include="Room\IRoomDAL.cs" />
+    <Compile Include="Room\IRoomDependencies.cs" />
     <Compile Include="Room\IRoomDTO.cs" />
     <Compile Include="Round\IRoundContainerDAL.cs" />
     <Compile Include="Round\IRoundDAL.cs" />

@@ -19,10 +19,17 @@ namespace TestDataAccesFactory
     {
         private readonly string _connString;
 
-        public MySqlRepository()
+        public MySqlRepository(string connectionString)
         {
-            this._connString = ConnectionHelper.CnnVal("TestDatabase");
+            this._connString = ConnectionHelper.CnnVal(connectionString);
+            //this._connString = ConnectionHelper.CnnVal("DemoDB");
         }
+
+        public IRoomDependencies CreateRoomDependencies()
+        {
+            return new RoomDependencies(_connString);
+        }
+
         public IUserDAL CreateUserDAL()
         {            
             return new UserDAL(_connString);

@@ -20,7 +20,7 @@ namespace LogicDALIntegration.Tests
 
         public UserTests()
         {
-            repo = new MySqlRepository();
+            repo = new MySqlRepository("TestDatabase");
            
         }
 

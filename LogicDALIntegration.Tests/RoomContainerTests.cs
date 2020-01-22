@@ -19,7 +19,7 @@ namespace LogicDALIntegration.Tests
 
         public RoomContainerTests()
         {
-            repo = new MySqlRepository();
+            repo = new MySqlRepository("TestDatabase");
 
         }
 
